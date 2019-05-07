@@ -1,0 +1,6 @@
+## 驱动配置信息
+#spring:
+#  test:
+#    database: configure.xml
+#      
+#

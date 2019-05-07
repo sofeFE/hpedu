@@ -1,0 +1,234 @@
+*{
+	font-family: "微软雅黑";
+	color: #000;
+	padding: 0;
+	margin: 0;
+}
+a{
+	color: #000000;
+}
+a:focus{
+	list-style-type: none;
+}
+ul,li{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+.top{
+	width: 100%;
+}
+.img img{
+	height: 50px;
+	margin-left: 50%;
+}
+.img{
+	float: left;
+	width: 10%;
+}
+.menu{
+	width: 60%;
+	margin: 0 auto;
+	/*float: left;*/
+	position: relative;
+}
+.menu ul{
+	width: 100%;
+	overflow: hidden;
+}
+.menu ul li{
+	width: 25%;
+	float: left;
+	color: #000;
+	text-align: center;
+}
+.menu ul li a{
+	display: inline-block;
+	padding: 11px 10%;
+	font-size: 18px;
+	border-bottom: 3px solid rgba(0,0,0,0);
+	color: #000;
+}
+.menu ul li a:hover{
+	color: #5CB85C;
+	border-bottom: 3px solid #5CB85C;
+	background: rgba(57, 132, 57, 0.18);
+}
+.menu ul li .quiz-menu:hover+.quiz-sunmenu{
+	display: block;
+	color: #5CB85C;
+	background: rgba(57, 132, 57, 0.18);
+	border-bottom: 3px solid #5CB85C;
+}
+.top-right{
+	width: 16%;
+	float: right;
+	margin-right: 2%;
+	text-align: center;
+}
+.already-login-in{
+	padding: 4% 2%;
+	position: relative;
+}
+.already-login-in a{
+	display: inline-block;
+	margin: 5%;
+}
+.already-login-in a:hover{
+	color: red;
+}
+.not-login-in{
+	position: relative;
+}
+/* .not-login-in .user:hover>.user-setting{
+	display: block;
+} */
+
+.not-login-in .user{
+	overflow: auto;
+}
+.not-login-in .user .user-name{
+	padding: 15px 2%;
+}
+.not-login-in .user .user-name span{
+	margin-left: 5%;
+}
+.not-login-in .user .user-setting{
+	display: none;
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	background: #E4FFF4;
+	border: 1px solid #D9EDF7;
+	font-size: 16px;
+	z-index: 6;
+}
+.not-login-in .user .user-setting ul li{
+	padding: 6% 0;
+}
+.not-login-in .user .user-img{
+	float: left;
+}
+.not-login-in .user .user-img img{
+	width: 48px;
+	height: 48px;
+	padding: 1px;
+	margin: 1px 0;
+	border: 1px solid #5CB85C;
+	border-radius: 50%;
+}
+.not-login-in .user .user-setting ul li a{
+	margin-left: 15%;
+}
+.not-login-in .user .user-setting ul li a:hover{
+	color: #5CB85C;
+}
+.sunmenu{
+	width: 153.9%;
+	/*height: 402px;*/
+	position: absolute;
+	padding: 1% 10% 3% 10%;
+	left: -27%;
+	top: 100%;
+	border: 1px solid;
+	border-color: #d9dde1;
+	background:#E4E4F0 url(../img/be.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	z-index: 3;
+	display: none;
+}
+.routine-sunmenu{
+}
+.subinnerbox{
+	width: 33.333333333%;
+	float: left;
+	text-align: center;
+}
+.subinnerbox-title{
+	color: red;
+	font-size: 16px;
+	margin: 1% 0;
+	font-weight: 700;
+	text-align: center;
+}
+.subinnerbox-content{
+	font-size: 14px;
+}
+.subinnerbox-content a:hover{
+	color: red;
+}
+.subinnerbox-content h5{
+	font-weight: 700;
+	color: #000000;
+	font-size: 14px;
+	display: inline-block;
+	margin-right: 2%;
+}
+.subinnerbox-content span{
+	color: #000000;
+	padding: 0 2% ;
+}
+.foot{
+	background: #31363c;
+	padding: 2% 1%;
+}
+.foot-content{
+	width: 70%;
+	margin: 0 auto;
+}
+.foot-content p{
+	color: #787d82;
+	text-align: center;
+	cursor: default;
+}
+.foot-content-menu{
+	margin-bottom: 0.5%;
+}
+.foot-content-menu ul{
+	overflow: hidden;
+}
+.foot-content-menu ul li{
+	width: 20%;
+	float: left;
+	text-align: center;
+}
+.foot-content-menu ul li a{
+	color: #c8cdd2;
+	cursor: default;
+}
+.foot-content-menu ul li a:hover{
+	color: #fff;
+}
+
+/*支付样式*/
+.study-subject{
+	padding: 2% 4%;
+}
+.study-subject h3{
+	font-weight: 500;
+}
+.study-subject h2{
+	color: red;
+}
+.payment-all{
+	overflow: auto;
+}
+.playment-mode-every{
+	width: 50%;
+	float: left;
+	margin-left:25%;
+}
+.playment-mode-every .playment-mode-img img{
+	width: 100%;
+}
+ .sel_btn{
+    display: block;
+	float: right;
+	color: #fff;
+	margin-right: 5%;
+	padding: 1% 5%;
+	background: rgb(92,184,92);
+	border-radius: 5px;
+	border: 1px solid rgba(92, 184, 92, 0.64);
+}

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpedu.web.core.trophy.dao.TrophyMapper">
+	<resultMap id="BaseResultMap" type="com.hpedu.web.core.trophy.pojo.Trophy">
+		<id column="pid" property="pid" jdbcType="VARCHAR" />		
+		<result column="pname" property="pname" jdbcType="VARCHAR" />
+		<result column="pintro" property="pintro" jdbcType="VARCHAR" />
+		<result column="pimgUrl" property="pimgUrl" jdbcType="VARCHAR" />
+		
+		<result column="heartContent" property="heartContent" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="info" property="info" jdbcType="VARCHAR" />
+		<result column="pintrotitle" property="pintrotitle" jdbcType="VARCHAR" />
+		<result column="sort" property="sort" jdbcType="VARCHAR" />
+		<result column="common" property="common" jdbcType="VARCHAR" />
+		
+		<collection property="stuList" column="tpid"  ofType="com.hpedu.web.core.trophy.pojo.StuImg" >
+			<id column="stid" property="stid" jdbcType="VARCHAR" />
+			<result column="tpid" property="tpid" jdbcType="VARCHAR" />
+			<result column="stUrl" property="stUrl" jdbcType="VARCHAR" />
+			<result column="sort" property="sort" jdbcType="VARCHAR" />
+		</collection>
+		
+	</resultMap>
+	<resultMap id="StuResultMap" type="com.hpedu.web.core.trophy.pojo.StuImg">
+	          <id column="stid" property="stid" jdbcType="VARCHAR" />
+			<result column="tpid" property="tpid" jdbcType="VARCHAR" />
+			<result column="stUrl" property="stUrl" jdbcType="VARCHAR" />
+			<result column="sort" property="sort" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="selectStuImgByTpid" parameterType="String" resultMap="StuResultMap">
+	  select * from stu_img where tpid=#{arg0} order by sort
+	</select>
+	<insert id ="insertStuImgs" parameterType="java.util.List">
+            insert into stu_img (stid,tpid,stUrl,sort) values 
+             <foreach collection ="list" item="v" index= "index" separator =",">
+                (#{v.stid}, #{v.tpid},#{v.stUrl},#{v.sort})
+             </foreach>
+     </insert >
+    
+    <delete id="deleteStuImgs" parameterType="String">
+        delete from stu_img where stid in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+	
+	<select id="findAllTrophy" parameterType="java.util.Map" resultMap="BaseResultMap">
+	select * from trophy order by sort  <if test="limit!=null"> limit #{limit}</if> 
+	</select>
+	
+	<insert id="addTrophy" parameterType="com.hpedu.web.core.trophy.pojo.Trophy">
+	insert into trophy(pid,pname<if test="pimgUrl!=null">,pimgUrl</if>,sort<if test="heartContent!=null">,heartContent</if><if test="title!=null">,title</if>
+	<if test="info!=null">,info</if><if test="pintrotitle!=null">,pintrotitle</if><if test="pintro!=null">,pintro</if><if test="common!=null">,common</if>)
+	values(#{pid},#{pname}<if test="pimgUrl!=null">,#{pimgUrl}</if>,#{sort}
+	<if test="heartContent!=null">,#{heartContent}</if><if test="title!=null">,#{title}</if><if test="info!=null">,#{info}</if>
+	<if test="pintrotitle!=null">,#{pintrotitle}</if><if test="pintro!=null">,#{pintro}</if><if test="common!=null">,#{common}</if>) 
+	</insert>
+	<delete id="deleteTrophy" parameterType="java.lang.String">
+	delete from trophy  where pid=#{arg0}
+	</delete>
+	<select id="findTrophyById" parameterType="java.lang.String" resultMap="BaseResultMap">
+	select * from trophy t  where pid = #{arg0} 
+	</select>
+	<update id="updateTrophy" parameterType="com.hpedu.web.core.trophy.pojo.Trophy">
+	update trophy t set t.pname=#{pname}
+	<if test="pimgUrl!=null">
+	,t.pimgUrl=#{pimgUrl}
+	</if>
+	<if test="pintro!=null">,pintro=#{pintro}</if>
+	<if test="heartContent!=null">,heartContent=#{heartContent}</if>
+	<if test="title!=null">,title=#{title}</if>
+	<if test="info!=null">,info=#{info}</if>
+	<if test="pintrotitle!=null">,pintrotitle=#{pintrotitle}</if>
+	<if test="common!=null">,common=#{common}</if>
+	where t.pid=#{pid}
+	</update>
+	<select id="searchTrophyListCount" parameterType="java.util.Map" resultType="java.lang.Integer" >
+	  select count(1) from trophy
+	</select>
+	<update id="updateTrophySort" parameterType="hashmap">
+		update trophy
+		<set>
+			sort=
+			<foreach collection="list" item="item" index="i" separator=" " open="case pid" close="end" >
+				when #{item.pid} then #{sort}
+			</foreach>
+		</set>
+		<where>
+			pid in
+			<foreach collection="list" item="item" index="i" separator="," open="(" close=")">
+				#{pid}
+			</foreach>
+			
+		</where>
+	</update>
+</mapper>

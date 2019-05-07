@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpedu.web.core.user.dao.UserMapper">
+
+    <select id="getUserByUserName" parameterType="String" resultMap="BaseResultMap">
+		select * from user where userName=#{arg1}
+	</select>
+    <select id="getVisitorNum" resultType="int">
+		select vnum from demo where id = 6
+	</select>
+    <update id="updateVisitorNum" parameterType="int">
+		update demo set vnum = #{arg1}
+	</update>
+
+
+    <select id="selectRightMenu" parameterType="java.lang.String" resultMap="RightMenuMap">
+	 select * from rightMenu
+	</select>
+
+    <select id="getJDTScoresDetail" parameterType="java.lang.String" resultType="java.util.Map">
+	select ut.ucontent,ut.score,ut.detail,e.stuAnswer,e.stuGotScore,e.coment,e.eeid from errorexam e left join unittest ut on e.utid=ut.utid where usid=#{arg0} order by sort
+	</select>
+    <select id="searchUnitTestList" parameterType="java.util.Map" resultType="java.util.Map">
+        select yy.*,date_format(yy.ucreateTime,'%Y-%m-%d')as createTime from (select
+        s.usid,s.vid,g.gname,g.gsbuject,s.totalScores,s.totalNums,s.rightNum,s.errorNum,s.score,s.JDTscore,s.gotScore,s.isHasJDT,s.ucreateTime,s.utype
+        from userscore s left join generalvideo g on s.vid=g.gid where 1=1
+        <if test="userId!=null">and s.uid=#{userId}
+        </if>
+        <if test="tname!=null">and s.teacherName=#{tname} and (s.isHasJDT=1 or s.isHasJDT=2) and s.gotScore is null</if>
+        and
+        s.utype=0 union
+        select
+        s.usid,s.vid,g.cname,g.competitionName,s.totalScores,s.totalNums,s.rightNum,s.errorNum,s.score,s.JDTscore,s.gotScore,s.isHasJDT,s.ucreateTime,s.utype
+        from userscore s left join contestvideo g on s.vid=g.cid where 1=1
+        <if test="userId!=null">and s.uid=#{userId}
+        </if>
+        <if test="tname!=null">and s.teacherName=#{tname} and (s.isHasJDT=1 or s.isHasJDT=2) and s.gotScore is null</if>
+        and
+        s.utype=1 union
+        select
+        s.usid,s.vid,CONCAT(g.gname,c.vcname)gname,g.gsbuject,s.totalScores,s.totalNums,s.rightNum,s.errorNum,s.score,s.JDTscore,s.gotScore,s.isHasJDT,s.ucreateTime,s.utype
+        from userscore s left join video_child c on s.vid=c.vcid left join generalvideo g on c.pid=g.gid where 1=1
+        <if
+                test="userId!=null">and s.uid=#{userId}
+        </if>
+        <if test="tname!=null">and s.teacherName=#{tname} and (s.isHasJDT=1 or s.isHasJDT=2) and s.gotScore is null</if>
+        and
+        s.utype=2 union
+        select
+        s.usid,s.vid,g.etname,REPLACE(g.etsubject,'测验','')etsubject,s.totalScores,s.totalNums,s.rightNum,s.errorNum,s.score,s.JDTscore,s.gotScore,s.isHasJDT,s.ucreateTime,s.utype
+        from userscore s left join exam g on s.vid=g.etid where 1=1
+        <if test="userId!=null">and s.uid=#{userId}</if>
+        <if test="tname!=null">and s.teacherName=#{tname} and (s.isHasJDT=1 or s.isHasJDT=2) and s.gotScore is null</if>
+        and
+        s.utype=4 )yy order by yy.ucreateTime desc LIMIT #{skip},#{limit}
+    </select>
+    <!-- <select id="searchUnitTestCount"  parameterType="java.util.Map" resultType="java.lang.Integer">
+    select sum(yy.num) from (select count(1) as num from userscore s left join generalvideo g on s.vid=g.gid where 1=1 <if test="userId!=null"> and s.uid=#{userId}</if> and s.utype=0 union
+select count(1)as num from userscore s left join contestvideo g on s.vid=g.cid where 1=1 <if test="userId!=null"> and s.uid=#{userId}</if> and s.utype=1 union
+select count(1)as num from userscore s left join video_child c on s.vid=c.vcid left join generalvideo g on c.pid=g.gid where 1=1 <if test="userId!=null"> and s.uid=#{userId}</if> and s.utype=2 union
+select count(1)as num from userscore s left join exam g on s.vid=g.etid where 1=1 <if test="userId!=null"> and s.uid=#{userId}</if> and s.utype=4 )yy
+    </select> -->
+    <select id="searchUnitTestCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) from userscore s where 1=1
+        <if test="userId!=null">and s.uid=#{userId}</if>
+        <if test="tname!=null">and s.teacherName=#{tname} and (s.isHasJDT=1 or s.isHasJDT=2) and s.gotScore is null</if>
+    </select>
+    <select id="getTotalUnitTests" parameterType="hashmap" resultType="java.util.Map">
+        <!-- select  count(1) as nums,sum(score) as scores from unittest ut where vid=#{arg0} and utype=#{arg1} -->
+        select yy.testType,count(1) as nums,sum(yy.score) as scores from (select score,if(testType=1,1,0)testType
+        from unittest ut
+        where vid=#{arg0} and utype=#{arg1} )yy
+        group by yy.testType
+        order by yy.testType
+    </select>
+
+    <select id="selectVidoeTestAll" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        u.*,c.csid,c.tcontent,c.tanswer
+        from
+        unittest u
+        left join
+        unittest_choose c
+        on
+        u.utid=c.utid
+        where
+        u.vid=#{vid} and u.utype=#{utype}
+        order by
+        <if test="rand!=null">u.testType,rand()</if>
+        <if test="rand==null">u.testType,u.ucreateTime,c.sort</if>
+    </select>
+    <select id="selectVidoeTestByUtid" parameterType="String" resultType="java.util.Map">
+select u.*,c.csid,c.tcontent,c.tanswer from unittest u left join unittest_choose c on u.utid=c.utid where u.utid=#{arg0} order by c.sort
+</select>
+
+    <insert id="insertUserScore" parameterType="com.hpedu.web.core.user.pojo.UserScore">
+insert into userScore(usid,uid,vid,utype,ucreateTime,score,rightNum,errorNum,totalScores,totalNums,gotScore,isHasJDT,teacherName)
+values(#{usid},#{uid},#{vid},#{utype},now(),#{score},#{rightNum},#{errorNum},#{totalScores},#{totalNums},#{gotScore},#{isHasJDT},#{teacherName})
+</insert>
+    <update id="updateUserScore" parameterType="com.hpedu.web.core.user.pojo.UserScore">
+update userScore set JDTscore=#{JDTscore},gotScore=#{JDTscore}+score where usid=#{usid}
+</update>
+    <insert id="insertErrorExam" parameterType="java.util.List">
+        insert into errorExam (eeid,usid,utid,sort,stuAnswer) values
+        <foreach collection="list" item="v" index="index" separator=",">
+            (#{v.eeid}, #{v.usid}, #{v.utid},#{v.sort},#{v.stuAnswer})
+        </foreach>
+    </insert>
+
+    <select id="findlearnListByPage" parameterType="hashmap" resultType="java.util.Map">
+select * from(
+select g.gid as vid,g.gname as vname,g.isMore,0 as vctype,g.gvimg as img,g.teacherName,g.gmoney as money,g.gplayNo as playno,g.gclassify as classify,g.gclassify2 as classify2,g.gclass from generalvideo g where g.gid in (select vid from userlearn ul where userid=#{arg0} and ul.vctype=0 GROUP BY vid order by learnDate desc)
+UNION
+select c.cid as vid,c.cname as vname,c.isMore,1 as vctype,c.cvimg as img,c.teacherName,c.cmoney as money,c.cplayNo as playno,c.cclassify as classify,'' as classify2,c.cclass as gclass from contestvideo c where c.cid in (select vid from userlearn ul where userid=#{arg0} and ul.vctype=1 GROUP BY vid order by learnDate desc))yy limit #{arg1},#{arg2}
+
+	</select>
+    <select id="getLearnVideoTotalCount" parameterType="String" resultType="java.lang.Integer">
+	    select count(1) from(select * from( select * from userlearn where userid=#{arg0} group by  vid,vctype) yy)aa
+	</select>
+    <select id="getLearnTimeByUserId" parameterType="String" resultType="java.util.Map">
+	  select sum(l.learnTime)/60 as time,DATE_FORMAT(learnDate,'%m.%d') as learnDate from userlearn l where l.userId=#{arg0} and DATE_FORMAT(learnDate,'%Y-%m')  like CONCAT(#{arg1},'%') group by learnDate
+	</select>
+    <select id="getYearByUserId" parameterType="String" resultType="java.lang.String">
+	  select DATE_FORMAT(learnDate,'%Y')as year from userlearn l where l.userId=#{arg0}  group by DATE_FORMAT(learnDate,'%Y') ;
+	</select>
+    <update id="updateLearnTotalTime" parameterType="hashmap">
+	  update user set learnTime=learnTime+#{arg1} where uid=#{arg0}
+	</update>
+    <insert id="insertLearnTimeByDay" parameterType="com.hpedu.web.core.user.pojo.UserLearn">
+	 insert into userLearn(ulid,userid,vctype,vid,learnTime,learnDate)values(#{ulid},#{userid},#{vctype},#{vid},#{learnTime},now())
+	</insert>
+    <update id="updateLearnTimeByDay" parameterType="com.hpedu.web.core.user.pojo.UserLearn">
+	  update userLearn set learnTime=learnTime+#{learnTime} where ulid=#{ulid}
+	</update>
+    <select id="selectIsExitUserLearn" parameterType="hashmap" resultType="String">
+	  select ulid from userLearn where userid=#{arg0} and vid=#{arg1} and vctype=#{arg2} and date_format(learnDate,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d')
+	</select>
+    <select id="selectAllLevel" resultMap="LevelResultMap">
+	  select * from userLevel order by level
+	</select>
+    <select id="selectLevelById" parameterType="String" resultMap="LevelResultMap">
+	  select * from userLevel where ulid=#{arg0}
+	</select>
+    <insert id="insertLevel" parameterType="com.hpedu.web.core.user.pojo.UserLevel">
+        insert into userLevel(ulid
+        <if test="level!=null">,level</if>
+        <if test="des!=null">,des</if>
+        <if test="minNum!=null">,minNum</if>
+        <if test="maxNum!=null">,maxNum</if>)values(#{ulid}
+        <if test="level!=null">,#{level}</if>
+        <if test="des!=null">,#{des}</if>
+        <if test="minNum!=null">,#{minNum}</if>
+        <if test="maxNum!=null">,#{maxNum}</if>)
+    </insert>
+    <update id="updateLevel" parameterType="com.hpedu.web.core.user.pojo.UserLevel">
+        update userLevel
+        <set>
+            <if test="level != null">
+                level = #{level},
+            </if>
+            <if test="des != null">
+                des = #{des},
+            </if>
+            <if test="minNum != null">
+                minNum = #{minNum},
+            </if>
+            <if test="maxNum != null">
+                maxNum = #{maxNum},
+            </if>
+        </set>
+        where ulid = #{ulid}
+    </update>
+    <delete id="deleteLevel" parameterType="String">
+	  delete from userLevel where ulid = #{arg0}
+	</delete>
+
+
+    <select id="searchUserList" parameterType="java.util.Map" resultMap="BaseResultMap">
+
+        SELECT *,(case 
+        when endtime is null then 0 
+        when endtime is not null and now() &lt; endTime then  1 
+        else 2 end)as isused 
+        FROM user c
+
+        <where>
+            <if test="type!=null">
+                AND c.type =#{type}
+            </if>
+            <if test="status!=null">
+                AND c.status=#{status}
+            </if>
+            <if test="isVip!=null">
+                AND c.isVip=#{isVip}
+            </if>
+        </where>
+        ORDER BY c.status,c.regTime desc
+    </select>
+    <select id="searchUserListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM user c WHERE 1=1
+        <if test="type!=null">
+            AND c.type =#{type}
+        </if>
+        <if test="status!=null">
+            AND c.status=#{status}
+        </if>
+        <if test="isVip!=null">
+            AND c.isVip=#{isVip}
+        </if>
+    </select>
+    <delete id="deleteUserById" parameterType="String">
+	  delete from user where uid = #{uid}
+	</delete>
+    <select id="getIsExitsByPhone" parameterType="java.lang.String" resultType="int">
+	select count(1) from user where phoneNo = #{phoneNo}
+	</select>
+    <select id="getIsExitsByName" parameterType="java.lang.String" resultType="int">
+	select count(1) from user where userName = #{userName} and (isVip=2 or isVip=3)
+	</select>
+
+    <select id="backUserLogin" parameterType="java.util.Map" resultMap="BaseResultMap">
+	select * from user where userName = #{userName} and passWord = #{passWord} and (isVip=2 or isVip=3)
+	</select>
+
+    <select id="findUserByUid" parameterType="java.lang.String" resultMap="BaseResultMap">
+	select * from user u where uid = #{uid}
+	</select>
+    <select id="findUserByPhone" parameterType="java.lang.String" resultMap="BaseResultMap">
+	select * from user where phoneNo = #{arg0} and passWord = #{arg1}
+	</select>
+    <insert id="addUser" parameterType="com.hpedu.web.core.user.pojo.User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="passWord != null">
+                passWord,
+            </if>
+            <if test="phoneNo != null">
+                phoneNo,
+            </if>
+            <if test="isVip != null">
+                isVip,
+            </if>
+            <if test="regTime != null">
+                regTime,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="userName != null">
+                userName,
+            </if>
+            <if test="yqCode != null">
+                yqCode,
+            </if>
+            <if test="yqCodeUrl != null">
+                yqCodeUrl,
+            </if>
+            <if test="usedCode != null">
+                usedCode,
+            </if>
+            <if test="freeType != null">
+                freeType,
+            </if>
+            <if test="endTime != null">
+                endTime,
+            </if>
+            learnTime
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uid != null">
+                #{uid},
+            </if>
+            <if test="passWord != null">
+                #{passWord},
+            </if>
+            <if test="phoneNo != null">
+                #{phoneNo},
+            </if>
+            <if test="isVip != null">
+                #{isVip},
+            </if>
+            <if test="regTime != null">
+                #{regTime},
+            </if>
+            <if test="type != null">
+                #{type},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="userName != null">
+                #{userName},
+            </if>
+            <if test="yqCode != null">
+                #{yqCode},
+            </if>
+            <if test="yqCodeUrl != null">
+                #{yqCodeUrl},
+            </if>
+            <if test="usedCode != null">
+                #{usedCode},
+            </if>
+            <if test="freeType != null">
+                #{freeType},
+            </if>
+            <if test="endTime != null">
+                #{endTime},
+            </if>
+            0
+        </trim>
+
+    </insert>
+    <update id="updatePwdByPhone" parameterType="String">
+	  update user set passWord=#{arg1} where phoneNo=#{arg0}
+	</update>
+    <update id="updateYQCodeByUserId" parameterType="String">
+	  update user set yqCode=#{arg1},yqCodeUrl=#{arg2} where uid=#{arg0}
+	</update>
+    <select id="getUserByYQCode" parameterType="String" resultMap="BaseResultMap">
+	   select * from user where yqCode=#{arg0}
+	</select>
+    <update id="updateUserNews" parameterType="com.hpedu.web.core.user.pojo.User">
+        update user
+        <set>
+            <if test="userName != null">
+                userName = #{userName},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="headImgUrl != null">
+                headImgUrl = #{headImgUrl},
+            </if>
+            <if test="isVip != null">
+                isVip = #{isVip},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="freeType != null">
+                freeType = #{freeType},
+            </if>
+            <if test="endTime != null">
+                endTime = #{endTime},
+            </if>
+            <if test="learnTime != null">
+                learnTime = #{learnTime},
+            </if>
+            <if test="rightContent != null">
+                rightContent = #{rightContent},
+            </if>
+        </set>
+        where uid = #{uid}
+    </update>
+    <!-- //批量新增  -->
+    <insert id="insertUnitTest_Choose" parameterType="java.util.List">
+        insert into unitTest_Choose (csid,utid,tcontent,sort,tanswer) values
+        <foreach collection="list" item="v" index="index" separator=",">
+            (#{v.csid}, #{v.utid}, #{v.tcontent}, #{v.sort},#{v.tanswer})
+        </foreach>
+    </insert>
+    <!-- //批量删除  -->
+    <delete id="delUnitTest_Choose" parameterType="String">
+        delete from unitTest_Choose where csid in
+        <foreach item="csid" collection="array" open="(" separator="," close=")">
+            #{csid}
+        </foreach>
+    </delete>
+    <!-- //批量修改  -->
+    <update id="updateUnitTest_Choose" parameterType="java.util.List">
+        update unitTest_Choose set
+        tcontent=
+        <foreach collection="list" item="item" index="index" separator=" " open="case csid" close="end">
+            when #{item.csid} then #{item.tcontent}
+        </foreach>
+        ,tanswer=
+        <foreach collection="list" item="item" index="index" separator=" " open="case csid" close="end">
+            when #{item.csid} then #{item.tanswer}
+        </foreach>
+        where csid in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.csid}
+        </foreach>
+    </update>
+    <insert id="insertUnitTest" parameterType="com.hpedu.web.core.user.pojo.UnitTest">
+   insert into unitTest(utid,vid,utype,ucreateTime,score,ucontent,answer,isMoreChoose,utimg,ponit,detail,testType)values(#{utid},#{vid},#{utype},now(),#{score},#{ucontent},#{answer},#{isMoreChoose},#{utimg},#{ponit},#{detail},#{testType})
+</insert>
+    <delete id="delUnitTest" parameterType="String">
+delete from unitTest where utid=#{arg0}
+</delete>
+    <update id="updateUnitTest" parameterType="com.hpedu.web.core.user.pojo.UnitTest">
+update unitTest set score=#{score},ucontent=#{ucontent},answer=#{answer},isMoreChoose=#{isMoreChoose},utimg=#{utimg},ponit=#{ponit},detail=#{detail},testType=#{testType} where utid=#{utid}
+</update>
+
+    <!-- //批量修改  -->
+    <update id="updateErrorExam" parameterType="java.util.List">
+        update errorExam set
+        stuGotScore=
+        <foreach collection="list" item="item" index="index" separator=" " open="case eeid" close="end">
+            when #{item.eeid} then #{item.stuGotScore}
+        </foreach>
+        ,coment=
+        <foreach collection="list" item="item" index="index" separator=" " open="case eeid" close="end">
+            when #{item.eeid} then #{item.coment}
+        </foreach>
+        where eeid in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.eeid}
+        </foreach>
+    </update>
+
+
+    <resultMap id="BaseResultMap" type="com.hpedu.web.core.user.pojo.User">
+        <id column="uid" property="uid" jdbcType="VARCHAR"/>
+        <result column="userName" property="userName" jdbcType="VARCHAR"/>
+        <result column="passWord" property="passWord" jdbcType="VARCHAR"/>
+        <result column="phoneNo" property="phoneNo" jdbcType="VARCHAR"/>
+        <result column="isVip" property="isVip" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="headImgUrl" property="headImgUrl" jdbcType="VARCHAR"/>
+        <result column="regTime" property="regTime" jdbcType="TIMESTAMP"/>
+        <result column="lastLoginTime" property="lastLoginTime" jdbcType="TIMESTAMP"/>
+        <result column="learnTime" property="learnTime" jdbcType="INTEGER"/>
+
+        <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="freeType" property="freeType" jdbcType="VARCHAR"/>
+        <result column="endTime" property="endTime" jdbcType="TIMESTAMP"/>
+        <result column="rightContent" property="rightContent" jdbcType="VARCHAR"/>
+
+        <result column="isused" property="isused" jdbcType="INTEGER"/>
+
+        <result column="yqCode" property="yqCode" jdbcType="VARCHAR"/>
+        <result column="yqCodeUrl" property="yqCodeUrl" jdbcType="VARCHAR"/>
+        <result column="usedCode" property="usedCode" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="LevelResultMap" type="com.hpedu.web.core.user.pojo.UserLevel">
+        <id column="ulid" property="ulid" jdbcType="VARCHAR"/>
+        <result column="level" property="level" jdbcType="INTEGER"/>
+        <result column="des" property="des" jdbcType="VARCHAR"/>
+        <result column="minNum" property="minNum" jdbcType="BIGINT"/>
+        <result column="maxNum" property="maxNum" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <resultMap id="LearnResultMap" type="com.hpedu.web.core.user.pojo.UserLearn">
+        <id column="ulid" property="ulid" jdbcType="VARCHAR"/>
+        <result column="vctype" property="vctype" jdbcType="INTEGER"/>
+        <result column="userid" property="userid" jdbcType="VARCHAR"/>
+        <result column="vid" property="vid" jdbcType="VARCHAR"/>
+        <result column="learnTime" property="learnTime" jdbcType="BIGINT"/>
+        <result column="learnDate" property="learnDate" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="UserScoreMap" type="com.hpedu.web.core.user.pojo.UserScore">
+        <id column="usid" property="usid" jdbcType="VARCHAR"/>
+        <result column="utype" property="utype" jdbcType="INTEGER"/>
+        <result column="uid" property="uid" jdbcType="VARCHAR"/>
+        <result column="vid" property="vid" jdbcType="VARCHAR"/>
+        <result column="ucreateTime" property="ucreateTime" jdbcType="VARCHAR"/>
+        <result column="score" property="score" jdbcType="INTEGER"/>
+        <result column="rightNum" property="rightNum" jdbcType="INTEGER"/>
+        <result column="errorNum" property="errorNum" jdbcType="INTEGER"/>
+
+        <result column="totalScores" property="totalScores" jdbcType="VARCHAR"/>
+        <result column="totalNums" property="totalNums" jdbcType="VARCHAR"/>
+        <result column="JDTscore" property="JDTscore" jdbcType="INTEGER"/>
+        <result column="gotScore" property="gotScore" jdbcType="INTEGER"/>
+        <result column="isHasJDT" property="isHasJDT" jdbcType="INTEGER"/>
+        <result column="teacherName" property="teacherName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="UnitTestMap" type="com.hpedu.web.core.user.pojo.UnitTest">
+        <id column="utid" property="utid" jdbcType="VARCHAR"/>
+        <result column="utype" property="utype" jdbcType="INTEGER"/>
+        <result column="ucreateTime" property="ucreateTime" jdbcType="VARCHAR"/>
+        <result column="vid" property="vid" jdbcType="VARCHAR"/>
+        <result column="score" property="score" jdbcType="INTEGER"/>
+        <result column="ucontent" property="ucontent" jdbcType="VARCHAR"/>
+        <result column="answer" property="answer" jdbcType="VARCHAR"/>
+        <result column="isMoreChoose" property="isMoreChoose" jdbcType="INTEGER"/>
+        <result column="utimg" property="utimg" jdbcType="VARCHAR"/>
+        <result column="ponit" property="ponit" jdbcType="VARCHAR"/>
+        <result column="detail" property="detail" jdbcType="VARCHAR"/>
+        <result column="testType" property="testType" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap id="UnitChooseMap" type="com.hpedu.web.core.user.pojo.UnitTest_Choose">
+        <id column="csid" property="csid" jdbcType="VARCHAR"/>
+        <result column="utid" property="utid" jdbcType="VARCHAR"/>
+        <result column="tcontent" property="tcontent" jdbcType="VARCHAR"/>
+        <result column="sort" property="sort" jdbcType="BIGINT"/>
+        <result column="tanswer" property="tanswer" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="ErrorExamMap" type="com.hpedu.web.core.user.pojo.ErrorExam">
+        <id column="eeid" property="eeid" jdbcType="VARCHAR"/>
+        <result column="usid" property="usid" jdbcType="VARCHAR"/>
+        <result column="utid" property="utid" jdbcType="VARCHAR"/>
+        <result column="sort" property="sort" jdbcType="BIGINT"/>
+        <result column="stuAnswer" property="stuAnswer" jdbcType="VARCHAR"/>
+        <result column="stuGotScore" property="stuGotScore" jdbcType="INTEGER"/>
+        <result column="coment" property="coment" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="RightMenuMap" type="com.hpedu.web.core.user.pojo.RightMenu">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="pId" property="pId" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="open" property="open" jdbcType="BOOLEAN"/>
+        <result column="nocheck" property="nocheck" jdbcType="BOOLEAN"/>
+        <result column="realVal" property="realVal" jdbcType="VARCHAR"/>
+        <result column="checked" property="checked" jdbcType="BOOLEAN"/>
+    </resultMap>
+
+
+</mapper>

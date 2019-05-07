@@ -1,0 +1,14 @@
+$(function(){
+	$(".user-info-content").click(function(){
+		$(this).css("color","#5CB85C");
+		$(".modify-password-all").css("color","#000");
+		$(".user-all-info").show();
+		$(".modify-password").hide();
+	})
+	$(".modify-password-all").click(function(){
+		$(this).css("color","#5CB85C");
+		$(".user-info-content").css("color","#000");
+		$(".modify-password").show();
+		$(".user-all-info").hide();
+	})
+})

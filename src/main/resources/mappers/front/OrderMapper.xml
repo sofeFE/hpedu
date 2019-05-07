@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpedu.web.core.order.dao.OrderMapper">
+    <resultMap id="BaseResultMap" type="com.hpedu.web.core.order.pojo.Order">
+        <id column="oid" property="oid" jdbcType="VARCHAR"/>
+        <result column="omoney" property="omoney" jdbcType="VARCHAR"/>
+        <result column="ocreatTime" property="ocreatTime" jdbcType="TIMESTAMP"/>
+        <result column="opayTime" property="opayTime" jdbcType="TIMESTAMP"/>
+        <result column="oisPay" property="oisPay" jdbcType="VARCHAR"/>
+        <result column="orderNo" property="orderNo" jdbcType="VARCHAR"/>
+        <result column="uid" property="uid" jdbcType="VARCHAR"/>
+        <result column="vid" property="vid" jdbcType="VARCHAR"/>
+        <result column="vclassify" property="vclassify" jdbcType="VARCHAR"/>
+        <result column="payStyle" property="payStyle" jdbcType="VARCHAR"/>
+        <result column="isKill" property="isKill" jdbcType="INTEGER"/>
+
+
+        <result column="userName" property="userName" jdbcType="VARCHAR"/>
+        <result column="gname" property="gname" jdbcType="VARCHAR"/>
+        <result column="cname" property="cname" jdbcType="VARCHAR"/>
+        <result column="isUsed" property="isUsed" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap id="BannerResultMap" type="com.hpedu.web.core.order.pojo.Banner">
+        <id column="bid" property="bid" jdbcType="VARCHAR"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="imgUrl" property="imgUrl" jdbcType="VARCHAR"/>
+        <result column="sort" property="sort" jdbcType="VARCHAR"/>
+        <result column="article" property="article" jdbcType="VARCHAR"/>
+
+        <!-- add -->
+        <result column="category" property="category" jdbcType="VARCHAR"/>
+        <result column="subject" property="subject" jdbcType="VARCHAR"/>
+        <result column="grade" property="grade" jdbcType="VARCHAR"/>
+        <result column="classify" property="classify" jdbcType="VARCHAR"/>
+        <result column="belong" property="belong" jdbcType="INTEGER"/>
+
+    </resultMap>
+
+    <resultMap id="AticleImgResultMap" type="com.hpedu.web.core.order.pojo.ArticleImg">
+        <id column="atid" property="atid" jdbcType="VARCHAR"/>
+        <result column="bid" property="bid" jdbcType="VARCHAR"/>
+        <result column="atUrl" property="atUrl" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="selectArticleImgByBid" parameterType="String" resultMap="AticleImgResultMap">
+	  select * from article_img where bid=#{arg0} order by createTime
+	</select>
+
+    <insert id="insertArticleImgs" parameterType="java.util.List">
+        insert into article_img (atid,bid,atUrl,createTime) values
+        <foreach collection="list" item="v" index="index" separator=",">
+            (#{v.atid}, #{v.bid},#{v.atUrl},now())
+        </foreach>
+    </insert>
+
+    <delete id="deleteArticleImgs" parameterType="String">
+        delete from article_img where atid in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="findBannerByBid" parameterType="String" resultMap="BannerResultMap">
+	 select * from banner where bid=#{bid}
+	</select>
+    <select id="selectAllBanner" resultMap="BannerResultMap">
+	  select * from banner  order by sort
+	</select>
+    <select id="selectAllWebBanner" resultMap="BannerResultMap">
+	  select * from banner where belong = 0  or belong = null order by sort
+	</select>
+    <delete id="deleteBanner" parameterType="String">
+	  delete from banner where bid=#{bid}
+	</delete>
+    <update id="updateBannerSort" parameterType="hashmap">
+	  update banner set sort=#{arg1} where bid=#{arg0}
+	</update>
+
+    <insert id="insertBanner" parameterType="com.hpedu.web.core.order.pojo.Banner">
+        insert into banner
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bid != null">
+                bid,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="imgUrl != null">
+                imgUrl,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="article != null">
+                article,
+            </if>
+
+            <if test="category != null">
+                category,
+            </if>
+            <if test="belong != null">
+                belong,
+            </if>
+            <if test="subject != null">
+                subject,
+            </if>
+            <if test="grade != null">
+                grade,
+            </if>
+            <if test="classify != null">
+                classify,
+            </if>
+
+
+        </trim>
+
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bid != null">
+                #{bid},
+            </if>
+            <if test="title != null">
+                #{title},
+            </if>
+            <if test="content != null">
+                #{content},
+            </if>
+            <if test="imgUrl != null">
+                #{imgUrl},
+            </if>
+            <if test="sort != null">
+                #{sort},
+            </if>
+            <if test="article != null">
+                #{article},
+            </if>
+
+            <if test="category != null">
+                #{category},
+            </if>
+            <if test="belong != null">
+                #{belong},
+            </if>
+            <if test="subject != null">
+                #{subject},
+            </if>
+            <if test="grade != null">
+                #{grade},
+            </if>
+            <if test="classify != null">
+                #{classify},
+            </if>
+
+        </trim>
+    </insert>
+    <update id="updateBanner" parameterType="com.hpedu.web.core.order.pojo.Banner">
+        update banner
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="content != null">
+                content = #{content},
+            </if>
+            <if test="imgUrl != null">
+                imgUrl = #{imgUrl},
+            </if>
+            belong = #{belong},
+            <if test="belong == 0">
+                article = #{article},
+            </if>
+            <if test="belong == 1">
+                category = #{category},
+                subject = #{subject},
+                grade = #{grade},
+                classify = #{classify}
+            </if>
+        </set>
+        where bid = #{bid}
+    </update>
+    <!-- 订单查看(分页) -->
+    <!-- 
+        <select id="findOrderListByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+             select g.*,u.userName,gv.gname,cv.cname from orders g left join user u on g.uid=u.uid left join generalvideo gv on g.vid=gv.gid left join contestvideo cv on g.vid=cv.cid where 1=1 order by g.ocreatTime desc
+        </select> 
+        <select id="findOrderListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+         select  count(*) from orders g where 1=1
+        </select>
+    -->
+    <select id="findAllOrderByUserId" parameterType="String" resultMap="BaseResultMap">
+	   <![CDATA[
+         select g.*,gv.gname,cv.cname, now()<DATE_SUB(opayTime, INTERVAL -1 YEAR)  as isUsed 
+         from orders g 
+         left join generalvideo gv on g.vid=gv.gid 
+         left join contestvideo cv on g.vid=cv.cid 
+         where g.uid=#{uid} and g.oisPay=1 
+         order by g.opayTime desc
+        ]]>
+	</select>
+    
+    <!--add,subtract,multiply,and,divide-->
+    <select id="findOrderListByPage" parameterType="int" resultMap="BaseResultMap">
+	 <![CDATA[
+        	select g.*,u.userName,gv.gname,cv.cname,now() < DATE_SUB(opayTime, INTERVAL -1 YEAR)  as isUsed 
+        	from orders g 
+        	left join user u on g.uid=u.uid 
+        	left join generalvideo gv on g.vid=gv.gid 
+        	left join contestvideo cv on g.vid=cv.cid 
+        	order by g.opayTime desc,g.ocreatTime desc 
+        	limit #{param1},#{param2}
+        ]]>
+	</select>
+    <select id="findOrderListCount" resultType="java.lang.Integer">
+	    select  count(1) from orders
+	</select>
+    <select id="getMaxOrderNoByOrderNoPre" parameterType="String" resultType="java.lang.String">
+	   select orderNo from orders where orderNo like CONCAT(#{arg0},'%') order by orderNo desc limit 1
+	</select>
+    <select id="getIsBuyVideoByVid" parameterType="String" resultType="java.lang.Integer">
+	  <![CDATA[
+          select count(1) 
+          from orders 
+          where vid=#{arg0} and vclassify=#{arg1} and uid=#{arg2} and oisPay=1 and  now()<DATE_SUB(opayTime, INTERVAL -1 YEAR) 
+        ]]>
+	</select>
+    <select id="findOrderByOid" parameterType="String" resultMap="BaseResultMap">
+	   select * from orders where oid=#{arg0}
+	</select>
+    <insert id="insertOrder" parameterType="com.hpedu.web.core.order.pojo.Order">
+        insert into orders(oid,omoney,ocreatTime,oisPay,orderNo,uid,vid,vclassify,payStyle
+        <if test="isKill!=null">
+        ,isKill
+        </if>
+        ) values(#{oid},#{omoney},#{ocreatTime},0,#{orderNo},#{uid},#{vid},#{vclassify},#{payStyle}
+        <if test="isKill!=null">
+            ,#{isKill}
+        </if>)
+    </insert>
+    <update id="updateOrder" parameterType="java.util.Map" >
+        update orders
+        <set>
+            <if test="orderPrice!=null" >
+                omoney = #{orderPrice}
+            </if> 
+            <if test="ocreateTime!=null" >
+                ocreateTime = #{ocreateTime}
+            </if>
+            <if test="opayTime!=null" >
+                opayTime = #{opayTime}
+            </if> 
+            <if test="oisPay!=null" >
+                oisPay = #{oisPay}
+            </if> 
+            <if test="orderNo!=null" >
+                orderNo = #{orderNo}
+            </if>
+            <!--<if test="uid!=null" >
+                uid = #{uid}
+            </if>
+            <if test="vid!=null" >
+                vid = #{vid}
+            </if>
+            <if test="vclassify!=null" >
+                vclassify = #{vclassify}
+            </if>-->
+            <if test="payStyle!=null" >
+                payStyle = #{payStyle}
+            </if>
+            <if test="isKill!=null" >
+                isKill = #{isKill}
+            </if>
+            
+           
+        </set>
+        
+
+        where oid = #{oid}
+    </update>
+    <update id="updateOrderPayStatus" parameterType="String">
+	  update orders set oisPay=1,opayTime=now() where orderNo=#{arg0}
+	</update>
+
+    <update id="updateOrderPayMoney" parameterType="String">
+	  update orders set omoney=#{arg1},orderNo=#{arg2},payStyle=#{arg3} where oid=#{arg0} 
+	</update>
+    
+    <select id="findOrderByParams" parameterType="String" resultMap="BaseResultMap">
+	   select * from orders where uid=#{arg0} and vid=#{arg1} and vclassify=#{arg2} and oisPay=#{arg3}
+	</select>
+    <select id="findOrderByOrderNo" parameterType="String" resultMap="BaseResultMap">
+	   select * from orders where orderNo=#{arg0}
+	</select>
+</mapper>

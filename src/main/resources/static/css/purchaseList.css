@@ -1,0 +1,77 @@
+.content{
+	background: #F7F7F7;
+	padding-top: 6%;
+	padding-bottom: 6%;
+}
+.content-title{
+	width: 80%;
+	position: relative;
+	margin: 0 auto;
+	overflow: auto;
+}
+.content-title-content{
+	background: #fff;\
+	margin-top: 2%;
+	padding: 2%;
+	overflow: hidden;
+}
+.classification-content{
+	width: 100%;
+	color: #000000;
+	padding: 2%;
+	overflow: hidden;
+	position: relative;
+}
+.classification-content:after{
+	content: '\0020';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.classification-content table{
+	width: 100%;
+	position: relative;
+	/*border-width:0px 1px 1px 0px;*/
+	text-align: center;
+}
+.classification-content table tr{
+	width: 100%;
+	overflow: hidden;
+}
+.classification-content table tr th{
+	padding: 1% 2%;
+	font-size: 15px;
+	text-align: center;
+}
+.classification-content table tr td{
+	padding: 1% 2%;
+	max-width: 670px;
+	font-size: 14px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.classification-content table tr td a{
+	max-width: 600px;
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.classification-content table tr td a:hover{
+	color: red;
+}
+.purchase-page{
+	margin: 2% 0;
+	text-align: center;
+}
+.purchase-page span{
+	display: inline-block;
+	padding: 1% 5%;
+	margin: 0 3%;
+	border-radius: 5px;
+	background: #5CB85C;
+	color: #fff;
+	cursor: default;
+}

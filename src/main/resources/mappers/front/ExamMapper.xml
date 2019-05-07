@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpedu.web.core.exam.dao.ExamMapper">
+	<resultMap id="BaseResultMap" type="com.hpedu.web.core.exam.pojo.Exam">
+		<id column="etid" property="etid" jdbcType="VARCHAR" />
+		<result column="etname" property="etname" jdbcType="VARCHAR" />
+		<result column="etsubject" property="etsubject" jdbcType="VARCHAR" />
+		<result column="etclass" property="etclass" jdbcType="VARCHAR" />
+		<result column="etclassify" property="etclassify" jdbcType="VARCHAR" />
+		<result column="etimg" property="etimg" jdbcType="VARCHAR" />
+		<result column="etcreatTime" property="etcreatTime" jdbcType="TIMESTAMP" />
+		<result column="etestNo" property="etestNo" jdbcType="VARCHAR" />
+		<!-- <result column="answer" property="answer" jdbcType="VARCHAR" /> -->
+		<result column="fmImg" property="fmImg" jdbcType="VARCHAR" />
+		<result column="pdf" property="pdf" jdbcType="VARCHAR" />
+		<result column="answerPdf" property="answerPdf" jdbcType="VARCHAR" />
+		<result column="teacherName" property="teacherName" jdbcType="VARCHAR" />
+		
+	<!-- 	
+		<collection property="imgList" column="exid"  ofType="com.hpedu.web.core.exam.pojo.ExamImg" >
+			<id column="id" property="id" jdbcType="VARCHAR" />
+			<result column="exid" property="exid" jdbcType="VARCHAR" />
+			<result column="examUrl" property="examUrl" jdbcType="VARCHAR" />
+			<result column="answerUrl" property="answerUrl" jdbcType="VARCHAR" />
+			<result column="type" property="type" jdbcType="INTEGER" />
+			<result column="sort" property="sort" jdbcType="VARCHAR" />
+		</collection> -->
+		
+	</resultMap>
+	
+	<resultMap id="ImgResultMap" type="com.hpedu.web.core.exam.pojo.ExamImg">
+	        <id column="id" property="id" jdbcType="VARCHAR" />
+			<result column="exid" property="exid" jdbcType="VARCHAR" />
+			<result column="examUrl" property="examUrl" jdbcType="VARCHAR" />
+			<result column="answerUrl" property="answerUrl" jdbcType="VARCHAR" />
+			<result column="type" property="type" jdbcType="INTEGER" />
+			<result column="sort" property="sort" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<update id="updateLearnCount" parameterType="String">
+	  update exam set etestNo=etestNo+1 where etid=#{arg0}
+	</update>
+	
+	<insert id ="insertExamImgs" parameterType="java.util.List">
+            insert into exam_img (id,exid,examUrl,answerUrl,type,sort) values 
+             <foreach collection ="list" item="v" index= "index" separator =",">
+                (#{v.id}, #{v.exid},#{v.examUrl},#{v.answerUrl},#{v.type},#{v.sort})
+             </foreach>
+     </insert >
+    
+    <delete id="deleteExamImgs" parameterType="String">
+        delete from exam_img where id in
+        <foreach item="eiId" collection="array" open="(" separator="," close=")">
+            #{eiId}
+        </foreach>
+    </delete>
+	
+	
+	<insert id="addExam" parameterType="com.hpedu.web.core.exam.pojo.Exam">
+	insert into exam(etid,etname,etsubject,etclass<if test="etclassify!=null">,etclassify</if>,etcreatTime,etestNo<if test="fmImg!=null">,fmImg</if><if test="teacherName!=null">,teacherName</if>)
+	values (#{etid},#{etname},#{etsubject},#{etclass}<if test="etclassify!=null">,#{etclassify}</if>,now(),#{etestNo}<if test="fmImg!=null">,#{fmImg}</if><if test="teacherName!=null">,#{teacherName}</if>)
+	</insert>
+	<select id="findExamListByMap" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select * from exam e where 1=1 
+		<if test="etsubject!=null and etsubject!=''">
+		AND e.etsubject like CONCAT(CONCAT('%', #{etsubject}), '%') 
+		</if>
+		<if test="etclass!=null and etclass!=''">
+		AND e.etclass like CONCAT(CONCAT('%', #{etclass}), '%') 
+		</if>
+		<if test="etclassify!=null and etclassify!=''">
+		 AND e.etclassify like CONCAT(CONCAT('%', #{etclassify}), '%') 
+		</if>
+		
+		 ORDER BY e.etcreatTime DESC
+	</select>
+	<select id="findExamListByMapCount" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		select count(*) from  exam e where 1=1 
+		<if test="etsubject!=null and etsubject!=''">
+		AND e.etsubject like CONCAT(CONCAT('%', #{etsubject}), '%') 
+		</if>
+		<if test="etclass!=null and etclass!=''">
+		AND e.etclass like CONCAT(CONCAT('%', #{etclass}), '%') 
+		</if>
+		<if test="etclassify!=null and etclassify!=''">
+		 AND e.etclassify like CONCAT(CONCAT('%', #{etclassify}), '%') 
+		</if>
+		
+		 ORDER BY e.etcreatTime DESC
+	</select>
+	<select id="findExamByEtid" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select * from exam ex  where ex.etid = #{arg0} 
+	</select>
+	<select id="selectExamImgByExid" parameterType="java.lang.String" resultMap="ImgResultMap">
+	 select * from exam_img ei where ei.exid = #{arg0} order by type,ei.sort
+	</select>
+	<delete id="deleteExamById" parameterType="java.lang.String">
+		delete from exam where etid=#{arg0}
+	</delete>
+	<update id="updateExam" parameterType="com.hpedu.web.core.exam.pojo.Exam">
+		update exam e 
+		<set>
+			<if test="etname!=null">
+			  e.etname=#{etname},
+			</if>
+			<if test="etsubject!=null">
+			  e.etsubject=#{etsubject},
+			</if>
+			<if test="etclass!=null">
+			  e.etclass=#{etclass},
+			</if>
+			<if test="etclassify!=null">
+			  e.etclassify=#{etclassify},
+			</if>
+			<if test="fmImg!=null and fmImg!=''">
+			  e.fmImg=#{fmImg},
+			</if>
+			<if test="teacherName!=null">
+			  e.teacherName=#{teacherName},
+			</if>
+			<if test="etimg!=null">
+			  e.etimg=#{etimg},
+			</if>
+			<if test="pdf!=null and pdf!=''">
+			  e.pdf=#{pdf},
+			</if>
+			<if test="answerPdf!=null and answerPdf!=''">
+			  e.answerPdf=#{answerPdf},
+			</if>
+		</set>
+		where e.etid = #{etid}
+	</update>
+</mapper>

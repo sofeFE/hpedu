@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpedu.web.core.video.dao.ContestVideoMapper">
+    <resultMap id="BaseResultMap" type="com.hpedu.web.core.video.pojo.ContestVideo">
+        <id column="cid" property="cid" jdbcType="VARCHAR"/>
+        <result column="cname" property="cname" jdbcType="VARCHAR"/>
+        <result column="cisVip" property="cisVip" jdbcType="VARCHAR"/>
+        <result column="cmoney" property="cmoney" jdbcType="VARCHAR"/>
+        <result column="cplayNo" property="cplayNo" jdbcType="INTEGER"/>
+        <result column="competitionName" property="competitionName"
+                jdbcType="VARCHAR"/>
+        <result column="cclass" property="cclass" jdbcType="VARCHAR"/>
+        <result column="cclassify" property="cclassify" jdbcType="VARCHAR"/>
+        <result column="cintro" property="cintro" jdbcType="VARCHAR"/>
+        <result column="cvideoUrl" property="cvideoUrl" jdbcType="VARCHAR"/>
+        <result column="ccreatTime" property="ccreatTime" jdbcType="TIMESTAMP"/>
+        <result column="cvimg" property="cvimg" jdbcType="VARCHAR"/>
+        <result column="cvpdf" property="cvpdf" jdbcType="VARCHAR"/>
+        <result column="clen" property="clen" jdbcType="INTEGER"/>
+        <result column="isMore" property="isMore" jdbcType="INTEGER"/>
+
+        <result column="killMoney" property="killMoney" jdbcType="VARCHAR"/>
+        <result column="killName" property="killName" jdbcType="VARCHAR"/>
+        <result column="killStartTime" property="killStartTime" jdbcType="VARCHAR"/>
+        <result column="killEndTime" property="killEndTime" jdbcType="VARCHAR"/>
+        <result column="isKill" property="isKill" jdbcType="INTEGER"/>
+
+
+        <result column="teacherName" property="teacherName" jdbcType="VARCHAR"/>
+
+        <!-- 	<collection property="pdflist" column="vid"  ofType="com.hpedu.web.core.video.pojo.VideoPdf" >
+                <id column="pdfid" property="pdfid" jdbcType="VARCHAR" />
+                <result column="vid" property="vid" jdbcType="VARCHAR" />
+                <result column="pdfUrl" property="pdfUrl" jdbcType="VARCHAR" />
+                <result column="sort" property="sort" jdbcType="VARCHAR" />
+                <result column="vctype" property="vctype" jdbcType="INTEGER" />
+            </collection> -->
+    </resultMap>
+    <resultMap id="PDFResultMap" type="com.hpedu.web.core.video.pojo.VideoPdf">
+        <id column="pdfid" property="pdfid" jdbcType="VARCHAR"/>
+        <result column="vid" property="vid" jdbcType="VARCHAR"/>
+        <result column="pdfUrl" property="pdfUrl" jdbcType="VARCHAR"/>
+        <result column="sort" property="sort" jdbcType="VARCHAR"/>
+        <result column="vctype" property="vctype" jdbcType="INTEGER"/>
+    </resultMap>
+    <update id="updateIsKill" parameterType="String">
+	  update contestvideo set isKill=#{arg1} where cid=#{arg0}
+	</update>
+    <update id="updatePlayCount" parameterType="String">
+	  update contestvideo set cplayNo=cplayNo+1 where cid=#{arg0}
+	</update>
+    <select id="selectPdfByVid" parameterType="String" resultMap="PDFResultMap">
+	 select * from video_pdf vp where vp.vctype=#{arg1} and vp.vid=#{arg0}  order by vp.sort
+	</select>
+
+    <!-- 新增大联盟课程 -->
+    <insert id="addUSAClass" parameterType="com.hpedu.web.core.video.pojo.ContestVideo">
+        insert into
+        contestvideo(cid,cname,cisVip,cmoney,cplayNo,competitionName,cclass,cclassify,cintro,cvideoUrl,ccreatTime,cvimg,isMore
+        <if test="killMoney!=null">,killMoney</if>
+        <if test="killName!=null">,killName</if>
+        <if test="killStartTime!=null">,killStartTime</if>
+        <if test="killEndTime!=null">,killEndTime</if>
+        <if test="isKill!=null">,isKill</if>
+        <if test="teacherName!=null">,teacherName</if>)
+        values
+        (#{cid},#{cname},#{cisVip},#{cmoney},#{cplayNo},#{competitionName},#{cclass},#{cclassify},#{cintro},#{cvideoUrl},now(),#{cvimg},#{isMore}
+        <if test="killMoney!=null">,#{killMoney}</if>
+        <if test="killName!=null">,#{killName}</if>
+        <if test="killStartTime!=null">,#{killStartTime}</if>
+        <if test="killEndTime!=null">,#{killEndTime}</if>
+        <if test="isKill!=null">,#{isKill}</if>
+        <if test="teacherName!=null">,#{teacherName}</if>)
+    </insert>
+    <select id="findContestVideoIndex" resultMap="BaseResultMap">
+		SELECT * FROM contestvideo ORDER BY ccreatTime desc LIMIT 8
+	</select>
+    <!-- 播放竞赛视频 -->
+    <select id="findContestVideoById" parameterType="java.lang.String"
+            resultMap="BaseResultMap">
+		SELECT c.*,char_length(c.cintro) as clen FROM contestvideo c  where c.cid=#{arg0}  
+	</select>
+    <!-- 该竞赛相关视频 -->
+    <select id="findContestVideoByVideo" parameterType="java.lang.String"
+            resultMap="BaseResultMap"> 
+		SELECT c.* FROM contestvideo c  
+		where competitionName like CONCAT(CONCAT('%', #{arg0}), '%')  and cclass like  
+		CONCAT(CONCAT('%', #{arg1}), '%')  
+		and cclassify like CONCAT(CONCAT('%', #{arg2}), '%') 
+		and cid!=#{arg3} 
+		ORDER BY ccreatTime DESC 
+		LIMIT 8
+	</select>
+
+
+    <select id="findVideoListByExam" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT c.* FROM contestvideo c where 1=1
+        <if test="cclass!=null and cclass!=''">
+            AND c.cclass LIKE CONCAT(CONCAT('%', #{cclass}), '%')
+        </if>
+        ORDER BY ccreatTime DESC LIMIT #{pagesize}
+    </select>
+
+    <select id="searchContestVideoList" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT c.* FROM contestvideo c WHERE 1=1
+        <if test="competitionName!=null and competitionName!=''">
+            and c.competitionName LIKE CONCAT(CONCAT('%', #{competitionName}), '%')
+        </if>
+        <if test="cclass!=null and cclass!=''">
+            AND c.cclass LIKE CONCAT(CONCAT('%', #{cclass}), '%')
+        </if>
+        <if test="cclassify!=null and cclassify!=''">
+            AND c.cclassify LIKE CONCAT(CONCAT('%', #{cclassify}), '%')
+        </if>
+        ORDER BY c.ccreatTime DESC
+    </select>
+    <select id="searchContestVideoListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM contestvideo c WHERE 1=1
+        <if test="competitionName!=null and competitionName!=''">
+            and c.competitionName LIKE CONCAT(CONCAT('%', #{competitionName}), '%')
+        </if>
+        <if test="cclass!=null and cclass!=''">
+            AND c.cclass LIKE CONCAT(CONCAT('%', #{cclass}), '%')
+        </if>
+        <if test="cclassify!=null and cclassify!=''">
+            AND c.cclassify LIKE CONCAT(CONCAT('%', #{cclassify}), '%')
+        </if>
+    </select>
+    <update id="updateUSAClass" parameterType="com.hpedu.web.core.video.pojo.ContestVideo">
+        update contestvideo set cname=#{cname},cisVip=#{cisVip},cmoney=#{cmoney},cplayNo=#{cplayNo},
+        competitionName=#{competitionName},cclass=#{cclass},cclassify=#{cclassify},cintro=#{cintro},
+        cvideoUrl=#{cvideoUrl},cvimg=#{cvimg}
+        <if test="killMoney!=null">,killMoney=#{killMoney}</if>
+        <if test="killName!=null">,killName=#{killName}</if>
+        <if test="killStartTime!=null">,killStartTime=#{killStartTime}</if>
+        <if test="killEndTime!=null">,killEndTime=#{killEndTime}</if>
+        <if test="isKill!=null">,isKill=#{isKill}</if>
+        <if test="teacherName!=null">,teacherName=#{teacherName}</if>
+        where cid=#{cid}
+    </update>
+    <delete id="deleteUSAClass" parameterType="java.lang.String">
+	delete from contestvideo where cid=#{arg0} 
+	</delete>
+    <select id="searchContestVideoListByCname" parameterType="String" resultMap="BaseResultMap">
+		SELECT c.* FROM contestvideo c  WHERE cname like CONCAT(CONCAT('%', #{arg0}), '%') order by ccreatTime desc
+	</select>
+
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpedu.web.core.evaluation.dao.EvaluationMapper">
+	<resultMap id="BaseResultMap" type="com.hpedu.web.core.evaluation.pojo.Evaluation">
+		<id column="eid" property="eid" jdbcType="VARCHAR" />		
+		<result column="uname" property="uname" jdbcType="VARCHAR" />
+		<result column="evaluation" property="evaluation" jdbcType="VARCHAR" />
+		<result column="ecreatTime" property="ecreatTime" jdbcType="TIMESTAMP" />
+		<result column="vid" property="vid" jdbcType="VARCHAR" />
+		<result column="vclassify" property="vclassify" jdbcType="VARCHAR" />
+		<result column="eisShow" property="eisShow" jdbcType="VARCHAR" />
+		
+		<result column="gname" property="gname" jdbcType="VARCHAR" />
+		<result column="cname" property="cname" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="findAllEvaluationByEid" parameterType="java.lang.String" resultMap="BaseResultMap">
+	select * from evaluation where vid = #{vid} and eisShow = 1 order by ecreatTime desc
+	</select>
+	<!-- 查看全部评论(分页) -->
+	<!-- <select id="findEvaluationListByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		 select g.*,gv.gname,cv.cname from evaluation g left join generalvideo gv on g.vid=gv.gid left join contestvideo cv on g.vid=cv.cid where 1=1 order by g.ecreatTime desc
+	   select * from evaluation 
+	</select> 
+	<select id="findEvaluationListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+	 select  count(*) from evaluation g where 1=1
+	</select> -->
+	<select id="findEvaluationListByPage" parameterType="int" resultMap="BaseResultMap">
+		select g.*,gv.gname,cv.cname from evaluation g left join generalvideo gv on g.vid=gv.gid left join contestvideo cv on g.vid=cv.cid order by g.ecreatTime desc limit #{arg0},#{arg1}
+	</select> 
+	<select id="findEvaluationListCount"  resultType="java.lang.Integer">
+	    select  count(1) from evaluation
+	</select>
+	<delete id="deleteEvaluationById" parameterType="java.lang.String">
+	   delete from evaluation where eid=#{arg0}
+	</delete>
+	<select id="findTop20EvaluationByEid" parameterType="java.lang.String" resultMap="BaseResultMap">
+	select * from evaluation where vid = #{vid} and eisShow = 1 order by ecreatTime desc limit 0,20
+	</select>
+	<insert id="insertEvaluation"  parameterType="com.hpedu.web.core.evaluation.pojo.Evaluation">
+	  insert into evaluation(eid,uname,evaluation,ecreatTime,vid,vclassify,eisShow)values(#{eid},#{uname},#{evaluation},now(),#{vid},#{vclassify},1)
+	</insert>
+</mapper>

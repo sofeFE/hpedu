@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpedu.web.core.publicTest.dao.TestMapper">
+	<resultMap id="BaseResultMap" type="com.hpedu.web.core.publicTest.pojo.Test">
+		<id column="id" property="id" jdbcType="VARCHAR" />		
+		<result column="testPointId" property="testPointId" jdbcType="VARCHAR" />
+		<result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="testTitle" property="testTitle" jdbcType="VARCHAR" />
+		<result column="score" property="score" jdbcType="BIGINT" />
+		<result column="testAnswer" property="testAnswer" jdbcType="VARCHAR" />
+		<result column="testDetail" property="testDetail" jdbcType="VARCHAR" />
+		<result column="testType" property="testType" jdbcType="BIGINT" />
+		<result column="isMoreChoose" property="isMoreChoose" jdbcType="BIGINT" />
+		<association property="testPoint" javaType="com.hpedu.web.core.publicTest.pojo.TestPoint" >
+			<id column="tpid"  property="id" jdbcType="VARCHAR"/>
+			<result column="grade" property="grade"  jdbcType="VARCHAR"/>
+			<result column="pointName" property="pointName"  jdbcType="VARCHAR"/>
+		</association>
+	</resultMap>
+	
+	
+	<insert id ="insertTest" parameterType="java.util.Map"  >
+            insert into test  values (#{id},#{testPointId},#{createTime},#{testTitle},
+            #{score},#{testAnswer},#{testDetail},#{testType},#{isMoreChoose})
+    </insert >
+    
+	
+	 <select id="getTest_Page" parameterType="java.util.Map"  resultMap="BaseResultMap">
+	  select 
+	  	t.id `id` ,t.testPointId ,t.createTime,t.testTitle,t.score,t.testAnswer,t.testType,
+	  	tp.tpid `tpid` ,tp.grade,tp.pointName 
+	   from Test t
+	   left join TestPoint tp on t.testPointId = tp.tpid 
+	   
+	   <where>
+	   		<if test="grade!=null">and grade=#{grade}</if>
+	   		<if test="testPointId!=null">and testPointId=#{testPointId}</if>
+	   </where>
+	   
+	 <!--  <where >
+	  	 <if test="grade != null" >
+	  	 	and grade=#{grade}
+	  	 </if>
+	  	 <if test="pointName != null" >
+	  	 	and pointName=#{pointName}
+	  	 </if>
+	  </where> -->
+	</select>
+	 <select id="getOneTest" parameterType="java.lang.String" resultMap="BaseResultMap">
+	  select 
+	  	t.id `id` ,t.createTime,t.testTitle,t.score,t.testAnswer,t.testType,
+	  	tp.tpid `tpid` ,tp.grade,tp.pointName 
+	   from Test t
+	   left join TestPoint tp on t.testPointId = tp.tpid 
+	   where id = #{id}
+	 <!--  <where >
+	  	 <if test="grade != null" >
+	  	 	and grade=#{grade}
+	  	 </if>
+	  	 <if test="pointName != null" >
+	  	 	and pointName=#{pointName}
+	  	 </if>
+	  </where> -->
+	</select>
+	
+	<select id="getTest_Page_count" parameterType="java.util.Map"  resultType="java.lang.Integer">
+	  select count(1) from test  left join TestPoint  on testPointId = tpid 
+	  <where>
+	   		<if test="grade!=null">and grade=#{grade}</if>
+	   		<if test="testPointId!=null">and testPointId=#{testPointId}</if>
+	   </where>
+	</select>
+	
+	<delete id="deleteOntTest" parameterType="String" >
+		delete from test where id=#{id}
+	</delete>
+	
+	<!--
+	<select id="getOneTestPoint" parameterType="String"  resultMap="BaseResultMap">
+	  select * from test  where id = #{id}
+	</select>
+	
+ 	<update id="updateTestPoint" parameterType="com.hpedu.web.core.publicTest.pojo.TestPoint" >
+ 		update testPoint set grade=#{grade} ,pointName=#{pointName} where id=#{id}
+ 		
+ 		<set prefix="">
+ 			<if test="grade!=null">
+ 				grade=#{grade}
+ 			</if>	
+ 			<if test="pointName!=null">
+ 				pointName=#{pointName}
+ 			</if>	
+ 		</set>
+ 		<where>
+ 			<if test="id!=null">
+ 				id=#{id}
+ 			</if>
+ 		</where>
+ 	</update>
+	
+	
+	
+	<select id="getAllGrade" resultType="String">
+		select DISTINCT(grade) from test
+	</select> -->
+	
+</mapper>

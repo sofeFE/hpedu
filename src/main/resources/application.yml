@@ -1,0 +1,205 @@
+spring:
+  profiles:
+    active: dev
+  # 页面默认前缀目录
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      # 响应页面默认后缀
+      suffix: .jsp
+  servlet:
+    multipart:
+      enabled: true
+      resolve-lazily: true
+      max-file-size: 100MB
+renren:
+  cluster: false  #集群配置  true集群环境   false单机环境，还需打开pom.xml里的spring-session-data-redis注释
+  globalSessionTimeout: 3600   #单机环境，session过期时间为60分钟
+  redis:
+    open: false  #是否开启redis缓存  true开启   false关闭
+
+uploadAbsolutePath: D:/mySource
+logging:
+  config: classpath:logback-spring.xml
+  path: D:/logs
+#此处和以上冲突与否 ,未知
+logback:
+  logdir: D:/logs
+  appname: springbootEdu
+
+#mybatis 配置
+#mybatis:
+#  mapper-locations: classpath:resources/mappers/*.xml
+#  config-location: classpath:mybatisConfig.xml
+#  type-aliases-package: com.hpedu.web.core.*.pojo
+
+# mybatisPlus 
+mybatis-plus:
+  mapper-locations: classpath:/mappers/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.hpedu.web.core.*.pojo
+  global-config:
+    db-config:
+      #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+      id-type: AUTO
+      #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+      field-strategy: not_empty
+      #表下划线
+#      table-underline: false 
+      #数据库 大写模式 
+#      capital-mode: false
+      #逻辑删除配置
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      db-type: mysql
+#刷新mapper 调试神器
+#    refresh: true
+      #自定义填充策略接口实现
+    #meta-object-handler: com.baomidou.springboot.xxx
+    #自定义SQL注入器
+  #sql-injector: com.baomidou.mybatisplus.extension.injector.LogicSqlInjector
+#  原生配置?
+  configuration:
+#    驼峰
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    
+    
+    
+#分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+##  returnPageInfo: check
+server:
+  port: 8081
+
+---
+
+
+
+
+# 驱动配置信息
+spring:
+  profiles: dev
+  datasource:
+    druid:
+      #监控统计拦截的filters
+      filters: stat
+      url: jdbc:mysql://localhost:3306/hpedu?useUnicode=true&allowMultiQueries=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      #间隔多久进行一次检测，检测需要关闭的空闲连接
+      time-between-eviction-runs-millis: 60000
+      #一个连接在池中最小生存的时间
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+
+
+
+
+---
+
+
+
+# 驱动配置信息
+spring:
+  profiles: prod
+  datasource:
+    druid:
+      #监控统计拦截的filters
+      filters: stat
+      url: jdbc:mysql://localhost:3306/hpedu?useUnicode=true&allowMultiQueries=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      #间隔多久进行一次检测，检测需要关闭的空闲连接
+      time-between-eviction-runs-millis: 60000
+      #一个连接在池中最小生存的时间
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+
+
+
+
+  #-----------------------------------------------------------------------------------------------------
+
+#spring.datasource.timeBetweenEvictionRunsMillis=60000
+#spring.datasource.minEvictableIdleTimeMillis=300000
+#spring.datasource.validationQuery=SELECT 1 FROM DUAL
+#spring.datasource.testWhileIdle=true
+#spring.datasource.testOnBorrow=false
+#spring.datasource.testOnReturn=false
+#spring.datasource.poolPreparedStatements=true
+#spring.datasource.maxPoolPreparedStatementPerConnectionSize=20
+
+#redis 连接属性配置?
+#spring.redis.database=0
+#spring.redis.host=127.0.0.1
+#spring.redis.port=6379
+#spring.redis.password=
+#spring.redis.timeout=2000
+#spring.redis.pool.max-active=8
+#spring.redis.pool.max-wait=-1
+#spring.redis.pool.max-idle=5
+#spring.redis.pool.min-idle=0
+#Matser的ip地址
+
+#redis.dataBase= 0
+#redis.hostName=127.0.0.1
+##端口号
+#redis.port=6379
+##如果有密码
+#redis.password=
+##客户端超时时间单位是毫秒 默认是2000
+#redis.timeout=10000
+#
+##pool configuration
+##最大空闲数
+#redis.pool_maxIdle=300
+##连接池的最大数据库连接数。设为0表示无限制,如果是jedis 2.4以后用redis.maxTotal
+##redis.maxActive=600
+##控制一个pool可分配多少个jedis实例,用来替换上面的redis.maxActive,如果是jedis 2.4以后用该属性
+#redis.pool_maxTotal=1000
+##最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制。
+#redis.pool_maxWaitMillis=1000
+##连接的最小空闲时间 默认1800000毫秒(30分钟)
+#redis.pool_minEvictableIdleTimeMillis=300000
+##每次释放连接的最大数目,默认3
+#redis.pool_numTestsPerEvictionRun=1024
+##逐出扫描的时间间隔(毫秒) 如果为负数,则不运行逐出线程, 默认-1
+#redis.pool_timeBetweenEvictionRunsMillis=30000
+##是否在从池中取出连接前进行检验,如果检验失败,则从池中去除连接并尝试取出另一个
+#redis.pool_testOnBorrow=true
+##在空闲时检查有效性, 默认false
+#redis.pool_testWhileIdle=true
+
+#redis集群配置
+#spring.redis.cluster.nodes=192.168.177.128:7001,192.168.177.128:7002,192.168.177.128:7003,192.168.177.128:7004,192.168.177.128:7005,192.168.177.128:7006
+#spring.redis.cluster.max-redirects=3
+
+#哨兵模式
+#redis.sentinel.host1=192.168.177.128
+#redis.sentinel.port1=26379
+
+#redis.sentinel.host2=172.20.1.231
+#redis.sentinel.port2=26379

@@ -1,0 +1,35 @@
+@charset "utf-8";
+.title{
+	background:#fe7628;
+	color:#fff;
+	font-size:.8rem;
+}
+.icon{
+	color:#fff;
+}
+.content footer{
+	position:fixed;
+	bottom:0;
+	left:0;
+	height:2rem;
+	display:flex;
+	justify-content: center;
+	align-content: center;
+	width:100%;
+}
+.content footer button{
+	width:40%;
+	height:1.6rem;
+	border:0;
+	font-size:.8rem;
+	line-height: 1.6rem;
+	text-align: center;
+	border-radius: .5rem;
+	background:#fe7628;
+}
+.cur_pointer{
+	cursor: pointer;
+}
+a{
+	cursor: pointer;
+}

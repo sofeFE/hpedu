@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpedu.web.core.teacher.dao.TeacherMapper">
+    <resultMap id="BaseResultMap" type="com.hpedu.web.core.teacher.pojo.Teacher">
+        <id column="tid" property="tid" jdbcType="VARCHAR"/>
+        <result column="tname" property="tname" jdbcType="VARCHAR"/>
+        <result column="tintro" property="tintro" jdbcType="VARCHAR"/>
+        <result column="timgUrl" property="timgUrl" jdbcType="VARCHAR"/>
+        <result column="sort" property="sort" jdbcType="VARCHAR"/>
+        <result column="subject" property="subject" jdbcType="VARCHAR"/>
+        <result column="backImg" property="backImg" jdbcType="VARCHAR"/>
+        <result column="nums" property="nums" jdbcType="INTEGER"/>
+        <result column="isShow" property="isShow" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--获取所有激活中的视频-->
+    <!--<select id="findActiveTeacher" parameterType="java.util.Map" resultMap="BaseResultMap" >
+        select  * from teacher where isShow = 1 limit #{limit}
+    </select>-->
+
+    <!-- 按是否显示获取老师列表-->
+    <select id="getTeacherByIsShow" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select * from teacher where isShow = #{isShow} limit #{limit}
+    </select>
+
+    <!-- 按名字批量删除-->
+    <delete id="batchDeleteByName" parameterType="java.lang.String">
+        delete from teacher
+        <where>
+            tname like #{arg1}
+        </where>
+
+    </delete>
+
+    <!--批量插入慎用: 每次插入量 20-50条 最为 合适.
+    超过此数量,时间消耗呈指数增长.-->
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert into teacher (tid,sort,backImg,timgUrl,isShow,tname) values
+        <foreach collection="list" separator="," index="i" item="t">
+            ( #{t.tid},#{t.sort},#{t.backImg},#{t.timgUrl},#{t.isShow},#{t.tname} )
+        </foreach>
+
+    </insert>
+
+    <!--第一种更新方法: 循环更新-->
+    <update id="updateTeacherSort_1" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update teacher
+            <set>
+                sort= #{item.sort}
+            </set>
+            where tid = #{item.tid}
+        </foreach>
+
+    </update>
+
+    <update id="updateTeacherSort" parameterType="java.util.List">
+        update teacher
+        <trim prefix="set" suffixOverrides=",">
+
+            <trim prefix="sort= case" suffix="end,">
+                <foreach collection="list" item="i" index="index">
+                    WHEN tid=#{i.tid} THEN #{i.sort}
+                </foreach>
+            </trim>
+
+        </trim>
+        <where>
+            tid in
+            <foreach collection="list" separator="," item="i" index="index" open="(" close=")">
+                #{i.tid}
+            </foreach>
+        </where>
+    </update>
+    <!--/*第二种更新方法: 使用case when end */-->
+
+    <!--sql查询中,字段尽量不存在null
+     查询中 不用 or.
+     -->
+    <select id="findTeacherByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select * from teacher t
+        <where>
+            <if test="isShow!=null">
+                t.isShow =1
+            </if>
+        </where>
+          order by sort
+       
+    </select>
+
+    <!--所有激活中的教师 包括 未阅卷数量 属性-->
+    <select id="findAllTeacher" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT
+        t.*, count(us.teacherName) AS nums
+        FROM
+        teacher t
+        LEFT JOIN userscore us on us.teacherName = t.tname
+        <where>
+            <if test="isShow!=null">
+                t.isShow=1
+            </if>
+            and (us.isDone = 0 or us.isDone is NULL)
+        </where>
+        group by t.tid
+        order by sort
+    </select><!--us.isDone 没有要批改的试卷 isDone 为null  -->
+
+    <select id="searchTeacherListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) from teacher t
+        <if test="isShow!=null">where  t.isShow=1</if>
+    </select>
+
+    <select id="findTeacherById" parameterType="java.lang.String" resultMap="BaseResultMap">
+	select * from teacher where tid=#{arg0}
+	</select>
+    <select id="findTeacherByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+	select * from teacher where tname=#{arg0} limit 1
+	</select>
+    <update id="updateTeacher" parameterType="com.hpedu.web.core.teacher.pojo.Teacher">
+        update teacher t set t.tname = #{tname},t.tintro=#{tintro},subject=#{subject}
+        <if test="timgUrl!=null">
+            ,t.timgUrl = #{timgUrl}
+        </if>
+        <if test="backImg!=null">
+            ,t.backImg = #{backImg}
+        </if>
+        where t.tid = #{tid}
+    </update>
+    <delete id="deleteTeacherById" parameterType="java.lang.String">
+	delete from teacher where tid=#{arg0}
+	</delete>
+    <insert id="addTeacher" parameterType="com.hpedu.web.core.teacher.pojo.Teacher">
+        insert into teacher(tid,tname,tintro
+        <if test="timgUrl!=null ">,timgUrl</if>
+        <if test="backImg !=null ">,backImg</if>,sort,subject,isShow)values(#{tid},#{tname},#{tintro}
+        <if test="timgUrl!=null ">,#{timgUrl}</if>
+        <if test="backImg!=null ">,#{backImg}</if>,#{sort},#{subject},1)
+    </insert>
+
+    <!-- <update id="updateTeacherSort" parameterType="hashmap">
+       update teacher set sort=#{arg1} where tid=#{arg0}
+     </update>-->
+</mapper>

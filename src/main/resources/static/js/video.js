@@ -1,0 +1,26 @@
+$(function(){
+	$(".comment").click(function(){
+		$(".video-title").find("li").css("color","#000000");
+		$(this).css("color","red");
+		$(".video-chapter").hide();
+		$(".video-chapter_jy").hide();
+		$(".video-comment").show();
+	});
+	$(".chapter").click(function(){
+		$(".video-title").find("li").css("color","#000000");
+		$(this).css("color","red");
+		$(".video-comment").hide();
+		$(".video-chapter_jy").hide();
+		$(".video-chapter").show();
+	});
+	$(".chapter_jy").click(function(){
+		$(".video-title").find("li").css("color","#000000");
+		$(this).css("color","red");
+		$(".video-comment").hide();
+		$(".video-chapter").hide();
+		$(".video-chapter_jy").show();
+	});
+	$(".close-msk").click(function(){
+		$(".msk").hide(2);
+	});
+})

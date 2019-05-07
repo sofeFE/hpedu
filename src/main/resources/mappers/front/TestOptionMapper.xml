@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpedu.web.core.publicTest.dao.TestOptionMapper">
+	<resultMap id="BaseResultMap" type="com.hpedu.web.core.publicTest.pojo.TestOption">
+		<id column="id" property="id" jdbcType="VARCHAR" />		
+		<result column="testId" property="testId" jdbcType="VARCHAR" />
+		<result column="option" property="option" jdbcType="VARCHAR" />
+		<result column="optionContent" property="optionContent" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	
+	<insert id ="insertTestOption" parameterType="java.util.List">
+            insert into testOption  values
+            <foreach collection ="list" item="every" index= "index" separator =",">
+             (#{every.id},#{every.testId},#{every.option},#{every.optionContent})
+             </foreach>
+    </insert >
+    
+	<delete id="deleteOptionByTestId" parameterType="String" >
+		delete from testOption where testId=#{id}
+	</delete>
+	
+	<!-- <select id="selectTestPoint" parameterType="java.util.Map"  resultMap="BaseResultMap">
+	  select * from testPoint 
+	  <where >
+	  	
+	  	 <if test="grade != null" >
+	  	 	and grade=#{grade}
+	  	 </if>
+	  	 <if test="pointName != null" >
+	  	 	and pointName=#{pointName}
+	  	 </if>
+	  	 
+	  </where>
+	</select>
+	
+	
+	
+	
+	<select id="TestPointCount" parameterType="java.util.Map"  resultType="java.lang.Integer">
+	  select count(1) from testPoint 
+	  <where>
+	  	 <if test="grade != null" >
+	  	 	and grade=#{grade}
+	  	 </if>
+	  	 <if test="pointName != null" >
+	  	 	and pointName=#{pointName}
+	  	 </if>
+	  </where>
+	</select>
+	
+	<select id="getOneTestPoint" parameterType="String"  resultMap="BaseResultMap">
+	  select * from testPoint  where id = #{id}
+	</select>
+	
+ 	<update id="updateTestPoint" parameterType="com.hpedu.web.core.publicTest.pojo.TestPoint" >
+ 		update testPoint set grade=#{grade} ,pointName=#{pointName} where id=#{id}
+ 		
+ 		<set prefix="">
+ 			<if test="grade!=null">
+ 				grade=#{grade}
+ 			</if>	
+ 			<if test="pointName!=null">
+ 				pointName=#{pointName}
+ 			</if>	
+ 		</set>
+ 		<where>
+ 			<if test="id!=null">
+ 				id=#{id}
+ 			</if>
+ 		</where>
+ 	</update>
+	
+	
+	<select id="getAllGrade" resultType="String">
+		select DISTINCT(grade) from testPoint
+	</select>
+	 -->
+</mapper>

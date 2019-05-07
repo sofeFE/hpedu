@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hpedu.web.core.video.dao.GeneralVideoMapper">
+    <resultMap id="BaseResultMap" type="com.hpedu.web.core.video.pojo.GeneralVideo">
+        <id column="gid" property="gid" jdbcType="VARCHAR"/>
+        <result column="gname" property="gname" jdbcType="VARCHAR"/>
+        <result column="gisVip" property="gisVip" jdbcType="VARCHAR"/>
+        <result column="gmoney" property="gmoney" jdbcType="VARCHAR"/>
+        <result column="gplayNo" property="gplayNo" jdbcType="INTEGER"/>
+        <result column="gsbuject" property="gsbuject" jdbcType="VARCHAR"/>
+        <result column="gclass" property="gclass" jdbcType="VARCHAR"/>
+        <result column="gclassify" property="gclassify" jdbcType="VARCHAR"/>
+        <result column="gintro" property="gintro" jdbcType="VARCHAR"/>
+        <result column="gvideoUrl" property="gvideoUrl" jdbcType="VARCHAR"/>
+        <result column="gcreatTime" property="gcreatTime" jdbcType="TIMESTAMP"/>
+        <result column="gvimg" property="gvimg" jdbcType="VARCHAR"/>
+        <result column="gvpdf" property="gvpdf" jdbcType="VARCHAR"/>
+        <result column="glen" property="glen" jdbcType="INTEGER"/>
+        <result column="isMore" property="isMore" jdbcType="INTEGER"/>
+        <result column="gclassify2" property="gclassify2" jdbcType="VARCHAR"/>
+
+        <result column="killMoney" property="killMoney" jdbcType="VARCHAR"/>
+        <result column="killName" property="killName" jdbcType="VARCHAR"/>
+        <result column="killStartTime" property="killStartTime" jdbcType="VARCHAR"/>
+        <result column="killEndTime" property="killEndTime" jdbcType="VARCHAR"/>
+        <result column="isKill" property="isKill" jdbcType="INTEGER"/>
+
+
+        <result column="teacherName" property="teacherName" jdbcType="VARCHAR"/>
+        <result column="weekVal" property="weekVal" jdbcType="VARCHAR"/>
+        <!-- <collection property="pdflist" column="vid"  ofType="com.hpedu.web.core.video.pojo.VideoPdf" >
+            <id column="pdfid" property="pdfid" jdbcType="VARCHAR" />
+            <result column="vid" property="vid" jdbcType="VARCHAR" />
+            <result column="pdfUrl" property="pdfUrl" jdbcType="VARCHAR" />
+            <result column="sort" property="sort" jdbcType="VARCHAR" />
+            <result column="vctype" property="vctype" jdbcType="INTEGER" />
+        </collection> -->
+    </resultMap>
+    <resultMap id="ChildVideoResultMap" type="com.hpedu.web.core.video.pojo.VideoChild">
+        <id column="vcid" property="vcid" jdbcType="VARCHAR"/>
+        <result column="pid" property="pid" jdbcType="VARCHAR"/>
+        <result column="vcname" property="vcname" jdbcType="VARCHAR"/>
+        <result column="vcideoUrl" property="vcideoUrl" jdbcType="VARCHAR"/>
+        <result column="vclassify" property="vclassify" jdbcType="VARCHAR"/>
+        <result column="vctype" property="vctype" jdbcType="INTEGER"/>
+        <result column="sort" property="sort" jdbcType="VARCHAR"/>
+        <result column="editDate" property="editDate" jdbcType="DATE"/>
+        <result column="cImgUrl" property="cImgUrl" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="PDFVideoResultMap" type="com.hpedu.web.core.video.pojo.VideoPdf">
+        <id column="pdfid" property="pdfid" jdbcType="VARCHAR"/>
+        <result column="vid" property="vid" jdbcType="VARCHAR"/>
+        <result column="pdfUrl" property="pdfUrl" jdbcType="VARCHAR"/>
+        <result column="sort" property="sort" jdbcType="VARCHAR"/>
+        <result column="vctype" property="vctype" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="getLastNewEditVideoChild" parameterType="java.util.Map" resultMap="ChildVideoResultMap">
+        select * from video_child where pid=#{gid} and editDate is not null <if test="lastVcid!=null">and
+        vcid!=#{lastVcid}
+    </if> order by sort desc limit 1
+    </select>
+    <update id="updateVideoEditDate" parameterType="String">
+        UPDATE video_child
+        SET editDate = now()
+        WHERE
+        vcid IN (
+                SELECT
+                 vc.vcid
+                FROM
+                  video_child vc
+                LEFT JOIN generalvideo g ON vc.pid = g.gid
+                WHERE
+                  g.isMore = 1
+                AND g.weekVal = #{arg1}
+              )
+	</update>
+
+    <update id="updateIsKill" parameterType="String">
+	  update generalVideo set isKill=#{arg1} where gid=#{arg0}
+	</update>
+    <update id="updatePlayCount" parameterType="String">
+	  update generalVideo set gplayNo=gplayNo+1 where gid=#{arg0}
+	</update>
+    <delete id="deleteVideoChildById" parameterType="String">
+	  delete from video_child where pid=#{pid}
+	</delete>
+    <select id="selectChildVideoById" parameterType="String" resultMap="ChildVideoResultMap">
+	  select * from video_child where vcid=#{arg0}
+	</select>
+    <select id="selectAllChildVideo" parameterType="String" resultMap="ChildVideoResultMap">
+        select * from video_child where pid=#{pid}<if test="weekVal!=null">and editDate is not null</if> order by sort
+    </select>
+    <insert id="insertVideoChild" parameterType="java.util.List">
+        insert into video_child (vcid,pid,vcname,vcideoUrl,cImgUrl,vctype,createtime,sort) values
+        <foreach collection="list" item="v" index="index" separator=",">
+            (#{v.vcid}, #{v.pid}, #{v.vcname}, #{v.vcideoUrl},#{v.cImgUrl}, #{v.vctype},now(),#{v.sort})
+        </foreach>
+    </insert>
+    <delete id="deleteVideoChild" parameterType="String">
+        delete from video_child where vcid in
+        <foreach item="vcid" collection="array" open="(" separator="," close=")">
+            #{vcid}
+        </foreach>
+    </delete>
+
+    <insert id="insertVideoPdf" parameterType="java.util.Map">
+        insert into video_pdf (pdfid,vid,pdfUrl,vctype,sort) values
+        <foreach collection="list" item="v" index="index" separator=",">
+            (#{v.pdfid}, #{vid}, #{v.pdfUrl}, #{v.vctype},#{v.sort})
+        </foreach>
+    </insert>
+
+    <delete id="deleteVideoPdf" parameterType="String">
+        delete from video_pdf where pdfid in
+        <foreach item="pdfid" collection="array" open="(" separator="," close=")">
+            #{pdfid}
+        </foreach>
+    </delete>
+    <update id="updateChineseGeneralVideo" parameterType="com.hpedu.web.core.video.pojo.GeneralVideo">
+        update generalVideo set gname=#{gname},gisVip=#{gisVip},gmoney=#{gmoney},gplayNo=#{gplayNo},
+        gsbuject=#{gsbuject},gclass=#{gclass},gclassify=#{gclassify},gintro=#{gintro},
+        gvideoUrl=#{gvideoUrl},gvimg=#{gvimg}
+        <if test="gclassify2!=null">,gclassify2=#{gclassify2}</if>
+        <if test="killMoney!=null">,killMoney=#{killMoney}</if>
+        <if test="killName!=null">,killName=#{killName}</if>
+        <if test="killStartTime!=null">,killStartTime=#{killStartTime}</if>
+        <if test="killEndTime!=null">,killEndTime=#{killEndTime}</if>
+        <if test="isKill!=null">,isKill=#{isKill}</if>
+        <if test="teacherName!=null">,teacherName=#{teacherName}</if>
+        <if test="weekVal!=null">,weekVal=#{weekVal}</if>
+        where gid=#{gid}
+    </update>
+    <insert id="addChineseGeneralVideo" parameterType="com.hpedu.web.core.video.pojo.GeneralVideo">
+        insert into
+        generalVideo(gid,gname,gisVip,gmoney,gplayNo,gsbuject,gclass,gclassify,gintro,gvideoUrl,gcreatTime,gvimg,isMore
+        <if test="gclassify2!=null">,gclassify2</if>
+        <if test="killMoney!=null">,killMoney</if>
+        <if test="killName!=null">,killName</if>
+        <if test="killStartTime!=null">,killStartTime</if>
+        <if test="killEndTime!=null">,killEndTime</if>
+        <if test="isKill!=null">,isKill</if>
+        <if test="teacherName!=null">,teacherName</if>
+        <if test="weekVal!=null">,weekVal</if>)
+        values(#{gid},#{gname},#{gisVip},#{gmoney},#{gplayNo},#{gsbuject},#{gclass},#{gclassify},#{gintro},#{gvideoUrl},now(),#{gvimg},#{isMore}
+        <if test="gclassify2!=null">,#{gclassify2}</if>
+        <if test="killMoney!=null">,#{killMoney}</if>
+        <if test="killName!=null">,#{killName}</if>
+        <if test="killStartTime!=null">,#{killStartTime}</if>
+        <if test="killEndTime!=null">,#{killEndTime}</if>
+        <if test="isKill!=null">,#{isKill}</if>
+        <if test="teacherName!=null">,#{teacherName}</if>
+        <if test="weekVal!=null">,#{weekVal}</if>
+        )
+    </insert>
+    <!-- 首页查询常规赛 -->
+    <select id="findGeneralVideo" resultMap="BaseResultMap">
+		SELECT g.* FROM
+		generalVideo g  ORDER BY gcreatTime DESC LIMIT 8
+	</select>
+    <!-- 点击播放 -->
+    <select id="findGeneralVideoByVid" parameterType="java.lang.String" resultMap="BaseResultMap">
+		SELECT g.*,char_length(g.gintro) as glen FROM generalVideo g  where g.gid = #{arg0} 
+	</select>
+
+    <!-- 与播放视频相关的视频 -->
+    <select id="findGeneralVideoByVideo" parameterType="java.lang.String"
+            resultMap="BaseResultMap">
+		SELECT g.* FROM generalVideo g  WHERE gsbuject LIKE  CONCAT(CONCAT('%', #{arg0}), '%')  AND
+		gclass LIKE  CONCAT(CONCAT('%', #{arg1}), '%')  AND
+		gclassify LIKE  CONCAT(CONCAT('%', #{arg2}), '%') and gid!=#{arg3} ORDER BY gcreatTime DESC LIMIT 8
+	</select>
+
+    <!--条件查询 分页 常规视频列表 -->
+    <select id="searchGeneralVideoList" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT g.* FROM generalvideo g WHERE 1=1
+        <if test="gsbuject!=null and gsbuject!=''">
+            and g.gsbuject LIKE CONCAT(CONCAT('%', #{gsbuject}), '%')
+        </if>
+        <if test="gclass!=null and gclass!=''">
+            and g.gclass LIKE CONCAT(CONCAT('%', #{gclass}), '%')
+        </if>
+        <if test="gclassify!=null and gclassify!=''">
+            and g.gclassify LIKE CONCAT(CONCAT('%', #{gclassify}), '%')
+        </if>
+        <if test="nameType!=null and nameType!=''">
+            <!--  and  substring_index(substring_index(gname, '册', -1),'-',1)+0>=substring_index(#{nameType},'-',1)+0 and substring_index(substring_index(gname, '册', -1),'-',-1)+0&lt;=substring_index(#{nameType},'-',-1)+0  -->
+            and substring_index(GetNum(gname),'-',1)+0>=substring_index(#{nameType},'-',1)+0 and
+            substring_index(GetNum(gname),'-',-1)+0&lt;=substring_index(#{nameType},'-',-1)+0
+        </if>
+        ORDER BY g.gcreatTime ${sort}
+    </select>
+
+    <select id="searchGeneralVideoListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM generalVideo g WHERE 1=1
+        <if test="gsbuject!=null and gsbuject!=''">
+            and g.gsbuject LIKE CONCAT(CONCAT('%', #{gsbuject}), '%')
+        </if>
+        <if test="gclass!=null and gclass!=''">
+            and g.gclass LIKE CONCAT(CONCAT('%', #{gclass}), '%')
+        </if>
+        <if test="gclassify!=null and gclassify!=''">
+            and g.gclassify LIKE CONCAT(CONCAT('%', #{gclassify}), '%')
+        </if>
+        ORDER BY g.gcreatTime DESC
+    </select>
+    <delete id="deleteGeneralById" parameterType="java.lang.String">
+	delete from generalVideo where gid=#{arg0}
+	</delete>
+    <select id="findVideoListByExam" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT g.* FROM generalVideo g where 1=1
+        <if test="gsubject!=null and gsubject!=''">
+            and g.gsbuject LIKE CONCAT(CONCAT('%', #{gsubject}), '%')
+        </if>
+        <if test="gclass!=null and gclass!=''">
+            and g.gclass LIKE CONCAT(CONCAT('%', #{gclass}), '%')
+        </if>
+        ORDER BY gcreatTime DESC LIMIT #{pagesize}
+    </select>
+    <select id="searchGeneralVideoListByGname" parameterType="String" resultMap="BaseResultMap">
+		SELECT g.* FROM generalVideo g  WHERE gname like CONCAT(CONCAT('%', #{arg0}), '%')  order by gcreatTime desc
+	</select>
+
+    <insert id="insertOneVideoChild" parameterType="com.hpedu.web.core.video.pojo.VideoChild">
+ insert into video_child (vcid,vcideoUrl,vctype,editDate,createtime) values(#{vcid}, #{vcideoUrl}, #{vctype},#{editDate},now())
+</insert>
+    <!-- 批量修改 -->
+    <update id="updateBatchVideoChild" parameterType="java.util.List">
+        update video_child set
+        pid=
+        <foreach collection="list" item="item" index="index" separator=" " open="case vcid" close="end">
+            when #{item.vcid} then #{item.pid}
+        </foreach>
+        ,vcname=
+        <foreach collection="list" item="item" index="index" separator=" " open="case vcid" close="end">
+            when #{item.vcid} then #{item.vcname}
+        </foreach>
+        ,sort=
+        <foreach collection="list" item="item" index="index" separator=" " open="case vcid" close="end">
+            when #{item.vcid} then #{item.sort}
+        </foreach>
+        ,cImgUrl=
+        <foreach collection="list" item="item" index="index" separator=" " open="case vcid" close="end">
+            when #{item.vcid} then #{item.cImgUrl}
+        </foreach>
+        where vcid in
+        <foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+            #{item.vcid}
+        </foreach>
+    </update>
+
+    <!-- 批量修改子视频名称 -->
+    <update id="updateBatchVideoChildName" parameterType="java.util.List">
+        update video_child set
+        vcname=
+        <foreach collection="list" item="item" index="index" separator=" " open="case vcid" close="end">
+            when #{item.vcid} then #{item.vcname}
+        </foreach>
+        where vcid in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.vcid}
+        </foreach>
+    </update>
+
+    <!-- 批量修改子视频顺序 -->
+    <update id="updateBatchVideoChildSort" parameterType="java.util.List">
+        update video_child set
+        sort=
+        <foreach collection="list" item="item" index="index" separator=" " open="case vcid" close="end">
+            when #{item.vcid} then #{item.sort}
+        </foreach>
+        where vcid in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.vcid}
+        </foreach>
+    </update>
+
+</mapper>

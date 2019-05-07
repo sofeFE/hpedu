@@ -1,0 +1,163 @@
+.content-video{
+	background: #000;
+	position: relative;
+}
+#myvideo{
+	width: 100%;
+	height: 600px;
+}
+.content-title{
+	width: 100%;
+	margin: 0 auto;
+	padding: 2%;
+	background: #fff;
+}
+.content-title .content-title-content{
+	width: 80%;
+	margin: 0 auto;
+	position: relative;
+}
+
+
+.video-title ul{
+	overflow: auto;
+	border-bottom: 1px solid #d9dde1;
+}
+.video-title ul li{
+	padding: 2% 5%;
+	float: left;
+	font-size: 16px;
+	cursor: default;
+}
+.video-title ul li:hover{
+	color: red;
+}
+.video-every{
+	overflow: auto;
+	border-bottom: 1px solid #d9dde1;
+	padding: 3% 5%;
+	padding-bottom: 1%;
+}
+.user-name-one{
+	float: left;
+	font-size: 18px;
+	color: #000;
+	margin-right: 5%;
+}
+.user-name-one p{
+	color: #14191e;
+}
+.user-info{
+	float: left;
+	width: 80%;
+}
+.user-info textarea{
+	width: 100%;
+	height: 100px;
+	padding: 1%;
+	resize: none;
+	border-radius: 5px;
+	border: 1px solid rgba(92, 184, 92, 0.64);
+}
+.user-submit{
+	padding-top: 1%;
+	width: 100%;
+	overflow: auto;
+}
+.user-submit span{
+	display: block;
+	float: right;
+	color: #fff;
+	margin-right: 5%;
+	padding: 1% 5%;
+	background: rgb(92,184,92);
+	border-radius: 5px;
+	border: 1px solid rgba(92, 184, 92, 0.64);
+}
+.user-submit strong{
+	font-weight: 300;
+	float: left;
+	color: #93999f;
+	margin-left: 16%;
+}
+.user-submit div{
+	font-weight: 300;
+	text-align: right;
+	padding-right: 6%;
+	float: right;
+	color: #93999f;
+}
+.video-comment{
+	display: none;
+}
+
+
+.classification-content{
+	color: #000000;
+	margin: 3% 0;
+}
+.classification-content:after{
+	content: '\0020';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.classification-content-every{
+	padding: 0 1%;
+	width: 25%;
+	margin-bottom: 3%;
+	float: left;
+}
+.classification-content-every a{
+	display: block;
+	position: relative;
+	color: #000000;
+	box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+}
+.classification-content-every a:hover{
+	box-shadow: 0 5px 20px rgba(0,0,0,0.3) !important;
+}
+.classification-content-every a img{
+	width: 100%;
+	height: 155px;
+}
+.classification-content-text{
+	position: absolute;
+	/*height: 30%;*/
+	bottom: 0;
+	padding: 0 6%;
+	background: rgba(92, 184, 92, 0.81);
+	transition: height .5s;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: normal;
+}
+.classification-content-text h6{
+	cursor: default;
+	font-size: 14px;
+}
+.classification-content-text p{
+	height: 20px;
+	color: #eaeaea;
+	transition: height .5s;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: normal;
+	cursor: default;
+}
+.classification-content-every a:hover>.classification-content-text p{
+	height: 40px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: normal;
+}
+
+.msk{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.5);
+	display: none;
+}
