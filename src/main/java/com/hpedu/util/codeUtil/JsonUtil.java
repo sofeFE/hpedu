@@ -1,19 +1,16 @@
 package com.hpedu.util.codeUtil;
 
-import java.io.IOException;
-import java.util.Map;
-
-import org.slf4j.Logger;
-
-//import org.codehaus.jackson.JsonFactory;
-//import org.codehaus.jackson.JsonGenerator;
-
-
-
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+
+import java.io.IOException;
+import java.util.Map;
+
+//import org.codehaus.jackson.JsonFactory;
+//import org.codehaus.jackson.JsonGenerator;
 /**
  * Json 转换工具
  *

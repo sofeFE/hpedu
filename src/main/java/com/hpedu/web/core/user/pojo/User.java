@@ -5,10 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.hpedu.util.codeUtil.DateUtil;
 
-import java.text.SimpleDateFormat;
+import java.io.Serializable;
 import java.util.Date;
  @TableName("user")
-public class User /*implements UserDetails*/{
+public class User  implements Serializable/*implements UserDetails*/{
 
 	/**
 	 * 
@@ -44,12 +44,18 @@ public class User /*implements UserDetails*/{
 	 private String yqCodeUrl;//自己的邀请码图片（用于分享）
 	 private String usedCode;//当前用户注册使用的邀请码
 
-	 @Deprecated
-	 @TableField(exist = false)
-	 private String rightContent;//权限内容
+	 private String rightContent;//vip权限内容
 //	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-	public String getSalt() {
+	 public String getRightContent() {
+		 return rightContent;
+	 }
+
+	 public void setRightContent(String rightContent) {
+		 this.rightContent = rightContent;
+	 }
+
+	 public String getSalt() {
 		return salt;
 	}
 
@@ -167,44 +173,5 @@ public class User /*implements UserDetails*/{
 	}
 	
 	
-	/*@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	public User(String userName2, String passWord2, List<GrantedAuthority> list) {
-		// TODO Auto-generated constructor stub
-	}
-	*/
 	
 }

@@ -1,18 +1,20 @@
 package com.hpedu.web.core.user.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hpedu.util.CloudSMSUtil;
 import com.hpedu.util.ResultBean;
-import com.hpedu.util.codeUtil.*;
+import com.hpedu.util.codeUtil.BaseUtil;
+import com.hpedu.util.codeUtil.MD5;
+import com.hpedu.util.codeUtil.PrintHelper;
+import com.hpedu.util.codeUtil.StringUtil;
+import com.hpedu.util.mybatis.MyBatisBase;
 import com.hpedu.util.mybatis.Page;
 import com.hpedu.web.core.shiro.ShiroUtils;
 import com.hpedu.web.core.user.pojo.User;
-import com.hpedu.web.core.user.pojo.UserLearn;
 import com.hpedu.web.core.user.pojo.UserLevel;
 import com.hpedu.web.core.user.service.UserService;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +29,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.util.*;
 
 @Controller
@@ -35,19 +36,20 @@ import java.util.*;
 public class UserController {
     @Resource
     UserService userService;
+    @Autowired
+    MyBatisBase myBatisBase;
     @Value("${uploadAbsolutePath}")
     private String uploadAbsolutePath;
     private Logger log = BaseUtil.getLogger(UserController.class);
+    
 
     /*public static void main(String[] args) {
 //        String salt = RandomStringUtils.randomAlphanumeric(20);
         String salt = "Lr7yty2yq1L8C2oprtvb";
 //        System.out.println("salt:   " + salt);
-
         System.out.println("password:   " + ShiroUtils.sha256("1", salt));
 
     }*/
-
 
     /**
      * 打开在线客服
@@ -60,40 +62,21 @@ public class UserController {
     /**
      * 修改学生学习时间
      */
-    @RequestMapping("/user/changeStuLeanTime")
-    public void changeStuLeanTime(HttpServletRequest req, HttpSession session, String vid, String vclassify, String time) {
+    @RequestMapping("user/updateLearningTime")
+    @ResponseBody
+    public ResultBean changeStuLeanTime(HttpSession session,
+                                        String vid,
+                                        String vclassify,
+                                        String time) {
         User u = (User) session.getAttribute("user");
+        ResultBean result = null;
         if (u != null) {
-            //System.out.println(vid+"=="+vclassify+"=="+time+"=="+u.getUid());
-            time = time == null ? "0" : time;
-            Long realTime = Long.parseLong(time.substring(0, time.indexOf(".")));
-            try {
-                userService.updateLearnTotalTime(u.getUid(), realTime);
-                u.setLearnTime(u.getLearnTime() + realTime);
-                session.setAttribute("user", u);
-            } catch (Exception e) {
-                log.error("修改学生【uid:" + u.getUid() + "】总学习时间失败：", e);
+            if (time == null) {
+                return ResultBean.failed("time为空");
             }
-            //修改当天的学习记录
-            try {
-                String ulid = userService.selectIsExitUserLearn(u.getUid(), vid, vclassify);
-                UserLearn ul = new UserLearn();
-                if (ulid == null) {//新增学习记录
-                    ul.setLearnTime(realTime);
-                    ul.setUlid(UUIDUtil.getUUID());
-                    ul.setUserid(u.getUid());
-                    ul.setVctype(Integer.parseInt(vclassify));
-                    ul.setVid(vid);
-                    userService.insertLearnTimeByDay(ul);
-                } else {//修改学习记录
-                    ul.setLearnTime(realTime);
-                    ul.setUlid(ulid);
-                    userService.updateLearnTimeByDay(ul);
-                }
-            } catch (Exception e) {
-                log.error("修改学生【uid:" + u.getUid() + "】当天学习时间失败：", e);
-            }
+            result = userService.updateLearn(u, vid, vclassify, time);
         }
+        return result;
     }
 
 
@@ -185,8 +168,8 @@ public class UserController {
      * @param model
      * @
      */
-    @RequestMapping("/learnVideoPage.html")
-    public void learnVideoPage(HttpServletRequest req, HttpSession session, Model model) {
+    @RequestMapping("/learnHistory.html")
+    public void learnHistory(HttpServletRequest req, HttpSession session, Model model) {
         int pageNo = 0;
         int pageSize = 8;
         if (req.getParameter("pageNo") != null
@@ -212,7 +195,6 @@ public class UserController {
             log.info("分页查看用户学习中课程出错:", e);
             list = new ArrayList<Map>();
         }
-        //System.out.println("size:=========================="+list.size());
         Page pages = new Page();
         pages.setResult(list);
         pages.setPageNo(pageNo);
@@ -230,8 +212,8 @@ public class UserController {
      * @param model
      * @
      */
-    @RequestMapping("/historyScoresPage.html")
-    public void historyScoresPage(HttpServletRequest req, HttpSession session, Model model) {
+    @RequestMapping("/historyScores.html")
+    public void historyScores(HttpServletRequest req, HttpSession session, Model model) {
 
         int pageNo = 0;
         int pageSize = 15;
@@ -250,6 +232,7 @@ public class UserController {
         }
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("userId", userId);
+        
         try {
             model.addAttribute("pages", userService.searchUnitTestList(map, pageNo, pageSize));
         } catch (Exception e) {
@@ -277,39 +260,21 @@ public class UserController {
      */
     @RequestMapping(value = "/user/updateUserNews", method = RequestMethod.POST)
     @ResponseBody
-    public ModelAndView updateUserNews(HttpServletRequest req, HttpSession session,
-                                       @RequestParam(value = "timgUrl1", required = false) MultipartFile file,
-                                       User user) throws Exception {
+    public ResultBean updateUserNews(HttpServletRequest req,
+                                     HttpSession session,
+                                     @RequestParam(value = "timgUrl1", required = false) MultipartFile file,
+                                     User user) throws Exception {
         User users = (User) session.getAttribute("user");
-        if (users == null) {
-            String uid = user.getUid();
-            if (uid != null && uid.length() > 0) {
-                users = userService.findUserByUid(uid);
-            }
-        }
 
         if (users != null) {
-            if (file.getSize() > 0) {
-                String realPath = uploadAbsolutePath;
-                String path = req.getContextPath().substring(1);
-//				realPath = realPath.replace(path, "userHeadImg");
-                realPath = uploadAbsolutePath + "/" + "userHeadImg";
-                String fileName = UUIDUtil.getUUID();
-                String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
-                file.transferTo(new File(realPath, fileName + "." + suffix));
-                users.setHeadImgUrl("/userHeadImg/" + fileName + "." + suffix);
-            }
+
+            myBatisBase.upload("/userHeadImg/", file, users, User.class, "setHeadImgUrl", String.class);
             users.setEmail(user.getEmail());
             users.setUserName(user.getUserName());
-            try {
-                userService.updateUserNews(users);
-                session.setAttribute("user", users);
-                return new ModelAndView("redirect:/classindex.html");
-            } catch (Exception e) {
-                log.error("修改前端用户信息【id:" + users.getUid() + "】失败：", e);
-            }
+            userService.updateUserNews(users);
+            return ResultBean.ok();
         }
-        return new ModelAndView("redirect:/login.html");
+        return ResultBean.failed("登录时间过期");
     }
 
     /**
@@ -446,7 +411,6 @@ public class UserController {
     /**
      * 用户登录
      *
-     * @param req
      * @param session
      * @param user
      * @return
@@ -454,8 +418,8 @@ public class UserController {
      */
     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     @ResponseBody
-    public ResultBean login(HttpServletRequest req, HttpSession session, User user) {
-        User DBuser = userService.getOne(new QueryWrapper<User>().eq("phoneNo", user.getPhoneNo()), true);
+    public ResultBean login(HttpSession session, User user) {
+        User DBuser = userService.findUserByPhone(user.getPhoneNo());
         if (DBuser == null) {
             return ResultBean.failed("账号不存在");
         }

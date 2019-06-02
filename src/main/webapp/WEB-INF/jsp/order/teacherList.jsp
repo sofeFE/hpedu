@@ -52,20 +52,7 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 </head>
 <body>
 	<div class="header">
-<!-- logo图 和搜素-->
-		<%@include file="../videoSearch.jsp"%>	
-			<!--菜单-->
-			<div class="sunmenu">
-				<ul>
-					<li><a  href="classindex.html">首页</a></li>
-					<li><a  class="routine-menu">常规课</a></li>
-					<li><a  class="competition-menu">竞赛课</a></li>
-					<li><a class="quiz-menu">小测验</a></li>
-				</ul>
-				               <%@include file="../menuPublic.jsp"%>
-			</div>
-	<!-- 登录 -->
-         <%@include file="../ckUserInfo.jsp"%>
+		<%@include file="/WEB-INF/jsp/header.jsp" %>
 </div>
 	<!--内容-->
 	<div class="content"  style="width:100%;" >
@@ -108,38 +95,26 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 	</div>
 	</div>
 	<div class="foot">
-		<div class="foot-content">
-			<div class="foot-content-menu">
-				<ul>
-					<li><a href="" style="cursor: pointer">网站首页</a></li>
-					<li><a href="" style="cursor: pointer">企业合作</a></li>
-					<li><a href="" style="cursor: pointer">人才招聘</a></li>
-					<li><a href="" style="cursor: pointer">联系我们</a></li>
-					<li><a href="" style="cursor: pointer">常见问题</a></li>
-				</ul>
-			</div>
-			<p>Copyright © 2016 imooc.com All Rights Reserved | 京ICP备
-				13046642号-2</p>
-		</div>
+		<%@include file="/WEB-INF/jsp/footer.jsp" %>
 	</div>
 
 </body>
-	<script type="text/javascript">
-      function pageSize(num){
-			window.location.href="${pageContext.request.contextPath}/teacher/teacherList.html?pageNo="+num;
-		}
-	 //根据id显示教师信息
-	  function showTeacher(id){
-		  window.location.href="${pageContext.request.contextPath}/teacher/checkTeacher.html?id="+id;
-	  }
-	  setChangeTimeStatus(false);
-	</script>
+	
 	<script  type="text/javascript" src="libs/jquery.js"></script>
 <script type="text/javascript" src="libs/swiper.js"></script>
-<script type="text/javascript" src="js/class.js?v=2"></script>
+
 <script src="js/public.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/menuFun.js" type="text/javascript" charset="utf-8"></script>
-<script src="libs/bootstrap.min.js"></script>
+<script src="libs/bootstrap.min.js"></script><script type="text/javascript">
+    function pageSize(num){
+        window.location.href="${pageContext.request.contextPath}/teacher/teacherList.html?pageNo="+num;
+    }
+    //根据id显示教师信息
+    function showTeacher(id){
+        window.location.href="${pageContext.request.contextPath}/teacher/checkTeacher.html?id="+id;
+    }
+    
+</script>
 	<form action="" id="subFrom" method="post">
 	     <!-- 常规视频菜单 -->
 	     <input type="hidden" name="gsbuject" id="gsbuject">
@@ -159,4 +134,4 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 	     <!-- 分页参数 -->
 	     <input type="hidden" name="pageNo" id="pageNo">
 	</form>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

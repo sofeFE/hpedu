@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -11,7 +12,7 @@ import java.util.Date;
  * 评论 
  * */
 @TableName("evaluation")
-public class Evaluation {
+public class Evaluation implements Serializable {
 	@TableId
 	private String eid;
 	private String uname;

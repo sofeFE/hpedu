@@ -1,11 +1,11 @@
 package com.hpedu.web.core.publicTest.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.alibaba.fastjson.JSON;
+import com.hpedu.util.codeUtil.StringUtil;
+import com.hpedu.util.codeUtil.UUIDUtil;
+import com.hpedu.util.mybatis.Page;
+import com.hpedu.web.core.publicTest.pojo.TestPoint;
+import com.hpedu.web.core.publicTest.service.TestPointService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,12 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSON;
-import com.hpedu.util.codeUtil.StringUtil;
-import com.hpedu.util.codeUtil.UUIDUtil;
-import com.hpedu.util.mybatis.Page;
-import com.hpedu.web.core.publicTest.pojo.TestPoint;
-import com.hpedu.web.core.publicTest.service.TestPointService;
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 测试知识点 控制器

@@ -1,14 +1,11 @@
 package com.hpedu.web.core.index.task;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
-import javax.servlet.ServletContext;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.hpedu.util.redisUtil.RedisUtil;
 import com.hpedu.web.core.index.service.VisitorService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.ServletContext;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 定时任务类

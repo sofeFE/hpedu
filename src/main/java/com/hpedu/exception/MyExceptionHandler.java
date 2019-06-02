@@ -4,29 +4,15 @@ import com.hpedu.util.ResultBean;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
-import org.springframework.boot.env.YamlPropertySourceLoader;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
-import org.springframework.web.servlet.support.RequestContextUtils;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @ControllerAdvice是controller的一个辅助类，最常用的就是作为全局异常处理的切面类
@@ -42,14 +28,13 @@ public class MyExceptionHandler extends ResponseEntityExceptionHandler {
 
     private static Logger log = LoggerFactory.getLogger(MyExceptionHandler.class);
     
-    
+    RequestMappingHandlerMapping handlerMapping ;
     
     @ExceptionHandler(value = {RuntimeException.class} )
     @ResponseBody
     protected ResultBean handleForJson(RuntimeException ex, WebRequest request, Model model) throws Exception{
         log.error("错误信息:{},stacktrace[0]:{}" , ex.getMessage(),ex.getStackTrace()[0]) ;
         return ResultBean.failed( ex.getMessage());
-
     }
     @ExceptionHandler(value = {Exception.class} )
     @RequestMapping(produces = {"text/html"})//;charset=utf-8

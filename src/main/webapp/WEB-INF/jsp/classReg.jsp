@@ -72,4 +72,4 @@ span,input[type=submit],input[type=button],button{ cursor: pointer;}
 		$("#rregbutton").removeAttr("disabled");
 	});
 	</script>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

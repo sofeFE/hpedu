@@ -53,4 +53,4 @@
     </form>
   </div>
 </div>
-</body></html>
+</body><script type="text/javascript" src="js/class.js?v=2"></script></html>

@@ -3,9 +3,11 @@ package com.hpedu.web.core.user.pojo;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.io.Serializable;
+
 //视频章节测试题
 @TableName("unittest")
-public class UnitTest {
+public class UnitTest implements Serializable {
 	@TableId
 private String	utid ;
 private String	  vid ;//关联视频id

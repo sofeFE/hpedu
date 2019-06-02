@@ -3,12 +3,13 @@ package com.hpedu.web.core.teacher.pojo;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.hpedu.util.codeUtil.HanyuPinyinHelper;
 import lombok.Data;
+
+import java.io.Serializable;
 
 @Data
 @TableName("teacher")
-public class Teacher {
+public class Teacher implements Serializable {
 	@TableId
 	private String tid;
 	@TableField("tname")

@@ -1,19 +1,11 @@
 package com.hpedu.util.codeUtil;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-
 import com.alibaba.fastjson.JSONObject;
 import com.hpedu.web.core.wxpay.util.HttpClientUtil;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /*微信图片上传（第二种方法）：
 http://ask.csdn.net/questions/176216

@@ -1,6 +1,7 @@
 package com.hpedu.web.core.wxpay.util;
 
 import com.alibaba.fastjson.JSONObject;
+import com.hpedu.config.property.PayConfigUtil;
 import com.hpedu.util.codeUtil.BaseUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.jdom.Document;
@@ -8,6 +9,8 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayInputStream;
@@ -16,8 +19,12 @@ import java.io.InputStream;
 import java.util.*;
 
 //微信扫码支付工具类
-
+@Component
 public class WechatPayUtil {
+    
+    @Autowired
+    PayConfigUtil payConfigUtil ;
+    
     public static Map<String, String> errorMap = null;
     private static Logger log = BaseUtil.getLogger(WechatPayUtil.class);
 
@@ -50,12 +57,12 @@ public class WechatPayUtil {
     }
 
     //根据参数生成签名
-    public static String getSign(Map<String, String> map, Integer type) {
-        String appid = PayConfigUtil.getAppid();
-        String mch_id = PayConfigUtil.getMchid();
-        String nonce_str = PayConfigUtil.getNonce_str();
-        String key = PayConfigUtil.getKey();
-        String time_stamp = PayConfigUtil.getTime_stamp();
+    public  String getSign(Map<String, String> map, Integer type) {
+        String appid = payConfigUtil.getAppID();
+        String mch_id = payConfigUtil.getMchID();
+        String nonce_str = payConfigUtil.getNonce_str();
+        String key = payConfigUtil.getKey();
+        String time_stamp = payConfigUtil.getTime_stamp();
         if (map == null) {
             map = new HashMap<String, String>();
         } else {
@@ -108,22 +115,23 @@ public class WechatPayUtil {
         return str;
     }
 
-    //生成不重复随机字符串包括字母数字
+    //生成不重复随机字符串(包括字母数字)
     public static String getRandomStr(int len) {
         //字符源，可以根据需要删减
         String generateSource = "0123456789abcdefghigklmnopqrstuvwxyz";
-        String rtnStr = "";
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < len; i++) {
             //循环随机获得当次字符，并移走选出的字符
-            String nowStr = String.valueOf(generateSource.charAt((int) Math.floor(Math.random() * generateSource.length())));
-            rtnStr += nowStr;
-            generateSource = generateSource.replaceAll(nowStr, "");
+            int randomNum = (int) Math.floor(Math.random() * generateSource.length( ));
+            String randomChar = String.valueOf( generateSource.charAt(randomNum) );
+            sb.append(  randomChar);
+            generateSource = generateSource.replaceAll(randomChar, "");
         }
-        return rtnStr;
+        return sb.toString();
     }
 
     //生成支付二维码参数codeUrl
-    public static String getErweiCodeUrl(String product_id) {
+    public  String getErweiCodeUrl(String product_id) {
         Map<String, String> map = new HashMap<String, String>();
         map.put("product_id", product_id);
         String codeUrl = getSign(map, 1);
@@ -131,7 +139,7 @@ public class WechatPayUtil {
     }
 
     //统一下单
-    public static Map<String, String> createWeChatOrder(String product_id,
+    public  Map<String, String> createWeChatOrder(String product_id,
                                                         String giveMoney,
                                                         String bodyDesc,
                                                         String controllerUrl) {
@@ -140,7 +148,7 @@ public class WechatPayUtil {
         createParamMap(product_id, giveMoney, bodyDesc, controllerUrl, map);
         try {
             //统一下单地址串
-            String url = "https://api.mch.weixin.qq.com/pay/unifiedorder";
+            String url = payConfigUtil.unifiedorder_api;
             String returninfo = HttpClientUtils.postByHttps(url, switchMap2Xml(map));
 //            String returninfo = HttpClientUtil.postOfHttps(url, getRequestXml(map));
 
@@ -149,11 +157,11 @@ public class WechatPayUtil {
                 return map;
             }
 
-            log.info("统一下单,开始解析返回信息returninfo=====：");
+            log.info("统一下单,开始解析返回信息returninfo：");
             JSONObject ob1 = JSONObject.parseObject(xml2JSON(returninfo)).getJSONObject("xml");//
             String return_code = ob1.getJSONArray("return_code").getString(0);//返回状态码(通信标识)[SUCCESS/FAIL]
             String result_code = "";
-            log.info("统一下单 结果码:result_code====：" + result_code);
+            log.info("统一下单 返回码:result_code ：" + return_code);
 
             if (return_code.equals("SUCCESS")) {
                 result_code = ob1.getJSONArray("result_code").getString(0);//业务结果[SUCCESS/FAIL]
@@ -193,16 +201,20 @@ public class WechatPayUtil {
         return map;
     }
 
-    private static void createParamMap(String product_id, String giveMoney, String bodyDesc, String controllerUrl, Map<String, String> map) {
-        String appid = PayConfigUtil.getAppid();//公众号
-        String mch_id = PayConfigUtil.getMchid();//商户id
+    private  void createParamMap(String product_id,
+                                       String giveMoney,
+                                       String bodyDesc,
+                                       String controllerUrl,
+                                       Map<String, String> map) {
+        String appid = payConfigUtil.getAppID();//公众号
+        String mch_id = payConfigUtil.getMchID();//商户id
         String nonce_str = RandomUtil.generateString(10);//随机码
         String body = "视频-" + bodyDesc;//商品描述(规则：浏览器打开的网站主页title名 -商品概述)
         String out_trade_no = product_id;//商户订单号
         String total_fee = BaseUtil.getWpayMOney(giveMoney);//订单总金额（单位是分）
         //String total_fee="1";//测试使用
-        String spbill_create_ip = PayConfigUtil.getIP();//商户机器ip
-        String notify_url = PayConfigUtil.getWEB_SERVICE_PATH() + controllerUrl;//通知地址(接收微信支付结果通知的回调地址)
+        String spbill_create_ip = payConfigUtil.getIp();//商户机器ip
+        String notify_url = /*payConfigUtil.getWEB_SERVICE_PATH() +*/ controllerUrl;//通知地址(接收微信支付结果通知的回调地址)
         String trade_type = "NATIVE";//交易类型(扫码支付) 
         //*********************************************设置参数
         map.put("appid", appid);//公众号
@@ -221,7 +233,7 @@ public class WechatPayUtil {
     }
 
     //微信返回值签名校验
-    public static boolean checkBackSign(Map<String, String> map) {
+    public  boolean checkBackSign(Map<String, String> map) {
         boolean flag = false;
         String sign_back = map.get("sign");
         map.put("time_stamp", "");

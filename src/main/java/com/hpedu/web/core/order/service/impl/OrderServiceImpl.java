@@ -1,14 +1,14 @@
 package com.hpedu.web.core.order.service.impl;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hpedu.util.codeUtil.BaseUtil;
 import com.hpedu.util.codeUtil.UUIDUtil;
+import com.hpedu.util.mybatis.MyBatisBase;
+import com.hpedu.web.core.order.dao.OrderMapper;
+import com.hpedu.web.core.order.pojo.ArticleImg;
+import com.hpedu.web.core.order.pojo.Banner;
+import com.hpedu.web.core.order.pojo.Order;
+import com.hpedu.web.core.order.service.OrderService;
 import com.hpedu.web.core.video.pojo.ContestVideo;
 import com.hpedu.web.core.video.pojo.GeneralVideo;
 import com.hpedu.web.core.video.service.ContestVideoService;
@@ -17,17 +17,15 @@ import com.hpedu.web.core.wxpay.util.WechatPayUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-
-import com.hpedu.util.mybatis.MyBatisBase;
-import com.hpedu.util.mybatis.Page;
-import com.hpedu.web.core.order.dao.OrderMapper;
-import com.hpedu.web.core.order.pojo.ArticleImg;
-import com.hpedu.web.core.order.pojo.Banner;
-import com.hpedu.web.core.order.pojo.Order;
-import com.hpedu.web.core.order.service.OrderService;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -39,6 +37,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements 
 	private ContestVideoService contestVideoService ;
 	@Autowired
 	private MyBatisBase myBatisBase ;
+	@Autowired
+	WechatPayUtil wechatPayUtil ;
 	
 	@Override
 	public List<Order> findOrderListByPage(int pageno, int pagesize)
@@ -153,9 +153,10 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements 
 		
 		return baseMapper.selectArticleImgByBid(bid);
 	}
+	
 	@Override
+	@Cacheable(value="welcomePage"/*,key="bannerList"*/)
 	public List<Banner> selectAllWebBanner() {
-		
 		return baseMapper.selectAllWebBanner();
 	}
 
@@ -166,7 +167,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements 
 	}
 
 	@Override
-	@Transactional(readOnly =false )
+	@Transactional(readOnly =false,rollbackFor = {Exception.class})
 	public Map<String, Object> getWePayCodeImgMap(String vid, String vclassify, String uid) {
 		
 			String code_url2 = "";
@@ -193,7 +194,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements 
 				order = olist.get(0);
 				if (!orderPrice.equals(order.getOmoney()) || !bodyDes.equals(order.getPayStyle())) {
 					order.setOmoney(orderPrice);
-
 					/*可以后续添加支付方式 ,此处  定死为 0 微信.*/
 //                order.setPayStyle(0);
 					/*2019年4月17日22:10:40 gd 修改 为原订单号*/
@@ -221,17 +221,14 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements 
 				order.setPayStyle(0);
 				insertOrder(order);
 			}
-
-			log.info("开始生成订单号【" + orderNo + "】的支付二维码：=============================");
 			
 			Map<String, String> map = null;
 			if (Float.parseFloat(orderPrice) > 0) {
-				map = WechatPayUtil.createWeChatOrder(orderNo, order.getOmoney(), bodyDes.toString(), "/order/callBackAfterPay");
+				map = wechatPayUtil.createWeChatOrder(orderNo, order.getOmoney(), bodyDes.toString(), "/order/callBackAfterPay");
 				if (map.get("code_url") != null) {
 					code_url2 = map.get("code_url");
 				}
-				log.info("开始生成订单号【" + orderNo + "】的支付二维码结束======================，信息是："
-						+ JSONObject.toJSON(map).toString());
+				
 			}
 
 			resMap.put("url", code_url2);

@@ -1,13 +1,15 @@
 package com.hpedu.web.core.trophy.pojo;
 
-import java.util.List;
-
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.hpedu.util.codeUtil.HanyuPinyinHelper;
+
+import java.io.Serializable;
+import java.util.List;
 @TableName("trophy")
-public class Trophy {
+public class Trophy implements Serializable {
+	
 	@TableId
 	private String pid;
 	private String pname;

@@ -55,8 +55,6 @@
         </nav>
     </header>
 
-    <!-- =============================================== -->
-
     <!-- Left side column. contains the sidebar -->
     <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
@@ -142,4 +140,4 @@
 </body>
 
 
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

@@ -55,21 +55,8 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 </style>
 </head>
 <body>
-	<div class="header">
-<!-- logo图 和搜素-->
-		<%@include file="../videoSearch.jsp"%>	
-			<!--菜单-->
-			<div class="sunmenu">
-				<ul>
-					<li><a  href="classindex.html">首页</a></li>
-					<li><a  class="routine-menu">常规课</a></li>
-					<li><a class="competition-menu">竞赛课</a></li>
-					<li><a style="border-bottom: 3px solid #5CB85C;color: #5CB85C;" class="quiz-menu">小测验</a></li>
-				</ul>
-				               <%@include file="../menuPublic.jsp"%>
-			</div>
-			<!-- 登录 -->
-         <%@include file="../ckUserInfo.jsp"%>
+<div class="header">
+		<%@include file="/WEB-INF/jsp/header.jsp" %>
 </div>	
 	<!--内容-->
 	<div class="content"  style="width:100%;" >
@@ -116,19 +103,7 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 	</div>
 	</div>
 	<div class="foot">
-		<div class="foot-content">
-			<div class="foot-content-menu">
-				<ul>
-					<li><a href="">网站首页</a></li>
-					<li><a href="">企业合作</a></li>
-					<li><a href="">人才招聘</a></li>
-					<li><a href="">联系我们</a></li>
-					<li><a href="">常见问题</a></li>
-				</ul>
-			</div>
-			<p>Copyright © 2016 imooc.com All Rights Reserved | 京ICP备
-				13046642号-2</p>
-		</div>
+		<%@include file="/WEB-INF/jsp/footer.jsp" %>
 	</div>
 </body>
 <script
@@ -141,7 +116,7 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 <script src="js/videoList.js"
 	type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-	    setChangeTimeStatus(false);
+	    
 		function pageSize(num){
 			exam_list("exam/examlist.html","${etsubject}","${etclass}","${etclassify}",num);
 		 //window.location.href="exam/examlist.html?etsubject="+"${etsubject}"+"&"+"etclass="+"${etclass}"+"&"+"etclassify="+"${etclassify}"+"&"+"pageNo="+num;
@@ -170,4 +145,4 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 	     <input type="hidden" name="etid" id="etid">
 	     <input type="hidden" name="name" id="name">
 	</form>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

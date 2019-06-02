@@ -10,20 +10,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta name="renderer" content="webkit">
-<title></title>
+<title>批改管理</title>
 <link rel="stylesheet" href="css/back/pintuer.css">
 <link rel="stylesheet" href="css/back/admin.css">
 <script src="libs/jquery.js"></script>
 <script src="libs/pintuer.js"></script>
 </head>
 <body style="background-color:#f2f9fd;padding:0px;margin:0px;" >
-<div class="header bg-main">
-  <div class="logo margin-big-left fadein-top">
-    <h1><img src="${pageContext.request.contextPath}/jsp/back/images/y.jpg" class="radius-circle rotate-hover" height="50" alt="" />厚朴教育试卷批改中心</h1>
-  </div>
-  <div class="head-l"><a class="button button-little bg-green" href="${pageContext.request.contextPath}/classindex.html" target="_blank"><span class="icon-home"></span> 前台首页</a> &nbsp;&nbsp;<a class="button button-little bg-red" href="back/backlogin.html"><span class="icon-power-off"></span> 退出登录</a> </div>
-</div>
 <div class="panel admin-panel">
+    
   <div class="panel-head"><strong class="icon-reorder">待批改试卷</strong></div>
   <table class="table table-hover text-center">
     <tr>
@@ -37,20 +32,20 @@
    <c:forEach items="${pages.result}" var="t" varStatus="tt">
     <tr>
     <td>${tt.index+1}</td>
-      <td id="gname_${t.usid}">${t.gname}</td>  
+      <td id="gname_${t.usid}">${t.testname}</td>  
        <c:choose>
-	          <c:when test="${t.utype==0 ||t.utype==2}">
+	          <c:when test="${t.utype==0 || t.utype==2}">
 	          <td>常规</td>
 	          </c:when>
-	          <c:when test="${t.utype==1 ||t.utype==3}">
+	          <c:when test="${t.utype==1 || t.utype==3}">
 	          <td>竞赛</td>
 	          </c:when>
 	          <c:when test="${t.utype==4}">
 	          <td>小测验</td>
 	          </c:when>
        </c:choose>
-      <td>${t.gsbuject}</td>
-      <td>${t.createTime}</td>
+      <td>${t.subjectname}</td>
+      <td>${t.ucreateTime}</td>
       <td><div class="button-group">
       <input type="hidden" class="tech" value="${t.usid}">
       <a class="button border-main border-up4" ><span class="icon-edit"></span> 去批改</a>
@@ -69,11 +64,11 @@ $(function(){
 	$(".border-up4").on("click",function(){
 		var id = $(this).siblings(".tech").val();
 		var gname=$("#gname_"+id).html();
-		window.location.href="${pageContext.request.contextPath}/back/goToCorrectUnitTest.html?usid="+id+"&gname="+gname;
+		window.location.href="${pageContext.request.contextPath}/back/doCorrect.html?usid="+id+"&gname="+gname;
 	});
 });
 function pageSize(num){
-	window.location.href="${pageContext.request.contextPath}/back/correctIndex.html?pageNo="+num;
+	window.location.href="${pageContext.request.contextPath}/back/correctManger.html?pageNo="+num;
 }
 </script>
-</body></html>
+</body><script type="text/javascript" src="js/class.js?v=2"></script></html>

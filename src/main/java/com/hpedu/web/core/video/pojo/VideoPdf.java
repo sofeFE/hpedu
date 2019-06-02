@@ -3,9 +3,11 @@ package com.hpedu.web.core.video.pojo;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.io.Serializable;
+
 //视频关联pdf文件
 @TableName("video_pdf")
-public class VideoPdf {
+public class VideoPdf  implements Serializable {
     @TableId
     private String pdfid;
     private String vid;// 关联视频id

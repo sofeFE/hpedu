@@ -133,4 +133,4 @@ function addUnitTest(vid,vname,isMore){
 
 </script>
 </body>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

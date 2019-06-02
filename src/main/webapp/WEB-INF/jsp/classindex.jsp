@@ -18,16 +18,28 @@
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/index.css?v=1">
 	<link rel="stylesheet" href="css/swiper.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-	<!--[if lt IE 10]>
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	
+<!--[if lt IE 10]>
  <script type="text/javascript" > var isIE8=true;</script>
  <!--[else]>
 <script type="text/javascript" > var isIE8=false;</script>
 <![endif]-->
+	
 <!--[if !IE]><!-->
  <script src="libs/jquery.js"></script> 
  <script type="text/javascript" > var isIE8=false;</script>
 <!--<![endif]-->
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->	
+	
+	
 <script type="text/javascript">
 $(function(){
 	if(isIE8){
@@ -42,23 +54,8 @@ $(function(){
 <!--每刷新一次页面,更新一次数据库,并查询最新数据...jdbc连接.牛批 .``  -->
 
 	<div class="header">
-		<!-- logo图 和搜素-->
-		<%@include file="videoSearch.jsp"%>
-		<!-- 菜单 -->
+		<%@include file="/WEB-INF/jsp/header.jsp" %>
 		
-		<div class="sunmenu">
-			<ul>
-				<li><a href="classindex.html" class="bg " >首页</a></li><!--  -->
-				<li><a class="routine-menu">常规课</a></li>
-				<li><a class="competition-menu">竞赛课</a></li>
-				<li><a class="quiz-menu">小测试</a></li>
-			</ul>
-		<!-- 常规子菜单,竞赛子菜单,小测试子菜单 -->
-        <%@include file="menuPublic.jsp"%>
-		</div>
-		
-		<!-- 登录 -->
-        <%@include file="ckUserInfo.jsp"%>
 	</div>
 	<div class='cont'>
 		<!-- banner轮播 -->
@@ -243,18 +240,7 @@ $(function(){
 	</div>	
 		<!-- footer -->
 		<div class="foot">
-			<div class="foot-content">
-				<div class="foot-content-menu">
-					<ul>
-						<li><a href="" style=cursor:pointer>网站首页</a></li>
-						<li><a href="" style=cursor:pointer>企业合作</a></li>
-						<li><a href="" style=cursor:pointer>人才招聘</a></li>
-						<li><a href="" style=cursor:pointer>联系我们</a></li>
-						<li><a href="" style=cursor:pointer>常见问题</a></li>
-					</ul>
-				</div>
-				<p>Copyright © 2016 imooc.com All Rights Reserved | 京ICP备 13046642号-2</p>
-			</div>
+			<%@include file="/WEB-INF/jsp/footer.jsp" %>
 		</div>
 		<!--右侧回到顶部以及二维码-->
 		<div class="right-side">
@@ -290,12 +276,63 @@ $(function(){
 					 'width='+iWidth+',height='+iHeight+',innerHeight='+iHeight+',innerWidth='+iWidth+',top='+iTop+',left='+iLeft+',resizeable=no,location=no,status=no');
 			 
 		 }
-		// setChangeTimeStatus(false);
+		// 
+		$(function(){
+			// 图片banner轮播
+			var mySwiper = new Swiper(".banner.swiper-container", {
+				paginationClickable: true,
+				autoplay: 2000,
+				loop: true,
+				loopedSlides: 2
+			});
+			// 小轮播
+			var MySwiper = new Swiper(".active.swiper-container", {
+				nextButton: '.swiper-button-next',
+				prevButton: '.swiper-button-prev',
+				autoplay: 3600,
+				autoplayDisableOnInteraction: false,
+				onSlideChangeStart: function (swiper) {
+					var _index = swiper.activeIndex;
+					var _this = $(".pic li:eq(" + _index + ")");
+					// num = _index;
+					$('.pic img').css({'border': 'none'});
+					$(_this).children().css({'border': '2px solid #4b8a6b'});
+				}
+			});
+			// 点击切换内容
+			$(".pic li").on("click", function () {
+				var _index = $(this).index()
+				// console.log(_index)
+				MySwiper.slideTo(_index)
+			});
+			// 滑过图片显示介绍
+			$(".student ul>li").mouseover(function () {
+				var ind = $(this).index()
+				// console.log(ind)
+				$(this).css("border", "3px solid green").siblings().css("border", "0")
+				$(".class-pic").eq(ind).show().parents("li").siblings().children(".class-pic").hide()
+				//点击显示内容
+				$(".trainee").on("click", "li", function () {
+					var id = $(this).attr("id");
+					var name = $(this).attr("name");
+					if (!name) {
+						showStu(id);
+					} else {
+						showTeacher(id);
+					}
+
+				})
+			});
+			$(".student ul>li").mouseleave(function () {
+				$(".class-pic").hide()
+				$(this).css("border", 0)
+			})
+		});
 		</script>
 </body>
 <script  type="text/javascript" src="libs/jquery.js"></script>
 <script type="text/javascript" src="libs/swiper.js"></script>
-<script type="text/javascript" src="js/class.js?v=2"></script>
+
 <script src="js/public.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/menuFun.js" type="text/javascript" charset="utf-8"></script>
 <script src="libs/bootstrap.min.js"></script>
@@ -318,4 +355,4 @@ $(function(){
 	     <!-- 分页参数 -->
 	     <input type="hidden" name="pageNo" id="pageNo">
 </form>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

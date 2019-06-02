@@ -1,13 +1,12 @@
 package com.hpedu.web.core.teacher.dao;
 
-import java.util.List;
-import java.util.Map;
-
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hpedu.web.core.teacher.pojo.Teacher;
-import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Map;
 //import org.mybatis.dynamic.sql.util.SqlProviderAdapter;
 
 
@@ -76,4 +75,6 @@ public interface TeacherMapper extends BaseMapper<Teacher> {//
 	 * @return
 	 */
 	List<Teacher> getTeacherByIsShow(Map<String, Object> limit);
+
+	int forbiddenTeacherById(@Param("tid") String id);
 }

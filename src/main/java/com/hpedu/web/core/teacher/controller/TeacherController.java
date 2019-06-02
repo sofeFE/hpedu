@@ -4,8 +4,6 @@ import com.hpedu.util.ResultBean;
 import com.hpedu.util.codeUtil.BaseUtil;
 import com.hpedu.util.codeUtil.UUIDUtil;
 import com.hpedu.util.mybatis.Page;
-import com.hpedu.web.core.shiro.ShiroUtils;
-import com.hpedu.web.core.shiro.pojo.SysUserEntity;
 import com.hpedu.web.core.teacher.pojo.Teacher;
 import com.hpedu.web.core.teacher.service.TeacherService;
 import com.hpedu.web.core.user.pojo.User;
@@ -17,10 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -75,13 +70,13 @@ public class TeacherController {
     @RequestMapping(value = "/back-authc/teacherUpdate", method = RequestMethod.POST)
     @ResponseBody
     @RequiresPermissions("back-authc/teacherUpdate")
-    public ResultBean<?> teacherUpdate( @RequestParam(value = "timgUrl1", required = false) MultipartFile file,
+    public ResultBean<?> teacherUpdate(@RequestParam(value = "timgUrl1", required = false) MultipartFile file,
                                        @RequestParam(value = "file1", required = false) MultipartFile file1,
                                        Teacher teacher) throws Exception {
 
 //        SysUserEntity user = ShiroUtils.getUserEntity();
 //        if (user != null) {
-            return teacherService.updateTeacher(teacher, file, file1);
+        return teacherService.updateTeacher(teacher, file, file1);
 //        }
 //        return ResultBean.failed("更新失败");
     }
@@ -89,18 +84,11 @@ public class TeacherController {
     /***
      * 删除教师信息
      * */
-    @RequestMapping("/back-authc/deleteTeacher")
-    public ModelAndView deleteTeacher(HttpServletRequest req, String id, HttpSession session) {
-        User user = (User) session.getAttribute("backuser");
-        if (user != null) {
-            try {
-                teacherService.deleteTeacherById(id);
-            } catch (Exception e) {
-                log.error("删除教师【id:" + id + "】失败：", e);
-            }
-            return new ModelAndView("redirect:/back/teacher.html");
-        }
-        return new ModelAndView("redirect:/back/backlogin.html");
+    @PostMapping("/back-authc/deleteTeacher")
+    @RequiresPermissions("back-authc/deleteTeacher")
+    @ResponseBody
+    public ResultBean deleteTeacher(String id, HttpSession session) {
+        return teacherService.forbiddenTeacherById(id);
     }
 
     /**
@@ -171,6 +159,7 @@ public class TeacherController {
         }
         model.addAttribute("teacher", teacher);
     }
+
     //分页查看所有可显示的教师信息
     @RequestMapping("/teacher/teacherList.html")
     public ModelAndView teacherList(HttpServletRequest req, HttpServletResponse response) {

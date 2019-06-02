@@ -125,6 +125,17 @@
 	background-size: 100%;
 	background-repeat: no-repeat; 
 }
+.userinfo{
+	float: left;
+	width: 150px ;
+	position: absolute ;
+	z-index : 9999;
+	top: 71%;
+	right: -28%;
+	display: none;
+	background:#E4E4F0 url(../img/be.png);
+}
+
 /* .subinnerbox{
 	width: 33.333333333%;
 	float: left;
@@ -140,6 +151,12 @@
 	float: left;
 	text-align: center;
 }
+.userinfobox{
+	width: 100%;
+	float: left;
+	text-align: center;
+}
+
 .subinnerbox-exam{
 	width: 33.333333333%;
 	float: left;

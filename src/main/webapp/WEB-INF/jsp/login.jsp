@@ -92,12 +92,10 @@
                      // loginType: $(":checked").val(),
                  },
                  dataType: "json",
-                 success: function (data) {
-                     checkResult(data);
-                 }
-                 ,complete:function(){
-                     sub3();
-                 }
+                 success: function(result){
+                     checkResult(result) ;
+				 },
+                 complete: sub3()
              });
          }
      })
@@ -114,4 +112,4 @@
 	 
 	</script>
 	</body>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

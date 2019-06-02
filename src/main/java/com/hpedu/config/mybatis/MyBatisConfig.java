@@ -1,22 +1,15 @@
 package com.hpedu.config.mybatis;
 
-import java.io.IOException;
-import java.util.Properties;
-
-import javax.sql.DataSource;
-
-import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
-import com.hpedu.interceptor.PageHelper;
+import javax.sql.DataSource;
 
 //@Configuration
 public class MyBatisConfig {

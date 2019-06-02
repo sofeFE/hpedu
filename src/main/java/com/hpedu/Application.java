@@ -3,22 +3,16 @@ package com.hpedu;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ImportResource;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
 
 //@ServletComponentScan/** 为了自动扫描 注解 @WebServlet @WebFilter @WebListener*/
 //@EnableCaching//可以使用缓存.
 @SpringBootApplication
 @EnableTransactionManagement
 @MapperScan(value="com.hpedu.web.core.*.dao")
-//@PropertySource("classpath:/attribute.properties")
+@EnableCaching
 public class Application extends SpringBootServletInitializer { //extends SpringBootServletInitializer
 	
 //	@Override

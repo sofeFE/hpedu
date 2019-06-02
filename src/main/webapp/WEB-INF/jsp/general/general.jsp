@@ -10,13 +10,15 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/index.css?v=1"/>
     <link rel="stylesheet" type="text/css" href="css/video.css"/>
-    <script src="libs/jquery.1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <script src="js/main.js" type="text/javascript"></script>
-    <script src="libs/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/iconfont.css">
     <link rel="stylesheet" href="css/commen.css">
     <link rel="stylesheet" href="css/reset.css">
+    <script src="libs/jquery.1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+    <script src="libs/bootstrap.min.js"></script>
+    <script src="js/menuFun.js" type="text/javascript" charset="utf-8"></script>
+    
     <style type="text/css">
         .video-title2 ul {
             overflow: auto;
@@ -38,20 +40,7 @@
 <body>
 
 <div class="header">
-    <!-- logo图 和搜素-->
-    <%@include file="../videoSearch.jsp" %>
-    <!--菜单-->
-    <div class="sunmenu">
-        <ul>
-            <li><a href="classindex.html">首页</a></li>
-            <li><a style="border-bottom: 3px solid #5CB85C;color: #5CB85C;" class="routine-menu">常规课</a></li>
-            <li><a class="competition-menu">竞赛课</a></li>
-            <li><a class="quiz-menu">小测验</a></li>
-        </ul>
-        <%@include file="../menuPublic.jsp" %>
-    </div>
-    <!-- 登录 -->
-    <%@include file="../ckUserInfo.jsp" %>
+    <%@include file="/WEB-INF/jsp/header.jsp" %>
 </div>
 <!-- 视频 -->
 <div class="content">
@@ -99,17 +88,16 @@
             </tr>
         </table>
     </div>
+    
     <!-- 测验题弹出框 -->
-    <button class="btn btn-primary btn-lg" style="display:none;" id="openBtn" data-toggle="modal"
-            data-target="#msk_test">测验题弹框按钮
-    </button>
+    <button class="btn btn-primary btn-lg" style="display:none;" id="openBtn" data-toggle="modal" data-target="#msk_test">测验题弹框按钮 </button>
+    
     <div class="modal fade" id="msk_test" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="width:850px;">
             <div class="modal-content" style="width:850px;">
                 <div class="modal-body" style="width:850px;">
                     <h4 style="color:#5CB85C;" id="h4_tip"> 测试题加载中...</h4>
-                    <div id="unitTest_div" style="display:none;">
-                    </div>
+                    <div id="unitTest_div" style="display:none;"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -118,6 +106,8 @@
         </div>
     </div>
     
+    
+    <%----%>
     <c:if test="${!generalVideo.gmoney.equals('0')}">
         <div class="content-title" style="margin-top:0px;margin-bottom:0px;">
             <div class="content-title-content">
@@ -152,7 +142,7 @@
                     </div>
                 </c:if>
                 <!-- 优惠价或原价 -->
-                <c:if test="${killInfo!=null&&killInfo.timeType!=2&&generalVideo.isKill==1}">
+                <c:if test="${ killInfo!=null && killInfo.timeType!=2 && generalVideo.isKill==1 }">
                     <div class="video-title2" style="margin-top:0px;">
                         <ul style="margin-top:0px;padding-top:0px;padding-bottom:0px;">
                             <li class="chapter2" style="color: red;height:60px;margin-top:0px;">
@@ -289,18 +279,7 @@
 
 </div>
 <div class="foot">
-    <div class="foot-content">
-        <div class="foot-content-menu">
-            <ul>
-                <li><a href="" style="cursor: pointer">网站首页</a></li>
-                <li><a href="" style="cursor: pointer">企业合作</a></li>
-                <li><a href="" style="cursor: pointer">人才招聘</a></li>
-                <li><a href="" style="cursor: pointer">联系我们</a></li>
-                <li><a href="" style="cursor: pointer">常见问题</a></li>
-            </ul>
-        </div>
-        <p>Copyright © 2016 imooc.com All Rights Reserved | 京ICP备 13046642号-2</p>
-    </div>
+    <%@include file="/WEB-INF/jsp/footer.jsp" %>
 </div>
 <%--支付弹窗--%>
 <div class="msk">
@@ -333,11 +312,13 @@
     </div>
 </div>
 </body>
-<script type="text/javascript" src="libs/jwplayer.js"></script>
+<script type="text/javascript" src="plugins/jwplayer/jwplayer.js"></script>
 <script>jwplayer.key = "WebEzzv0/FjWreLKIGCDbPbSN4WiZ+rC9+HPjg==";</script>
 <script type="text/javascript" src="js/videoPlayerCommon.js"></script>
-<script src="libs/jquery.1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="libs/jquery.1.10.1.min.js"  charset="utf-8"></script>
+<script type="text/javascript" src="js/public.js"  charset="utf-8"></script>
+<script type="text/javascript" src="libs/jspdf.debug.js"  charset="utf-8"></script>
+<script type="text/javascript" src="libs/html2canvas.js"  charset="utf-8"></script>
 <script type="text/javascript" >
 
     var isBuy="${isBuy}";//是否购买过
@@ -358,7 +339,12 @@
     var timeType = "${killInfo==null?2:killInfo.timeType}";
     var isKill = "${generalVideo.isKill}";
     var vid = "${generalVideo.gid}";
-
+    var vname = "${generalVideo.gname}" ;
+    var teacherName = "${generalVideo.teacherName}" ;
+    var videoClassify = 0 ;/*关系到单元测试题目的类型*/
+    var userName = "${user.userName}";
+    
+    
     $(function(){
         playerInstance = jwplayer('myvideo');
 //	会员的标识 :会员为1
@@ -367,6 +353,7 @@
         userIsVip=islogin==0?0:"${user.isVip}";
         endTime=islogin==0?"":"${user.endTime==null?'':user.endTime}";
         vvip = "${generalVideo.gisVip}";
+        /*初始化播放器*/
         initPlayer(playerInstance,"${generalVideo.gvideoUrl}",false);
 
         /*初始化优惠活动*/
@@ -378,7 +365,7 @@
             }
         }
         /*初始化单元测试*/
-        initUnitTests(vid, 0);
+        initUnitTests(vid, videoClassify);
         setChangeTimeStatus(true);
 
 
@@ -408,54 +395,127 @@
     });
 
     function callPayFunction(){
-        var vid,uid,subject,clazz,classify,name ;
-        vid = ${generalVideo.gid};
-        uid = ${user.uid} ;
-        subject = ${generalVideo.gsbuject};
-        clazz = ${generalVideo.gclass};
-        classify= ${generalVideo.gclassify};
-        name= ${generalVideo.gname};
+        var uid = "${user.uid}" ;
+        payErweima(vid,uid,videoClassify) ;
+    }
+    function callBackAfterRequestQRcode(data){
+        var url = data.url;
+        //修改二维码图片等信息
+        if(url.length>0){
+            var gsbuject="${generalVideo.gsbuject} ";
+            var gclass="${generalVideo.gclass} ";
+            var gclassify="${generalVideo.gclassify} ";
+            var gname= "${generalVideo.gname} ";
+            if(gclass.indexOf("古诗")>-1
+                ||gclass.indexOf("阅读")>-1
+                ||gclass.indexOf("写作")>-1
+                ||gclass.indexOf("语法")>-1
+                ||gclass.indexOf("流利英语")>-1
+                ||gclass.indexOf("其他")>-1)
+            {
+                gclass="";
+            }
+            if(gname.length>0){
+                gname="【"+gname+"】";
+            }
+            $("#bodyDes").html(gsbuject+gclass+gclassify+gname);//视频名称
+            $(".msk h3").html("￥"+data.omoney);//视频价格
+            var url="/qr_codeImg?code_url="+url;
+            $("#erweimaImg").attr("src",url);
+            $('.msk').show();
+            timeStart();//支付计时开始
+        }else{
+            alert("支付二维码生成失败，请联系客服！");
+        }
 
-        payErweima(vid,uid,subject,clazz,classify,name) ;
     }
     
-    //浏览器关闭
-    window.onbeforeunload = function closeWindow(e) {
-        e = e || window.event;
-        if (e) {
-            changeStuLeanTime();
-        }
-    };
-    var agent = "<%=request.getHeader("user-agent")%>";
-    //浏览器后退
-    jQuery(document).ready(function ($) {
-        if (agent.indexOf("Safari") > -1) {
-            return;
-        }
-        if (window.history && window.history.pushState) {
-            $(window).on('popstate', function () {
-                var hashLocation = location.hash;
-                var hashSplit = hashLocation.split("#!/");
-                var hashName = hashSplit[1];
-
-                if (hashName !== '') {
-                    var hash = window.location.hash;
-                    if (hash === '') {
-
-                        changeStuLeanTime();
-                        window.history.back();
+    
+    function hasRight(islogin){
+        if(islogin=="0"){
+            return false;
+        }else{
+            var rightContent="${user.rightContent}";
+            if(rightContent.length==0){
+                return true;
+            }else{
+                var class_g="${generalVideo.gclass}";
+                var gclassify="${generalVideo.gclassify}";
+                var gclassify2="${generalVideo.gclassify2}";
+                var gsbuject="${generalVideo.gsbuject}";
+                if(class_g.indexOf("古诗")>-1||class_g.indexOf("阅读")>-1||
+                    class_g.indexOf("写作")>-1||class_g.indexOf("语法")>-1||
+                    class_g.indexOf("流利英语")>-1){
+                    class_g="";
+                }
+                if(gclassify2!=""){
+                    gclassify="";
+                }
+                if(class_g==""){
+                    return rightContent.indexOf(gsbuject+gclassify+gclassify2)>-1?true:false;
+                }
+                var class_arr=class_g.split(",");
+                for(var i in class_arr){
+                    if(rightContent.indexOf(gsbuject+class_arr[i]+gclassify+gclassify2)>-1){
+                        return true;
                     }
                 }
-            });
-            window.history.pushState('forward', null, "");
+                return false;
+            }
         }
-    });
-    
+    }
+
+
+
+    var agent = "<%=request.getHeader("user-agent")%>";
+
+    function trans(){
+        html2canvas(document.getElementById("unitTest_div"), {
+            onrendered:function(canvas) {
+
+                var contentWidth = canvas.width;
+                var contentHeight = canvas.height;
+
+                //一页pdf显示html页面生成的canvas高度;
+                var pageHeight = contentWidth / 592.28 * 841.89;
+                //未生成pdf的html页面高度
+                var leftHeight = contentHeight;
+                //页面偏移
+                var position = 0;
+                //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+                var imgWidth = 595.28;
+                var imgHeight = 592.28/contentWidth * contentHeight;
+
+                var pageData = canvas.toDataURL('image/jpeg', 1.0);
+
+                var pdf = new jsPDF('', 'pt', 'a4');
+
+                //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+                //当内容未超过pdf一页显示的范围，无需分页
+                if (leftHeight < pageHeight) {
+                    pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight );
+                } else {
+                    while(leftHeight > 0) {
+                        pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
+                        leftHeight -= pageHeight;
+                        position -= 841.89;
+                        //避免添加空白页
+                        if(leftHeight > 0) {
+                            pdf.addPage();
+                        }
+                    }
+                }
+
+                pdf.save('content.pdf');
+            }
+        })
+
+    }
 
 
 </script>
 <script src="js/video.js?v=1" type="text/javascript" charset="utf-8"></script>
-<script src="js/menuFun.js" type="text/javascript" charset="utf-8"></script>
+
 <form action="" id="subFrom" method="post">
     <!-- 常规视频菜单 -->
     <input type="hidden" name="gsbuject" id="gsbuject">
@@ -475,4 +535,6 @@
     <!-- 分页参数 -->
     <input type="hidden" name="pageNo" id="pageNo">
 </form>
+<script type="text/javascript" src="js/class.js?v=2"></script>
+
 </html>

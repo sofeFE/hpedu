@@ -1,20 +1,15 @@
 package com.hpedu.interceptor;
 
-import java.sql.Connection;
-import java.util.Properties;
-
+import com.hpedu.util.mybatis.Dialect;
+import com.hpedu.util.mybatis.MySql5Dialect;
+import com.hpedu.util.mybatis.OracleDialect;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
-import org.apache.ibatis.plugin.Interceptor;
-import org.apache.ibatis.plugin.Intercepts;
-import org.apache.ibatis.plugin.Invocation;
-import org.apache.ibatis.plugin.Plugin;
-import org.apache.ibatis.plugin.Signature;
+import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.reflection.DefaultReflectorFactory;
 import org.apache.ibatis.reflection.MetaObject;
-import org.apache.ibatis.reflection.SystemMetaObject;
 import org.apache.ibatis.reflection.factory.DefaultObjectFactory;
 import org.apache.ibatis.reflection.factory.ObjectFactory;
 import org.apache.ibatis.reflection.wrapper.DefaultObjectWrapperFactory;
@@ -22,9 +17,8 @@ import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.RowBounds;
 
-import com.hpedu.util.mybatis.Dialect;
-import com.hpedu.util.mybatis.MySql5Dialect;
-import com.hpedu.util.mybatis.OracleDialect;
+import java.sql.Connection;
+import java.util.Properties;
 
 /**
  * type 告诉要拦截什么对象，它可以是四大对象的一个。

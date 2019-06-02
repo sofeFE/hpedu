@@ -1,25 +1,25 @@
 package com.hpedu.web.core.trophy.service.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hpedu.util.codeUtil.UUIDUtil;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.hpedu.util.mybatis.MyBatisBase;
 import com.hpedu.util.mybatis.Page;
 import com.hpedu.web.core.trophy.dao.TrophyMapper;
 import com.hpedu.web.core.trophy.pojo.StuImg;
 import com.hpedu.web.core.trophy.pojo.Trophy;
 import com.hpedu.web.core.trophy.service.TrophyService;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class TrophyServiceImpl  extends ServiceImpl<TrophyMapper,Trophy> implements TrophyService {
@@ -28,6 +28,7 @@ public class TrophyServiceImpl  extends ServiceImpl<TrophyMapper,Trophy> impleme
 	private MyBatisBase myBatisBase ;
 	
 	@Override
+	@Cacheable(value="welcomePage"/*,key="trophyList"*/)
 	public List<Trophy> findAllTrophy(Map<String,Object> map)  {
 		
 		List<Trophy> trolist = baseMapper.findAllTrophy(map);

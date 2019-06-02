@@ -1,5 +1,6 @@
 package com.hpedu.web.core.index.controller;
 
+import com.hpedu.annotation.SysLog;
 import com.hpedu.util.codeUtil.BaseUtil;
 import com.hpedu.web.core.order.pojo.Banner;
 import com.hpedu.web.core.order.service.OrderService;
@@ -18,7 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +39,9 @@ public class IndexController {
     private Logger log = BaseUtil.getLogger(IndexController.class);
 
     @GetMapping(value={"/classindex.html","/index"})
-    public String welcome(HttpServletRequest req, Model model, HttpSession session) throws Throwable {
+    @SysLog("访问主页")
+    public String welcome( Model model, HttpSession session) throws Throwable {
+        
         User user = (User) session.getAttribute("user");
         if (user != null) {
             model.addAttribute("user", user);

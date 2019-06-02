@@ -3,6 +3,7 @@ package com.hpedu.web.core.video.pojo;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  * 竞赛课
  * */
 @TableName("contestvideo")
-public class ContestVideo {
+public class ContestVideo implements Serializable {
 	@TableId
 	private String cid;
 	private String cname;

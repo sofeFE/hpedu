@@ -74,4 +74,4 @@ text-align:center;background:#46BE8A;color:#fff;border-radius:5px;float:right;">
 </div>
 </div>
 </body>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

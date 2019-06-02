@@ -2,7 +2,6 @@ package com.hpedu.web.core.trophy.controller;
 
 import com.hpedu.util.ResultBean;
 import com.hpedu.util.codeUtil.BaseUtil;
-import com.hpedu.util.codeUtil.PrintHelper;
 import com.hpedu.util.codeUtil.StringUtil;
 import com.hpedu.util.mybatis.MyBatisBase;
 import com.hpedu.util.mybatis.Page;
@@ -26,7 +25,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.transform.Result;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

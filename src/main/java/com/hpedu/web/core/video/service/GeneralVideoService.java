@@ -1,14 +1,12 @@
 package com.hpedu.web.core.video.service;
 
-import java.util.List;
-import java.util.Map;
-
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.hpedu.util.mybatis.Page;
-import com.hpedu.web.core.exam.pojo.Exam;
 import com.hpedu.web.core.video.pojo.GeneralVideo;
 import com.hpedu.web.core.video.pojo.VideoChild;
-import com.hpedu.web.core.video.pojo.VideoPdf;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * 常规课程service

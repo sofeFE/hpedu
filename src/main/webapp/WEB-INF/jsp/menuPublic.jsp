@@ -6,29 +6,13 @@
 						<div class="subinnerbox-general">
 							<div class="subinnerbox-title">语文</div>
 							
-							<!-- <div class="subinnerbox-content">
-								<h5 class="gclass">三年级</h5>:
-								<a  class="gclassify">阅读</a>
-								<span>/</span>
-								<a  class="gclassify">写作</a>
-								<span>/</span>
-								<a  class="gclassify">长期班</a>
-							</div> -->
 							
 							<div class="subinnerbox-content">
 								<h5  class="gclass">四年级</h5>:
-								<!-- <a  class="gclassify">阅读</a>
-								<span>/</span>
-								<a  class="gclassify">写作</a>
-								<span>/</span> -->
 								<a  class="gclassify">长期班</a>
 							</div>
 							<div class="subinnerbox-content">
 								<h5 class="gclass">五年级</h5>:
-							  <!--   <a  class="gclassify">阅读</a>
-								<span>/</span>
-								<a  class="gclassify">写作</a>
-								<span>/</span> -->
 								<a  class="gclassify">长期班</a>
 							</div>
 							<div class="subinnerbox-content">
@@ -50,14 +34,6 @@
 						</div>
 						<div class="subinnerbox-general">
 							<div class="subinnerbox-title">数学</div>
-							
-							<!-- <div class="subinnerbox-content">
-								<h5 class="gclass">三年级</h5>:
-								<a  class="gclassify">专题课</a>
-								<span>/</span>
-								<a  class="gclassify">长期班</a>
-							</div> -->
-							
 							<div class="subinnerbox-content">
 								<h5 class="gclass">四年级</h5>:
 								<a class="gclassify">专题课</a>
@@ -78,8 +54,6 @@
 							</div>
 							<div class="subinnerbox-content">
 								<h5 class="gclass">小升初</h5>:
-								<!-- <a  class="gclassify">入学考</a>
-								<span>/</span> -->
 								<a  class="gclassify">分班考</a>
 							</div>
 						</div>
@@ -140,14 +114,6 @@
 							<div class="subinnerbox-title">
 								迎春杯
 							</div>
-							
-							<!-- <div class="subinnerbox-content">
-								<h5  class="cclass">三年级</h5>:
-								<a  class="cclassify">历史真题</a>
-								<span>/</span>
-								<a class="cclassify">专题课</a>
-							</div> -->
-							
 							<div class="subinnerbox-content">
 								<h5  class="cclass">四年级</h5>:
 								<a  class="cclassify">历史真题</a>
@@ -185,11 +151,6 @@
 					<div>
 						<div class="subinnerbox-competition">
 							<div class="subinnerbox-title">语文测验</div>
-							
-							<!-- <div class="subinnerbox-content">
-								<h5 class="etclass">三年级</h5>
-								<a  class="etclassify">上/下学期 </a>
-							</div> -->
 							<div class="subinnerbox-content">
 								<h5 class="etclass">四年级</h5>
 								<a  class="etclassify">上/下学期 </a>
@@ -206,13 +167,6 @@
 						</div>
 						<div class="subinnerbox-competition">
 							<div class="subinnerbox-title">数学测验</div>
-							
-							<!-- <div class="subinnerbox-content">
-								<h5 class="etclass">三年级</h5>
-								<a  class="etclassify">上学期 </a>
-								<span>/</span>
-								<a class="etclassify">下学期 </a>
-							</div> -->
 							<div class="subinnerbox-content">
 								<h5 class="etclass">四年级</h5>
 								<a  class="etclassify">上学期</a>
@@ -238,30 +192,22 @@
 							    <h5 class="etclass" style="display:none;"></h5>
 								<a  class="etclassify">三至六年级 </a>
 							</div>
-							<!-- <div class="subinnerbox-content">
-								<h5 class="etclass">三年级</h5>
-								<a  class="etclassify">上学期 </a>
-								<span>/</span>
-								<a class="etclassify">下学期 </a>
-							</div>
-							<div class="subinnerbox-content">
-								<h5 class="etclass">四年级</h5>
-								<a  class="etclassify">上学期</a>
-								<span>/</span>
-								<a class="etclassify">下学期</a>
-							</div>
-							<div class="subinnerbox-content">
-								<h5 class="etclass">五年级</h5>
-								<a  class="etclassify">上学期 </a>
-								<span>/</span>
-								<a class="etclassify">下学期 </a>
-							</div>
-							<div class="subinnerbox-content">
-								<h5 class="etclass">六年级</h5>
-								<a  class="etclassify">上学期</a>
-								<span>/</span>
-								<a class="etclassify">下学期</a>
-							</div> -->
 						</div>
 					</div>
 				</div>
+
+<!--个人信息菜单-->
+<div class="userinfo userinfo-login">
+		<div >
+			<div class="subinnerbox-content">
+				<h5 >个人信息:</h5>
+				<a href="${pageContext.request.contextPath}/userNews.html"  >查看</a>
+			</div>
+			<div class="subinnerbox-content">
+				<h5 >购买记录:</h5>
+				<a href="${pageContext.request.contextPath}/order/checkOrdersByUid.html" >查看</a>
+			</div>
+			
+		</div>
+		
+</div>

@@ -45,7 +45,7 @@
 
                         <div class="form-group">
                             <div class="field field-icon-right">
-                                <input type="text" id="captcha" class="input input-big" style="width: 150px;display: unset" name="captcha" placeholder="验证码">
+                                <input type="text" autocomplete="off" id="captcha" class="input input-big" style="width: 150px;display: unset" name="captcha" placeholder="验证码">
                                 <img src="captcha.jpg" id="SecurityCode" style="float:right" onclick="refresh()" alt=""/>
                                 <a href="javascript:void(0)" style="display: block;" onclick="refresh()">刷新验证码</a>
                                 <%--<span class="icon  margin-small"></span>--%>
@@ -124,4 +124,4 @@
     </div>
 </div>
 </body>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

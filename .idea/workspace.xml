@@ -1,7 +1,267 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="397afb4f-92f1-40c5-b53b-faa15480e204" name="Default Changelist" comment="" />
+    <list default="true" id="397afb4f-92f1-40c5-b53b-faa15480e204" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/SpringBootEdu_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/SpringBootEdu_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpringBootEdu.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBootEdu.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/config/FilterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/config/FilterConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/config/mybatis/MyBatisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/config/mybatis/MyBatisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/config/mybatis/MybatisPlusConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/config/mybatis/MybatisPlusConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/config/property/Pool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/config/property/Pool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/config/property/RedisConfigurationProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/config/redis/RedisCacheConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/config/redis/RedisClusterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/config/redis/RedisClusterConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/config/redis/RedisConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/config/redis/RedisConfig2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/config/redis/RedisConfig3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/exception/MyExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/exception/MyExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/exception/_4strategy_ResponseStateException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/exception/_4strategy_ResponseStateException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/filter/VisitorFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/filter/VisitorFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/interceptor/BaseInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/interceptor/BaseInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/interceptor/MyPageInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/interceptor/MyPageInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/interceptor/PageHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/interceptor/PageHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/listener/VisitorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/listener/VisitorListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/ResultBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/ResultBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/BaseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/BaseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/CodeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/CodeUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/ImgUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/ImgUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/JsonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/MD5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/MD5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/MySSLProtocolSocketFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/MySSLProtocolSocketFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/PageModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/PageModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/PrintHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/PrintHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/TxtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/TxtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/UploadImgUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/UploadImgUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/UploadUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/UploadUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/WeChatApiUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/WeChatApiUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/WeChatApiUtil2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/codeUtil/WeChatApiUtil2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/mybatis/MyBatisBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/mybatis/MyBatisBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/mybatis/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/mybatis/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/util/redisUtil/RedisUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/util/redisUtil/RedisUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/alidayu/AlidayuSendMessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/alidayu/AlidayuSendMessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/back/controller/BackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/back/controller/BackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/back/controller/BackUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/back/controller/BackUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/error/CustomErrorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/error/CustomErrorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/evaluation/controller/EvaluationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/evaluation/controller/EvaluationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/evaluation/dao/EvaluationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/evaluation/dao/EvaluationMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/evaluation/pojo/Evaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/evaluation/pojo/Evaluation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/evaluation/service/EvaluationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/evaluation/service/EvaluationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/evaluation/service/impl/EvaluationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/evaluation/service/impl/EvaluationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/exam/controller/ExamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/exam/controller/ExamController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/exam/pojo/Exam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/exam/pojo/Exam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/exam/pojo/ExamImg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/exam/pojo/ExamImg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/exam/service/ExamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/exam/service/ExamService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/exam/service/impl/ExamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/exam/service/impl/ExamServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/index/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/index/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/index/service/impl/VisitorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/index/service/impl/VisitorServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/index/task/VisitorTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/index/task/VisitorTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/dao/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/dao/OrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/pojo/ArticleImg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/pojo/ArticleImg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/pojo/Banner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/pojo/Banner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/pojo/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/pojo/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/controller/TestPointController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/controller/TestPointController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/dao/TestMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/dao/TestMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/dao/TestOptionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/dao/TestOptionMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/dao/TestPointMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/dao/TestPointMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/pojo/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/pojo/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/pojo/TestOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/pojo/TestOption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/pojo/TestPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/pojo/TestPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/service/TestPointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/service/TestPointService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/service/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/service/TestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/service/impl/TestPointServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/service/impl/TestPointServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/service/impl/TestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/publicTest/service/impl/TestServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/ShiroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/ShiroController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/pojo/SysUserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/pojo/SysUserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/service/SysMenuEntityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/service/SysMenuEntityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/service/SysUserEntityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/service/SysUserEntityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/teacher/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/teacher/controller/TeacherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/teacher/dao/TeacherMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/teacher/dao/TeacherMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/teacher/pojo/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/teacher/pojo/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/teacher/pojo/TeacherDynamicSqlSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/teacher/pojo/TeacherDynamicSqlSupport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/teacher/service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/teacher/service/TeacherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/teacher/service/impl/TeacherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/teacher/service/impl/TeacherServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/trophy/controller/TrophyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/trophy/controller/TrophyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/trophy/dao/TrophyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/trophy/dao/TrophyMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/trophy/pojo/StuImg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/trophy/pojo/StuImg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/trophy/pojo/Trophy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/trophy/pojo/Trophy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/trophy/service/TrophyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/trophy/service/TrophyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/trophy/service/impl/TrophyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/trophy/service/impl/TrophyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/upload/UploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/upload/UploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/dao/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/ErrorExam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/ErrorExam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/RightMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/RightMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/UnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/UnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/UnitTest_Choose.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/UnitTest_Choose.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/UserLearn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/UserLearn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/UserLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/UserLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/UserScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/UserScore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/controller/CplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/controller/CplayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/controller/VplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/controller/VplayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/dao/ContestVideoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/dao/ContestVideoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/dao/GeneralVideoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/dao/GeneralVideoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/pojo/ContestVideo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/pojo/ContestVideo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/pojo/GeneralVideo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/pojo/GeneralVideo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/pojo/VideoChild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/pojo/VideoChild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/pojo/VideoPdf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/pojo/VideoPdf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/service/ContestVideoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/service/ContestVideoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/service/GeneralVideoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/service/GeneralVideoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/service/impl/ContestVideoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/service/impl/ContestVideoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/service/impl/GeneralVideoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/service/impl/GeneralVideoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/controller/WxPayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/controller/WxPayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/service/WxPayService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/service/WxPayService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/HttpClientUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/HttpClientUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/MapUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/MapUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/MatrixToImageWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/MatrixToImageWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/PayCommonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/PayCommonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/PayConfigUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/Qrcode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/Qrcode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/Signature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/Signature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/WechatPayUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/WechatPayUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/XMLUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/util/XMLUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/attribute.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/attribute.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/front/SysUserDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/front/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/front/TeacherMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/front/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/front/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/vue.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/vue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/redis.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/redis.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/back/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/back/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/kindeditor/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/kindeditor/default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/kindeditor/default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/kindeditor/prettify.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/public.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/class.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/class.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/menuFun.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/menuFun.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/public.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/public.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/videoPlayerCommon.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/videoPlayerCommon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/libs/jwplayer.flash.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/libs/jwplayer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/libs/jwplayer.loader.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/libs/swiper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/libs/swiper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/ztree/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/plugins/ztree/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/addTeacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/addTeacher.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/adminMgr.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/adminMgr.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/america/backUSAclass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/america/backUSAclass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/america/toAddUSAClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/america/toAddUSAClass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/america/toUpdateUSAClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/america/toUpdateUSAClass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/backSpring/backSpringClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/backSpring/backSpringClass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/backSpring/toAddSpringClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/backSpring/toAddSpringClass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/backSpring/toUpdateSpringClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/backSpring/toUpdateSpringClass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/hua/backHuaClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/hua/backHuaClass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/hua/toAddHuaClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/hua/toAddHuaClass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/hua/toUpdateHuaClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backContest/hua/toUpdateHuaClass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/addUnitTest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/addUnitTest.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/addUnitTestMore.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/addUnitTestMore.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/addVideoMore.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/addVideoMore.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/chinese/addChineseGeneral.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/chinese/addChineseGeneral.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/chinese/generalChineseList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/chinese/generalChineseList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/chinese/updateChineseGeneralVideo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/chinese/updateChineseGeneralVideo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/english/addEnglishGeneral.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/english/addEnglishGeneral.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/english/searchAllEnglishGeneral.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/english/searchAllEnglishGeneral.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/english/upEnglishGeneral.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/english/upEnglishGeneral.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/math/addMathGeneral.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/math/addMathGeneral.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/math/searchAllMathGeneralList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/math/searchAllMathGeneralList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/math/updateMathGeneral.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/math/updateMathGeneral.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/science/addScienceGeneral.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/science/addScienceGeneral.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/science/searchScienceGeneral.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/science/searchScienceGeneral.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/science/updateScienceGeneral.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/science/updateScienceGeneral.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/updateUnitTest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/updateUnitTest.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/updateVideoMore.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/updateVideoMore.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backindex-bak.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backindex-bak.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backindex.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backindex.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backlogin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backlogin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/bannerMgr.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/bannerMgr.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/bannerMgr/toAddBanner.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/bannerMgr/toAddBanner.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/bannerMgr/updateBanner.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/bannerMgr/updateBanner.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/correctIndex.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/evalMgr.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/evalMgr.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/addExams.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/addExams.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/chinese/chineseExam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/chinese/chineseExam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/chinese/toAddChineseExam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/chinese/toAddChineseExam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/chinese/updateChinexeExam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/chinese/updateChinexeExam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/english/englishExam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/english/englishExam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/english/toAddEnglishExam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/english/toAddEnglishExam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/english/updateEnglishExam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/english/updateEnglishExam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/math/mathExam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/math/mathExam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/math/toAddMathExam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/math/toAddMathExam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/math/updateMathExam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/math/updateMathExam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/toAddExam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/toAddExam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/updateExam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/exam/updateExam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/goToCorrectUnitTest.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/info.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/info.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/orderCheck.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/orderCheck.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/teacher.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/teacherUp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/teacherUp.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/test/addTest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/test/addTest.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/test/addTestPoint.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/test/addTestPoint.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/test/controlTest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/test/controlTest.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/test/controlTestPoint.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/test/controlTestPoint.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/toAddAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/toAddAdmin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/toAddTrophy.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/toAddTrophy.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/toUpdateTrophy.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/toUpdateTrophy.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/trophy.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/trophy.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/updateUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/updateUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/userLevel.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/userLevel.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/userLevelAdd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/userLevelAdd.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/userLevelUp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/userLevelUp.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/userMgr.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/userMgr.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/userMgrComm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/userMgrComm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/backPass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/backPass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/checUnitTestJDTDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/checUnitTestJDTDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/ckUserInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/ckUserInfo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/classReg.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/classReg.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/classindex.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/classindex.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/contest/contest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/contest/contest.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/contest/contestVideoList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/contest/contestVideoList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/error/404.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/error/404.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/error/500.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/error/500.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/exam/exam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/exam/exam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/exam/examlist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/exam/examlist.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/general/general.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/general/general.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/general/generalMore.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/general/generalMore.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/general/generalVideoList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/general/generalVideoList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/general/generalVideoList_zt.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/general/generalVideoList_zt.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/historyScoresPage.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/learnVideoPage.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/menuPublic.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/menuPublic.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/multiUpload.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/openKF.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/openKF.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/checkArticle.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/checkArticle.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/checkOrdersByUid.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/checkOrdersByUid.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/checkStu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/checkStu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/checkTeacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/checkTeacher.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/searchVideo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/searchVideo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/showAllVideo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/showAllVideo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/stuList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/stuList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/teacherList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/teacherList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/uploadDemo.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userNews.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userNews.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/hpedu/test/MyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/hpedu/test/MyTest.java" afterDir="false" />
+    </list>
+    <list id="3a9ad9b3-2919-4f8e-b676-48b5f235164f" name="createSysLog" comment="生成日志对象" />
+    <list id="74109e3b-e5bf-4a85-85a7-73e9b528e4b1" name="getParamFromReq" comment="从回调请求中获取参数" />
+    <list id="512600db-a132-46cf-a167-088191b38acb" name="handleMap" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/service/impl/WxPayServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/service/impl/WxPayServiceImpl.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,118 +305,132 @@
     <session id="-1671804286">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="37" />
+          <entry key="project.closed" value="62" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.15" value="2" />
           <entry key="project.open.time.16" value="2" />
           <entry key="project.open.time.18" value="2" />
-          <entry key="project.open.time.19" value="1" />
+          <entry key="project.open.time.19" value="2" />
           <entry key="project.open.time.2" value="5" />
           <entry key="project.open.time.20" value="2" />
           <entry key="project.open.time.21" value="1" />
-          <entry key="project.open.time.22" value="2" />
-          <entry key="project.open.time.23" value="2" />
-          <entry key="project.open.time.24" value="4" />
+          <entry key="project.open.time.22" value="4" />
+          <entry key="project.open.time.23" value="3" />
+          <entry key="project.open.time.24" value="7" />
           <entry key="project.open.time.25" value="2" />
           <entry key="project.open.time.26" value="2" />
-          <entry key="project.open.time.27" value="2" />
-          <entry key="project.open.time.28" value="1" />
+          <entry key="project.open.time.27" value="3" />
+          <entry key="project.open.time.28" value="3" />
+          <entry key="project.open.time.29" value="3" />
           <entry key="project.open.time.30" value="1" />
-          <entry key="project.open.time.32" value="1" />
-          <entry key="project.open.time.34" value="1" />
-          <entry key="project.open.time.35" value="1" />
+          <entry key="project.open.time.32" value="3" />
+          <entry key="project.open.time.33" value="1" />
+          <entry key="project.open.time.34" value="3" />
+          <entry key="project.open.time.35" value="2" />
+          <entry key="project.open.time.37" value="1" />
+          <entry key="project.open.time.38" value="1" />
+          <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="38" />
+          <entry key="project.open.time.52" value="1" />
+          <entry key="project.open.time.56" value="1" />
+          <entry key="project.opened" value="64" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="DispatcherServlet" value="1" />
           <entry key="asp" value="2" />
-          <entry key="class" value="384" />
-          <entry key="css" value="41" />
+          <entry key="class" value="567" />
+          <entry key="css" value="75" />
           <entry key="dtd" value="3" />
           <entry key="fxml" value="1" />
           <entry key="gif" value="6" />
-          <entry key="html" value="12" />
-          <entry key="java" value="1009" />
+          <entry key="html" value="14" />
+          <entry key="iml" value="1" />
+          <entry key="java" value="1360" />
           <entry key="jpg" value="13" />
-          <entry key="js" value="105" />
+          <entry key="js" value="160" />
           <entry key="json" value="1" />
-          <entry key="jsp" value="137" />
+          <entry key="jsp" value="266" />
           <entry key="log" value="3" />
           <entry key="md" value="2" />
-          <entry key="png" value="2" />
+          <entry key="php" value="1" />
+          <entry key="png" value="4" />
+          <entry key="pom" value="3" />
           <entry key="project" value="2" />
-          <entry key="properties" value="28" />
+          <entry key="properties" value="42" />
           <entry key="provides" value="1" />
-          <entry key="rnc" value="3" />
-          <entry key="swf" value="9" />
-          <entry key="ts" value="8" />
+          <entry key="rnc" value="5" />
+          <entry key="swf" value="11" />
+          <entry key="tld" value="1" />
+          <entry key="ts" value="20" />
           <entry key="ttf" value="1" />
-          <entry key="txt" value="8" />
+          <entry key="txt" value="11" />
           <entry key="woff" value="7" />
-          <entry key="xml" value="107" />
+          <entry key="xml" value="140" />
+          <entry key="xsd" value="3" />
           <entry key="yaml" value="3" />
-          <entry key="yml" value="30" />
+          <entry key="yml" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="ASP" value="2" />
-          <entry key="CLASS" value="384" />
-          <entry key="CSS" value="41" />
+          <entry key="CLASS" value="567" />
+          <entry key="CSS" value="75" />
           <entry key="DTD" value="3" />
           <entry key="Eclipse" value="2" />
           <entry key="Font" value="1" />
-          <entry key="HTML" value="12" />
-          <entry key="Image" value="21" />
-          <entry key="JAVA" value="1009" />
+          <entry key="HTML" value="14" />
+          <entry key="IDEA_MODULE" value="1" />
+          <entry key="Image" value="23" />
+          <entry key="JAVA" value="1360" />
           <entry key="JSON" value="1" />
-          <entry key="JSP" value="137" />
-          <entry key="JavaScript" value="105" />
+          <entry key="JSP" value="266" />
+          <entry key="JavaScript" value="160" />
           <entry key="Markdown" value="2" />
-          <entry key="PLAIN_TEXT" value="19" />
-          <entry key="Properties" value="28" />
-          <entry key="RNG Compact" value="3" />
-          <entry key="SWF" value="9" />
-          <entry key="TypeScript" value="8" />
+          <entry key="PLAIN_TEXT" value="23" />
+          <entry key="Properties" value="42" />
+          <entry key="RNG Compact" value="5" />
+          <entry key="SWF" value="11" />
+          <entry key="TypeScript" value="20" />
           <entry key="UML" value="1" />
-          <entry key="XML" value="108" />
-          <entry key="YAML" value="33" />
+          <entry key="XML" value="148" />
+          <entry key="YAML" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="class" value="159" />
-          <entry key="css" value="25" />
-          <entry key="dummy" value="37" />
-          <entry key="html" value="380" />
-          <entry key="java" value="23584" />
-          <entry key="js" value="629" />
-          <entry key="jsp" value="7786" />
-          <entry key="properties" value="90" />
-          <entry key="txt" value="25" />
-          <entry key="xml" value="3115" />
+          <entry key="class" value="166" />
+          <entry key="css" value="232" />
+          <entry key="dummy" value="51" />
+          <entry key="html" value="471" />
+          <entry key="java" value="27968" />
+          <entry key="js" value="1899" />
+          <entry key="jsp" value="10031" />
+          <entry key="properties" value="151" />
+          <entry key="txt" value="332" />
+          <entry key="xml" value="3659" />
           <entry key="yaml" value="11" />
-          <entry key="yml" value="824" />
+          <entry key="yml" value="970" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CLASS" value="159" />
-          <entry key="CSS" value="25" />
-          <entry key="HTML" value="381" />
-          <entry key="JAVA" value="23584" />
-          <entry key="JSP" value="7785" />
-          <entry key="JavaScript" value="629" />
-          <entry key="PLAIN_TEXT" value="62" />
-          <entry key="Properties" value="90" />
-          <entry key="SQL" value="160" />
-          <entry key="XML" value="2955" />
-          <entry key="YAML" value="835" />
+          <entry key="CLASS" value="166" />
+          <entry key="CSS" value="233" />
+          <entry key="HTML" value="481" />
+          <entry key="JAVA" value="27968" />
+          <entry key="JSP" value="10029" />
+          <entry key="JavaScript" value="1890" />
+          <entry key="PLAIN_TEXT" value="383" />
+          <entry key="Properties" value="151" />
+          <entry key="SQL" value="204" />
+          <entry key="XML" value="3455" />
+          <entry key="YAML" value="981" />
         </counts>
       </usages-collector>
     </session>
@@ -165,156 +439,152 @@
     <favorites_list name="SpringBootEdu" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
-        <option value="JavaScript File" />
         <option value="FxmlFile" />
         <option value="Interface" />
         <option value="HTML File" />
         <option value="spring-beans.schema" />
+        <option value="Jsp File" />
+        <option value="JavaScript File" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>errorMessage</find>
-      <find>layer</find>
-      <find>Charts</find>
-      <find>kindeditor</find>
-      <find>src=&quot;js/kindeditor</find>
-      <find>ztree</find>
-      <find>jsp/ztree</find>
-      <find>websocket.js</find>
-      <find>skins</find>
-      <find>js/jwplayer.js</find>
-      <find>js/jwplayer</find>
-      <find>jwplayer</find>
-      <find>jwplayer.flash.swf</find>
-      <find>bootstrap.min.js</find>
-      <find>js/bootstrap.min.js</find>
-      <find>js/jquery.1.10.1.min.js</find>
-      <find>jquery.js</find>
-      <find>js/jquery.js</find>
-      <find>js/back/jquery.js</find>
-      <find>jquery.cookie.js</find>
-      <find>js/back/jquery.cookie.js</find>
-      <find>js/back/pintuer.js</find>
-      <find>js/back/upload.js</find>
-      <find>js/back/M</find>
-      <find>js/back/My97DatePicker/</find>
-      <find>js/swiper.js</find>
-      <find>swfobject.js</find>
-      <find>player.swf</find>
-      <find>jwpl</find>
-      <find>mybatis-spring-boot-starter-test</find>
+      <find>setChangeTimeStatus(true);</find>
+      <find>isChangeTime</find>
+      <find>/user/changeStuLeanTime</find>
+      <find>user/updateLearningTime</find>
+      <find>setChangeTimeStatus(true</find>
+      <find>setChangeTimeStatus(</find>
+      <find>class=&quot;input&quot;</find>
+      <find>ul\.pagination \{\n    display\: inline\-block\;\n    padding\: 0\;\n    margin\: 0\;\n\}\n\nul\.pagination li \{display\: inline\;\n\}\n\nul\.pagination li a \{\n    color\: black\;\n    float\: left\;\n    padding\: 8px 16px\;\n    text\-decoration\: none\;\n    transition\: background\-color \.3s\;\n    border\: 1px solid \#ddd\;\n\}\n\n\.pagination li\:first\-child a \{\n    border\-top\-left\-radius\: 5px\;\n    border\-bottom\-left\-radius\: 5px\;\n\}\n\n\.pagination li\:last\-child a \{\n    border\-top\-right\-radius\: 5px\;\n    border\-bottom\-right\-radius\: 5px\;\n\}\n\nul\.pagination li a\.active \{\n    background\-color\: \#4CAF50\;\n    color\: white\;\n    border\: 1px solid \#4CAF50\;\n\}\n\nul\.pagination li a\:hover\:not\(\.active\) \{background\-color\: \#ddd\;\}\n\.chunji\,\.chunji p\{\nbackground\:\#DAF8C6\;color\:\#000\;\n\}\n\.shujia\,\.shujia p\{\nbackground\:\#FCF4B3\;color\:\#000\;\n\}\n\.qiuji\,\.qiuji p\{\nbackground\:\#FEF2E9\;color\:\#000\;\n\}\n\.hanjia\,\.hanjia p\{\nbackground\:\#E1F6F9\;color\:\#000\;\n\}</find>
+      <find>menuPublic</find>
+      <find>src=&quot;libs/jquery</find>
+      <find>class.js</find>
+      <find>&lt;%@include file=&quot;/WEB-INF/jsp/header.jsp&quot; %&gt;</find>
+      <find>&lt;script type=&quot;text/javascript&quot; src=&quot;js/class.js?v=2&quot;&gt;&lt;/script&gt;</find>
+      <find>&lt;/html&gt;</find>
+      <find>main.js</find>
+      <find>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/index.css?v=1&quot;&gt;</find>
+      <find>StuImg</find>
+      <find>KeyGenerator</find>
+      <find>Redis occur handleCacheGetError</find>
+      <find>swiper-wrapper</find>
+      <find>class=&quot;mysubject</find>
+      <find>class=&quot;mysubject&quot;</find>
+      <find>#myChart</find>
+      <find>&quot;#myChart2&quot;</find>
+      <find>monthTime_th</find>
+      <find>Bars</find>
+      <find>Bar</find>
+      <find>learnVideoPage</find>
+      <find>historyScoresPage</find>
+      <find>historyScores</find>
     </findStrings>
     <replaceStrings>
-      <replace>= myBatisBase.getMapper(</replace>
-      <replace>DateUtil.To_yyyy_MM_dd</replace>
-      <replace>back-authc/changeSort</replace>
-      <replace>back-authc/changeTeacherSort</replace>
-      <replace>back-authc/teacherUpdate</replace>
-      <replace>back-authc/deleteTeacher</replace>
-      <replace>back-authc/addTeacher</replace>
-      <replace>baseMapper</replace>
-      <replace>back-authc/addTrophy</replace>
-      <replace>back-authc/updatStuSort</replace>
-      <replace>back-authc/updatTrophy</replace>
-      <replace>back-authc/deleteTrophy</replace>
-      <replace>baseMapper.</replace>
-      <replace>SYSUserEntity</replace>
-      <replace>SysUserEntity</replace>
-      <replace />
-      <replace>icon-pencil-square-o</replace>
-      <replace>&quot;icon-pencil-square-o&quot;</replace>
-      <replace>icon-caret-right</replace>
-      <replace>src=&quot;js/plugins/kindeditor</replace>
-      <replace>plugins/ztree</replace>
-      <replace>libs/jwplayer.js</replace>
-      <replace>libs/bootstrap.min.js</replace>
-      <replace>libs/jquery.1.10.1.min.js</replace>
-      <replace>libs/jquery.js</replace>
-      <replace>libs/jquery.cookie.js</replace>
       <replace>libs/pintuer.js</replace>
       <replace>js/upload.js</replace>
       <replace>plugins/My97DatePicker/</replace>
       <replace>libs/swiper.js</replace>
+      <replace>kindeditor-all.js</replace>
+      <replace>plugins/kindeditor</replace>
+      <replace>href=&quot;/plugins/kindeditor</replace>
+      <replace>payConfigUtil.</replace>
+      <replace>src=&quot;/plugins/kindeditor</replace>
+      <replace>plugins/jwplayer/jwplayer.js</replace>
+      <replace>haveRight</replace>
+      <replace>hasRight(</replace>
+      <replace>callPayFunction()</replace>
+      <replace>plugins/kindeditor/code/zh_CN.js</replace>
+      <replace>plugins/kindeditor/code/prettify.js</replace>
+      <replace>plugins/kindeditor/plugins/code/prettify.js</replace>
+      <replace>plugins/kindeditor/plugins/code/zh_CN.js</replace>
+      <replace>correctManger</replace>
+      <replace>doCorrect</replace>
+      <replace>console.log(</replace>
+      <replace>footer.jsp</replace>
+      <replace>&lt;%@include file=&quot;/WEB-INF/jsp/footer.jsp&quot; %&gt;</replace>
+      <replace>/img</replace>
+      <replace>user/updateLearningTime</replace>
+      <replace>&lt;%@include file=&quot;/WEB-INF/jsp/header.jsp&quot; %&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;js/class.js?v=2&quot;&gt;&lt;/script&gt;</replace>
+      <replace />
+      <replace>&lt;script type=&quot;text/javascript&quot; src=&quot;js/class.js?v=2&quot;&gt;&lt;/script&gt;&lt;/html&gt;</replace>
+      <replace>&quot;#next_Chart&quot;</replace>
+      <replace>learnHistory</replace>
+      <replace>historyScores</replace>
     </replaceStrings>
     <dirStrings>
       <dir>H:\tmp\SpringBootEdu\src\main\java\com\hpedu\web</dir>
       <dir>H:\tmp\SpringBootEdu\src\main\resources\resources\plugins\kindeditor</dir>
       <dir>H:\tmp\SpringBootEdu\src\main\resources\static\plugins\jwplayer</dir>
+      <dir>H:\tmp\SpringBootEdu\src\main\resources\static\css</dir>
+      <dir>H:\tmp\SpringBootEdu\src</dir>
+      <dir>H:\tmp\SpringBootEdu\target\classes\com\jiuchou</dir>
     </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/com/hpedu/test/dao/mybatisBatchUpdate/BatchUpdate.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/front/SysUserDao.xml" />
-        <option value="$PROJECT_DIR$/src/test/resources/config/mysql.properties" />
-        <option value="$PROJECT_DIR$/src/test/resources/configure.xml" />
-        <option value="$PROJECT_DIR$/src/test/resources/application.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/error/CustomErrorController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/shilrController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/public/jquery.min.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/service/SysMenuEntityService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/exception/MyExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/dao/SysMenuDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/service/impl/SysMenuEntityServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/back/controller/BackUserController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/public/vue.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/public/bootstrap.min.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/META-INF/resources/css/back/font-awesome.min.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/META-INF/resources/css/back/all-skins.min.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/teacher.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/back/controller/BackController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/teacher/controller/TeacherController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/front/TeacherMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/teacherUp.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/UserLevel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/UnitTest_Choose.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/exam/pojo/ExamImg.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/ErrorExam.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/UnitTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/Aspect/SysLogAspect.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/annotation/CacheDuration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/config/redis/SpringRedisCacheManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/config/RedisConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/config/RedisConfig9.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/config/redis/RedisConfig9.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/config/redis/RedisConfig2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/config/redis/RedisConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/trophy/service/impl/TrophyServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/service/impl/ContestVideoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/service/impl/GeneralVideoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/order/service/impl/OrderServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/teacher/service/impl/TeacherServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backlogin.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/ShiroUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/User.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/pojo/SysUserEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/pojo/SysMenuEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/pojo/SysRoleEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/pojo/SysRoleMenuEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/pojo/SysUserRoleEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/classindex.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/ckUserInfo.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/hpedu/test/dao/DaoTest.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/back/SysMenuEntity.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/back/controller/BackUserController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/redis.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/src/main/resources/public/index.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/config/redis/RedisSentinelConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/config/redis/RedisStandaloneConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/libs/swiper.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/controller/VplayController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/video/controller/CplayController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userNews.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/updateUser.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backindex-bak.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/reset.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/general/generalMore.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/general/generalVideoList.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/science/addScienceGeneral.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backindex.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/service/impl/SysUserEntityServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/service/SysUserEntityService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/ShiroController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/learnVideoPage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/historyScoresPage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/dao/UserMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/pojo/UserScore.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hpedu/web/core/user/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/front/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/historyScores.jsp" />
+        <option value="$PROJECT_DIR$/target/classes/static/js/transformHtmlToPdf.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/videoPlayerCommon.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/public/index.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/general/general.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/public/vue.html" />
+        <option value="$PROJECT_DIR$/src/test/java/com/hpedu/test/ThreadPool.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/menuPublic.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/order/checkOrdersByUid.jsp" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/jiuchou/houpu/dao/ExamDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jiuchou/houpu/util/MessageUtil$1$1.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jiuchou/houpu/util/MenuUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jiuchou/houpu/util/MessageUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jiuchou/houpu/util/CoreService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jiuchou/houpu/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/readme.txt" />
       </list>
     </option>
   </component>
@@ -330,6 +600,11 @@
         <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
       </MavenGeneralSettings>
     </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
@@ -338,25 +613,17 @@
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="SpringBootEdu" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="SpringBootEdu" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="SpringBootEdu" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
-        </path>
       </expand>
       <select />
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-27" />
-    <option name="y" value="54" />
-    <option name="width" value="1304" />
-    <option name="height" value="728" />
+    <option name="x" value="-1" />
+    <option name="width" value="1318" />
+    <option name="height" value="704" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -366,6 +633,8 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -373,59 +642,66 @@
               <item name="SpringBootEdu" type="b2602c69:ProjectViewProjectNode" />
               <item name="SpringBootEdu" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="SpringBootEdu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpringBootEdu" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="ChangesTree.GroupingKeys" value="directory" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;jar://D:/Program Files/JDK64/JDK8/jdk1.8/src.zip!/java/io/InputStream.java&#10;InputStream&#9;PSI&#9;JAVA://java.io.InputStream&#10;stream&#9;PSI&#9;JAVA://org.apache.coyote.http2.Stream&#10;threadlocal&#9;FILE&#9;jar://D:/Program Files/JDK64/JDK8/jdk1.8/src.zip!/java/lang/ThreadLocal.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557203935020" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559499571021" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../renren-security" />
+    <property name="last_opened_file_path" value="$USER_HOME$/houpu-1.0.jar!/BOOT-INF" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="H:\tmp\SpringBootEdu\src\main\resources\static\plugins" />
-      <recent name="H:\tmp\SpringBootEdu\src\main\resources\resources\plugins" />
-      <recent name="H:\tmp\SpringBootEdu\src\main\resources\static\js" />
-      <recent name="H:\tmp\SpringBootEdu\src\main\resources\static\libs" />
-      <recent name="H:\tmp\SpringBootEdu\src\main\resources\static" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.hpedu.web.core.shiro.dao" />
+      <recent name="com.hpedu.web.core.shiro.service" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.hpedu.test.dao" />
       <recent name="com.hpedu.web.core.wxpay.util" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="H:\tmp\SpringBootEdu\src\main\resources\static\plugins" />
-      <recent name="H:\tmp\SpringBootEdu\src\main\resources\META-INF\resources\css" />
-      <recent name="H:\tmp\SpringBootEdu\src\main\resources\META-INF\resources\fonts" />
-      <recent name="H:\tmp\SpringBootEdu\src\main\resources\META-INF\resources\css\back" />
-      <recent name="H:\tmp\SpringBootEdu\src\main\webapp\WEB-INF\jsp\back" />
+      <recent name="H:\tmp\SpringBootEdu\src\main\java" />
+      <recent name="H:\tmp\SpringBootEdu\src\main\webapp\WEB-INF" />
+      <recent name="H:\tmp\SpringBootEdu\src\main\webapp\lib" />
+      <recent name="H:\tmp\SpringBootEdu\src\main\resources\public" />
+      <recent name="H:\tmp\SpringBootEdu\target\classes\com" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.hpedu.web.core.shiro.service.impl" />
-      <recent name="com.hpedu.web.core.shiro.service" />
-      <recent name="com.hpedu.config" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.hpedu.util" />
       <recent name="com.hpedu.web.core.shiro.dao" />
-      <recent name="com.hpedu.web.core.shiro.service" />
+      <recent name="com.hpedu.web.core.shiro.pojo" />
+      <recent name="com.hpedu.Aspect" />
+      <recent name="com.hpedu.annotation" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\tmp\SpringBootEdu\src\main\webapp\WEB-INF" />
+      <recent name="H:\tmp\SpringBootEdu\src\main\webapp" />
+      <recent name="H:\tmp\SpringBootEdu\src\main\resources\static\plugins\jwplayer" />
+      <recent name="H:\tmp\SpringBootEdu\src\main\resources\mappers\back" />
+      <recent name="H:\tmp\SpringBootEdu\src\main\resources\static\plugins\kindeditor" />
     </key>
   </component>
   <component name="RestServicesNavigator">
@@ -454,83 +730,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application">
-    <configuration name="UserController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.hpedu.web.core.user.controller.UserController" />
-      <module name="SpringBootEdu" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hpedu.web.core.user.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SpringBootEdu" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hpedu.test.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hpedu.test.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.hpedu.test.dao.DaoTest" />
-      <option name="METHOD_NAME" value="test" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DaoTest.insert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SpringBootEdu" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hpedu.test.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hpedu.test.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.hpedu.test.dao.DaoTest" />
-      <option name="METHOD_NAME" value="insert" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DaoTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SpringBootEdu" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hpedu.test.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hpedu.test.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.hpedu.test.dao.DaoTest" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DaoTest.updateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SpringBootEdu" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hpedu.test.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hpedu.test.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.hpedu.test.dao.DaoTest" />
-      <option name="METHOD_NAME" value="updateTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="SpringBootEdu" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.hpedu.Application" />
@@ -542,23 +742,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Spring Boot.Application" />
-      <item itemvalue="JUnit.DaoTest.test" />
-      <item itemvalue="JUnit.DaoTest.insert" />
-      <item itemvalue="JUnit.DaoTest.updateTest" />
-      <item itemvalue="Application.UserController" />
-      <item itemvalue="JUnit.DaoTest" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.DaoTest.test" />
-        <item itemvalue="JUnit.DaoTest" />
-        <item itemvalue="Application.UserController" />
-        <item itemvalue="JUnit.DaoTest.updateTest" />
-        <item itemvalue="JUnit.DaoTest.insert" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="StructureViewFactory">
     <option name="AUTOSCROLL_FROM_SOURCE" value="true" />
@@ -570,6 +753,9 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="397afb4f-92f1-40c5-b53b-faa15480e204" name="Default Changelist" comment="" />
+      <changelist id="74109e3b-e5bf-4a85-85a7-73e9b528e4b1" name="getParamFromReq" comment="从回调请求中获取参数" />
+      <changelist id="512600db-a132-46cf-a167-088191b38acb" name="handleMap" comment="" />
+      <changelist id="3a9ad9b3-2919-4f8e-b676-48b5f235164f" name="createSysLog" comment="生成日志对象" />
       <created>1554408179698</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -611,8 +797,56 @@
       <workItem from="1556937200868" duration="31158000" />
       <workItem from="1557025515503" duration="29248000" />
       <workItem from="1557151373200" duration="2265000" />
-      <workItem from="1557194056248" duration="9309000" />
+      <workItem from="1557194056248" duration="11690000" />
+      <workItem from="1557215556523" duration="777000" />
+      <workItem from="1557286924652" duration="12228000" />
+      <workItem from="1557740929796" duration="20256000" />
+      <workItem from="1557802519120" duration="26819000" />
+      <workItem from="1557851155877" duration="6762000" />
+      <workItem from="1557889762264" duration="5521000" />
+      <workItem from="1557897703270" duration="33374000" />
+      <workItem from="1557971128742" duration="30888000" />
+      <workItem from="1558054223692" duration="18177000" />
+      <workItem from="1558111622893" duration="5371000" />
+      <workItem from="1558142822366" duration="13563000" />
+      <workItem from="1558194603130" duration="4361000" />
+      <workItem from="1558314029674" duration="1200000" />
+      <workItem from="1558435451233" duration="2978000" />
+      <workItem from="1558520485539" duration="4911000" />
+      <workItem from="1558560720456" duration="5264000" />
+      <workItem from="1558693012411" duration="4248000" />
+      <workItem from="1558771313059" duration="1188000" />
+      <workItem from="1558872268934" duration="1187000" />
+      <workItem from="1558923915258" duration="6819000" />
+      <workItem from="1559094187595" duration="28414000" />
+      <workItem from="1559177323508" duration="24279000" />
+      <workItem from="1559271443630" duration="30252000" />
+      <workItem from="1559371158638" duration="7384000" />
+      <workItem from="1559449293212" duration="19531000" />
+      <workItem from="1559494889100" duration="2895000" />
     </task>
+    <task id="LOCAL-00001" summary="修订:内容N多, 具体不详.">
+      <created>1559491298967</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1559491298967</updated>
+    </task>
+    <task id="LOCAL-00002" summary="修订:内容N多, 具体不详.">
+      <created>1559491314342</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1559491314342</updated>
+    </task>
+    <task id="LOCAL-00003" summary="修订:内容N多, 具体不详.">
+      <created>1559493929172</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1559493929172</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -648,7 +882,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="741466000" />
+    <option name="totallyTimeSpent" value="1062494000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -662,96 +896,89 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.24695653" visible="true" weight="0.27760968" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.3295082" visible="true" weight="0.30484116" />
       <window_info id="Designer" order="1" />
       <window_info id="Image Layers" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" show_stripe_button="false" side_tool="true" />
       <window_info id="Capture Tool" order="5" />
-      <window_info id="Web" order="6" side_tool="true" />
+      <window_info id="Web" order="6" sideWeight="0.6704918" side_tool="true" weight="0.24054463" />
       <window_info id="JavaEE:App" order="7" show_stripe_button="false" sideWeight="0.5008696" side_tool="true" weight="0.2535771" />
-      <window_info id="Structure" order="8" sideWeight="0.7530435" weight="0.2647504" />
+      <window_info id="Structure" order="8" sideWeight="0.7530435" weight="0.28441754" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.050933786" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.61639345" />
       <window_info anchor="bottom" id="Cvs" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="4" show_stripe_button="false" />
       <window_info anchor="bottom" id="Spring" order="5" show_stripe_button="false" weight="0.32869565" />
-      <window_info anchor="bottom" id="Terminal" order="6" show_stripe_button="false" weight="0.32869565" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50680786" side_tool="true" weight="0.82487726" />
-      <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.49919614" weight="0.16530278" />
+      <window_info anchor="bottom" id="Terminal" order="6" show_stripe_button="false" weight="0.32786885" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5015129" side_tool="true" weight="0.8639344" />
+      <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.49919614" weight="0.15409836" />
       <window_info anchor="bottom" id="Java Enterprise" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Problems" order="12" sideWeight="0.49924356" weight="0.3238255" />
-      <window_info active="true" anchor="bottom" id="Run" order="13" sideWeight="0.49319214" visible="true" weight="0.4893617" />
-      <window_info anchor="bottom" id="Debug" order="14" sideWeight="0.48940998" weight="0.43371522" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.494705" weight="0.8639344" />
+      <window_info anchor="bottom" id="Problems" order="12" sideWeight="0.49848714" weight="0.3229508" />
+      <window_info anchor="bottom" id="Run" order="13" sideWeight="0.49319214" weight="0.44918033" />
+      <window_info anchor="bottom" id="Debug" order="14" sideWeight="0.4871407" weight="0.23278688" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" show_stripe_button="false" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24960254" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="RestServices" order="5" weight="0.34493193" />
-      <window_info anchor="right" id="Maven Projects" order="6" visible="true" weight="0.3850227" />
+      <window_info anchor="right" id="Maven Projects" order="6" weight="0.3850227" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" x="0" y="0" width="279" height="508" id="Documentation" order="9" side_tool="true" weight="0.3298887" />
+      <window_info anchor="right" x="0" y="0" width="279" height="508" id="Documentation" order="8" side_tool="true" weight="0.3298887" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32980332" />
       <window_info anchor="right" id="Database" order="11" weight="0.32980332" />
       <window_info anchor="right" id="Bean Validation" order="12" weight="0.3290469" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.24695653" visible="true" weight="0.27760968" />
-      <window_info id="Designer" order="1" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="UI Designer" order="3" />
-      <window_info id="Favorites" order="4" show_stripe_button="false" side_tool="true" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Web" order="6" side_tool="true" />
-      <window_info id="JavaEE:App" order="7" show_stripe_button="false" sideWeight="0.5008696" side_tool="true" weight="0.2535771" />
-      <window_info id="Structure" order="8" sideWeight="0.7530435" weight="0.2647504" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.050933786" />
-      <window_info anchor="bottom" id="Cvs" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="4" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Spring" order="5" show_stripe_button="false" weight="0.32869565" />
-      <window_info anchor="bottom" id="Terminal" order="6" show_stripe_button="false" weight="0.32869565" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.51059" side_tool="true" weight="0.82487726" />
-      <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.49919614" weight="0.16530278" />
-      <window_info anchor="bottom" id="Java Enterprise" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Problems" order="12" sideWeight="0.49924356" weight="0.3238255" />
-      <window_info anchor="bottom" id="Run" order="13" sideWeight="0.49839228" weight="0.40752864" />
-      <window_info anchor="bottom" id="Debug" order="14" sideWeight="0.48940998" weight="0.43371522" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" show_stripe_button="false" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24960254" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="RestServices" order="5" weight="0.34493193" />
-      <window_info anchor="right" id="Maven Projects" order="6" weight="0.5030257" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" x="0" y="0" width="279" height="508" id="Documentation" order="9" side_tool="true" weight="0.3298887" />
-      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32980332" />
-      <window_info anchor="right" id="Database" order="11" weight="0.32980332" />
-      <window_info anchor="right" id="Bean Validation" order="12" weight="0.3290469" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="修订:内容N多, 具体不详." />
+    <option name="LAST_COMMIT_MESSAGE" value="修订:内容N多, 具体不详." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/hpedu/interceptor/PageHelper.java</url>
-          <line>44</line>
+          <line>38</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
@@ -773,7 +1000,7 @@
           <properties />
           <option name="timeStamp" value="58" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0-sources.jar!/org/apache/shiro/subject/Subject.java</url>
           <line>625</line>
           <properties />
@@ -785,11 +1012,39 @@
           <properties />
           <option name="timeStamp" value="62" />
         </line-breakpoint>
-        <line-breakpoint type="java-line">
+        <line-breakpoint log-stack="true" type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.34/tomcat-embed-core-8.5.34.jar!/org/apache/catalina/core/StandardWrapperValve.class</url>
           <line>37</line>
           <properties />
           <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/hpedu/web/core/wxpay/service/impl/WxPayServiceImpl.java</url>
+          <line>36</line>
+          <properties />
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.9.RELEASE/spring-webmvc-5.0.9.RELEASE.jar!/org/springframework/web/servlet/handler/AbstractHandlerMethodMapping.class</url>
+          <line>383</line>
+          <properties />
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.9.RELEASE/spring-webmvc-5.0.9.RELEASE.jar!/org/springframework/web/servlet/handler/AbstractHandlerMethodMapping.class</url>
+          <line>387</line>
+          <properties />
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/static/js/videoPlayerCommon.js</url>
+          <line>263</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/static/libs/swiper.js</url>
+          <line>3232</line>
+          <option name="timeStamp" value="74" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -823,273 +1078,278 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/jwplayer/provider.flash.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/jwplayer/provider.hlsjs.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backindex-bak.jsp">
+    <entry file="jar://$MAVEN_REPOSITORY$/jiuchou/houpu/1.0/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/controller/UserController.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="101" column="40" lean-forward="true" selection-start-line="101" selection-start-column="40" selection-end-line="101" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/libs/jquery.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/libs/jwplayer.loader.swf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/libs/jquery.1.10.1.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/libs/bootstrap.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/jwplayer/provider.shaka.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="61" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/jwplayer/provider.html5.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/resources/js/preview.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/back/admin.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/back/main.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/back/style.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/back/pintuer.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/back/AdminLTE.min.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/back/all-skins.min.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/user.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/index.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/login.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/reset.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="41" column="3" selection-start-line="41" selection-start-column="3" selection-end-line="41" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/libs/swfobject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="53" lean-forward="true" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
-          <folding>
-            <element signature="n#style#0;n#object#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/libs/player.swf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/libs/swiper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="3" lean-forward="true" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/general/generalMore.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="111" column="26" lean-forward="true" selection-start-line="111" selection-start-column="26" selection-end-line="111" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/libs/jwplayer.flash.swf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="1383" column="21" selection-start-line="1383" selection-start-column="21" selection-end-line="1383" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/libs/jwplayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="2555" column="41" lean-forward="true" selection-start-line="2555" selection-start-column="41" selection-end-line="2555" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/general/generalVideoList.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="203" lean-forward="true" selection-start-line="203" selection-end-line="203" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/back/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/libs/jquery.cookie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/libs/pintuer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/upload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backGeneral/science/addScienceGeneral.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
-          <folding>
-            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/class.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/My97DatePicker/lang/zh-cn.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/My97DatePicker/skin/WdatePicker.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/My97DatePicker/skin/datePicker.gif">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/My97DatePicker/skin/whyGreen/datepicker.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/My97DatePicker/skin/whyGreen/img.gif">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/My97DatePicker/skin/whyGreen/bg.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/My97DatePicker/skin/default/datepicker.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/My97DatePicker/skin/default/img.gif">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/My97DatePicker/lang/zh-tw.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/My97DatePicker/lang/en.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/layer/skin/moon/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="9" selection-start-column="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/back/backindex.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="130" lean-forward="true" selection-start-line="130" selection-end-line="130" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/service/impl/SysUserEntityServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/service/SysUserEntityService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/util/Assert.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="47" column="9" lean-forward="true" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hpedu/web/core/shiro/ShiroController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="35" column="21" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#496#497#0" expanded="true" />
-            <element signature="e#584#585#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="52" column="1" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
+        <state relative-caret-position="160">
+          <caret line="26" column="14" lean-forward="true" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
+        <state relative-caret-position="176">
+          <caret line="20" column="8" lean-forward="true" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/houpu-0.0.1-bak.jar!/BOOT-INF/classes/com/jiuchou/houpu/controller/ExamController.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/houpu-0.0.1-bak.jar!/BOOT-INF/classes/com/jiuchou/houpu/controller/OrdersController.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jiuchou/houpu/dao/ExamDao.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/5.0.9.RELEASE/spring-tx-5.0.9.RELEASE.jar!/org/springframework/transaction/annotation/EnableTransactionManagement.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jiuchou/houpu/HoupuApplication.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/jiuchou/houpu/util/MessageUtil$1.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/jiuchou/houpu/util/MenuUtil.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/jiuchou/houpu/util/MessageUtil$1$1.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/jiuchou/houpu/util/MessageUtil.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/jiuchou/houpu/util/CoreService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/jiuchou/houpu/util/RestFulBean.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/jiuchou/houpu/controller/LoginController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/jiuchou/houpu/controller/CommentController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/jiuchou/houpu/controller/VideoPdfController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/jiuchou/houpu/controller/GeneralvideoController.java" />
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/controller/LoginController.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/controller/OrdersController.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/BaseMessage.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/CommonUtil.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="95" column="16" lean-forward="true" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/EnumEventType.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/EnumMessageType.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/CoreService.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/MenuUtil.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/thoughtworks/xstream/xstream/1.4.3/xstream-1.4.3.jar!/com/thoughtworks/xstream/io/xml/XppDriver.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="24" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/MessageUtil.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="116" column="23" lean-forward="true" selection-start-line="116" selection-start-column="23" selection-end-line="116" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/thoughtworks/xstream/xstream/1.4.3/xstream-1.4.3.jar!/com/thoughtworks/xstream/io/xml/AbstractXppDriver.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="53" column="37" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Program Files/JDK64/JDK8/jdk1.8/jre/lib/rt.jar!/javax/net/ssl/X509TrustManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="10" column="44" lean-forward="true" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/RestFulBean.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/RestFulUtil.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/Result.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/SignUtil.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="46" column="46" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/SNSUserInfo.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/WeixinOauth2Token.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/AccessToken.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/WeiXinUtil.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/util/MyX509TrustManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/mybatis/mapper/UserDaoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="20" column="73" lean-forward="true" selection-start-line="20" selection-start-column="73" selection-end-line="20" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/service/impl/UserServiceImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="48" column="55" lean-forward="true" selection-start-line="48" selection-start-column="55" selection-end-line="48" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/controller/UserController.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="54" column="5" lean-forward="true" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/mybatis/mapper/ExamDaoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="21" column="43" lean-forward="true" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/service/impl/ExamServiceImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="57" column="5" lean-forward="true" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/houpu-1.0.jar!/BOOT-INF/classes/com/jiuchou/houpu/controller/ExamController.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="68" column="35" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hpedu/config/property/Pool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SpringBootEdu.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="719">
+          <caret line="131" column="20" lean-forward="true" selection-start-line="131" selection-start-column="20" selection-end-line="131" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/attribute.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/redis.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-384" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/pay.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="34" lean-forward="true" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1152,7 +1412,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

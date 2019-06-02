@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
  * 小测验
  */
 @TableName("exam")
-public class Exam {
+public class Exam implements Serializable {
     @TableField(exist = false)
     List<ExamImg> imgList;//测验题图片和答案
     @TableId

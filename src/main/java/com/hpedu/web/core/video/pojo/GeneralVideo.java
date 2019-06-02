@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.hpedu.util.codeUtil.DateUtil;
 
-import java.text.SimpleDateFormat;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * 常规课
  * */
 @TableName("generalvideo")
-public class GeneralVideo {
+public class GeneralVideo implements Serializable {
 	@TableId
 	private String gid;
 	private String gname;

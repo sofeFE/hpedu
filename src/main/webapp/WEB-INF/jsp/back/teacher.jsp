@@ -33,7 +33,7 @@
             <th width="31%">操作</th>
         </tr>
         <c:forEach items="${teacher}" var="t" varStatus="tt">
-            <tr id="trss_${t.tid}">
+            <tr id="trss_${t.tid}" >
                 <td>${tt.index+1}</td>
                 <td><img src="${t.timgUrl}" alt="" width="160" height="130"/></td>
                 <td id="tname_${t.tid}">${t.tname}</td>
@@ -68,7 +68,22 @@
         });
         $('.border-red').on('click', function () {
             var id = $(this).siblings(".tech").val();
-            window.location.href = "${pageContext.request.contextPath}/back-authc/deleteTeacher?id=" + id;
+            <%--window.location.href = "${pageContext.request.contextPath}/back-authc/deleteTeacher?id=" + id;--%>
+            $.ajax({
+                url:'back-authc/deleteTeacher',
+                type:'post',
+                dataType:'json',
+                data:{id:id},
+                success:function(result){
+                    if(result.code == 0) {
+                        $("#trss_"+id).attr("hidden","hidden");
+                    }else{
+                       console.log("删除教师失败");
+                    }
+                    
+                }
+            });
+            
         });
         $('.border-yellow').on('click', function () {
             window.location.href = "${pageContext.request.contextPath}/back/addTeacher.html";
@@ -117,4 +132,4 @@
     }
 </script>
 </body>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

@@ -1,6 +1,5 @@
 package com.hpedu.util.codeUtil;
 
-import com.hpedu.web.core.order.pojo.Order;
 import com.hpedu.web.core.video.pojo.ContestVideo;
 import com.hpedu.web.core.video.pojo.GeneralVideo;
 import org.apache.commons.lang3.StringUtils;
@@ -144,18 +143,14 @@ public class BaseUtil {
         long totalTime = 0;// 单位毫秒
         if (start != null && end != null) {
             Date curr = new Date();
-            Long currTime = curr.getTime();
-            Long sTime = start.getTime();
             Long eTime = end.getTime();
-            if (currTime >= sTime && currTime <= eTime) {// 活动进行中
-                totalTime = eTime - currTime;
+            if (curr.before(start)) {// 活动还没有开始
+                totalTime = start.getTime() - curr.getTime();
+                type = 0;
+            } else if (start.before(curr) && curr.before(end)) {// 活动进行中
+                totalTime = end.getTime() - curr.getTime();
                 type = 1;
-            } else if (currTime < sTime) {// 活动还没有开始
-                totalTime = sTime - currTime;
-                type = 0;
-            } else {
-                type = 0;
-            }
+            }  
 
         }
         String showTimerText = getStringTime(totalTime);
@@ -294,13 +289,7 @@ public class BaseUtil {
             // Create Hex String
             StringBuffer hexString = new StringBuffer();
             // 字节数组转换为 十六进制 数
-            for (int i = 0; i < messageDigest.length; i++) {
-                String shaHex = Integer.toHexString(messageDigest[i] & 0xFF);
-                if (shaHex.length() < 2) {
-                    hexString.append(0);
-                }
-                hexString.append(shaHex);
-            }
+            translateFromArrToHex(messageDigest, hexString);
             return hexString.toString();
 
         } catch (NoSuchAlgorithmException e) {
@@ -317,19 +306,23 @@ public class BaseUtil {
             // Create Hex String
             StringBuffer hexString = new StringBuffer();
             // 字节数组转换为 十六进制 数
-            for (int i = 0; i < messageDigest.length; i++) {
-                String shaHex = Integer.toHexString(messageDigest[i] & 0xFF);
-                if (shaHex.length() < 2) {
-                    hexString.append(0);
-                }
-                hexString.append(shaHex);
-            }
+            translateFromArrToHex(messageDigest, hexString);
             return hexString.toString();
 
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         return "";
+    }
+
+    private static void translateFromArrToHex(byte[] messageDigest, StringBuffer hexString) {
+        for (int i = 0; i < messageDigest.length; i++) {
+            String shaHex = Integer.toHexString(messageDigest[i] & 0xFF);
+            if (shaHex.length() < 2) {
+                hexString.append(0);
+            }
+            hexString.append(shaHex);
+        }
     }
 
     // 获取上下文

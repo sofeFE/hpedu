@@ -17,17 +17,17 @@
 <script src="libs/pintuer.js"></script>
 <script src="js/upload.js"></script>
 <!-- 富文本编辑器 -->
-<link rel="stylesheet" href="css/kindeditor/default.css" />
-<link rel="stylesheet" href="css/kindeditor/prettify.css" />
-<script charset="utf-8" src="js/plugins/kindeditor/kindeditor.js"></script>
-<script charset="utf-8" src="js/plugins/kindeditor/zh_CN.js"></script>
-<script charset="utf-8" src="js/plugins/kindeditor/prettify.js"></script>
+<link rel="stylesheet" href="plugins/kindeditor/default.css" />
+<link rel="stylesheet" href="plugins/kindeditor/prettify.css" />
+<script charset="utf-8" src="plugins/kindeditor/kindeditor-all.js"></script>
+<script charset="utf-8" src="plugins/kindeditor/plugins/code/zh_CN.js"></script>
+<script charset="utf-8" src="plugins/kindeditor/plugins/code/prettify.js"></script>
 
 <script>
 var editor1,editor2,editor3;
 		KindEditor.ready(function(K) {
 			/*  editor1 = K.create('textarea[name="heartContent"]', {
-				cssPath : '${pageContext.request.contextPath}/jsp/css/kindeditor/prettify.css',
+				cssPath : '${pageContext.request.contextPath}/plugins/kindeditor/prettify.css',
 				afterCreate : function() {
 					var self = this;
 					K.ctrl(document, 13, function() {
@@ -46,7 +46,7 @@ var editor1,editor2,editor3;
 				
 			}); */
 			 editor2 = K.create('textarea[name="info"]', {
-					cssPath : '${pageContext.request.contextPath}/jsp/css/kindeditor/prettify.css',
+					cssPath : '${pageContext.request.contextPath}/plugins/kindeditor/prettify.css',
 					pasteType:1,
 					afterCreate : function() {
 						var self = this;
@@ -66,7 +66,7 @@ var editor1,editor2,editor3;
 					
 				});
 			 /* editor3 = K.create('textarea[name="pintro"]', {
-					cssPath : '${pageContext.request.contextPath}/jsp/css/kindeditor/prettify.css',
+					cssPath : '${pageContext.request.contextPath}/plugins/kindeditor/prettify.css',
 					pasteType:1,
 					afterCreate : function() {
 						var self = this;
@@ -255,4 +255,4 @@ $("#formID").onsubmit(function(){
 
 
 </script>
-</body></html>
+</body><script type="text/javascript" src="js/class.js?v=2"></script></html>

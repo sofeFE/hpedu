@@ -3,9 +3,11 @@ package com.hpedu.web.core.user.pojo;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.io.Serializable;
+
 //学生章节错误测验题记录表
 @TableName("errorexam")
-public class ErrorExam {
+public class ErrorExam  implements Serializable {
 	@TableId
 private String	eeid ;
 private String	  usid;// 关联分数记录id[userScore]

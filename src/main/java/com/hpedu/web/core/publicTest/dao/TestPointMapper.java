@@ -1,11 +1,11 @@
 package com.hpedu.web.core.publicTest.dao;
 
-import java.util.List;
-import java.util.Map;
-
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hpedu.web.core.publicTest.pojo.TestPoint;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface TestPointMapper extends BaseMapper<TestPoint> {

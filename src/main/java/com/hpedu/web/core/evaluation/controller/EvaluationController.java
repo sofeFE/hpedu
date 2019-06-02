@@ -1,21 +1,5 @@
 package com.hpedu.web.core.evaluation.controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.slf4j.Logger;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.hpedu.util.codeUtil.BaseUtil;
 import com.hpedu.util.codeUtil.PrintHelper;
 import com.hpedu.util.codeUtil.StringUtil;
@@ -24,6 +8,20 @@ import com.hpedu.util.mybatis.Page;
 import com.hpedu.web.core.evaluation.pojo.Evaluation;
 import com.hpedu.web.core.evaluation.service.EvaluationService;
 import com.hpedu.web.core.user.pojo.User;
+import org.slf4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 @Controller
 @RequestMapping("/")
 public class EvaluationController {
@@ -92,18 +90,18 @@ public class EvaluationController {
 		String evaluation=req.getParameter("evaluation");
 		String vid=req.getParameter("vid");
 		String vclassify=req.getParameter("vclassify");
-		Evaluation e=new Evaluation();
-		e.setEid(UUIDUtil.getUUID());
-		e.setEvaluation(evaluation);
-		e.setUname(uname);
-		e.setVclassify(vclassify);
-		e.setVid(vid);
-		e.setEcreatTime(new Date());
+		Evaluation evaluation1=new Evaluation();
+		evaluation1.setEid(UUIDUtil.getUUID());
+		evaluation1.setEvaluation(evaluation);
+		evaluation1.setUname(uname);
+		evaluation1.setVclassify(vclassify);
+		evaluation1.setVid(vid);
+		evaluation1.setEcreatTime(new Date());
 		String res="ok";
 		try{
-			int ii=evaluationService.insertEvaluation(e);
+			int ii=evaluationService.insertEvaluation(evaluation1);
 			if(ii>0){
-				res+="_"+e.getEcreatTime();
+				res+="_"+evaluation1.getEcreatTime();
 			}else{
 				res="评论新增失败，请联系管理员！";
 			}

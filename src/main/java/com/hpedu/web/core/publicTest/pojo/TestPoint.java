@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 测试的知识点
  * @author Administrator
@@ -11,7 +13,7 @@ import lombok.Data;
  */
 @TableName("testpoint")
 @Data
-public class TestPoint {
+public class TestPoint  implements Serializable {
 	@TableId
 	private String id;
 	private String grade;// 年级

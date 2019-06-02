@@ -2,6 +2,8 @@ package com.hpedu.web.core.back.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.hpedu.util.CloudSMSUtil;
+import com.hpedu.util.ResultBean;
 import com.hpedu.util.codeUtil.*;
 import com.hpedu.util.mybatis.Page;
 import com.hpedu.web.core.exam.pojo.Exam;
@@ -13,7 +15,6 @@ import com.hpedu.web.core.order.service.OrderService;
 import com.hpedu.web.core.shiro.pojo.SysUserEntity;
 import com.hpedu.web.core.teacher.pojo.Teacher;
 import com.hpedu.web.core.teacher.service.TeacherService;
-import com.hpedu.util.CloudSMSUtil;
 import com.hpedu.web.core.user.pojo.*;
 import com.hpedu.web.core.user.service.UserService;
 import com.hpedu.web.core.video.pojo.ContestVideo;
@@ -27,7 +28,10 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -66,8 +70,6 @@ public class BackController {
     private Logger log = BaseUtil.getLogger(BackController.class);
 
 
-    
-
     @RequestMapping("/back/info.html")
     public void toInfo(HttpServletRequest req, HttpSession session, Model model) {
         SysUserEntity user = (SysUserEntity) session.getAttribute("backuser");
@@ -77,7 +79,6 @@ public class BackController {
 
     }
 
-    
 
     /**
      * 常规课程管理
@@ -464,8 +465,8 @@ public class BackController {
             // 一次遍历所有文件
 //                MultipartFile file = multiRequest.getFile(iter.next().toString());
             for (int i = 0; i < fileList.length; i++) {
-                MultipartFile file = fileList[i] ;
-                if (file != null ) {
+                MultipartFile file = fileList[i];
+                if (file != null) {
                     String suffix = file.getOriginalFilename()
                             .substring(file.getOriginalFilename().lastIndexOf(".") + 1);
                     String name = UUIDUtil.getUUID() + "." + suffix;
@@ -480,9 +481,9 @@ public class BackController {
                         throw new RuntimeException(e);
                     }
                     if (!gfile.exists()) {
-                       throw new RuntimeException("文件未找到,上传失败");
+                        throw new RuntimeException("文件未找到,上传失败");
                     }
-                    
+
                     //添加新视频
                     if (isVideo) {
                         VideoChild vc = new VideoChild();
@@ -3308,61 +3309,63 @@ public class BackController {
      * @return
      */
     private Map<String, Object> getUnitTests(List<Map> list) {
-        Map<String, Object> mapRes = new HashMap<String, Object>();
-        Map<String, List<UnitTest_Choose>> ucData = new HashMap<String, List<UnitTest_Choose>>();//题目 对应的 选项集合 映射
+        Map<String, Object> result = new HashMap<String, Object>();
+        Map<String, List<UnitTest_Choose>> chooseMap = new HashMap<String, List<UnitTest_Choose>>();//题目 对应的 选项集合 映射
         List<UnitTest> utlist = new ArrayList<UnitTest>();//试题集合
 
         Map<String, String> uniqueMap = new HashMap<String, String>();
 
         for (Map map : list) {//编历得到每一个试题
 
-            String utid = String.valueOf(map.get("utid"));
-            List<UnitTest_Choose> clist = new ArrayList<UnitTest_Choose>();//选项集合
+            if (map != null) {
+                String utid = String.valueOf(map.get("utid"));
+                List<UnitTest_Choose> chooseList = new ArrayList<UnitTest_Choose>();//选项集合
 
-            if (!uniqueMap.containsKey(utid)) {//包含这个utid,就跳过添加步骤.
-                UnitTest u = new UnitTest();//试题对象
-                //包装对象
-                u.setUtid(utid);
-                u.setAnswer(String.valueOf(map.get("answer")));
-                u.setScore(Integer.parseInt(String.valueOf(map.get("score"))));
-                u.setUcontent(String.valueOf(map.get("ucontent")));
-                u.setTestType(map.get("testType") == null ? 0 : Integer.parseInt(String.valueOf(map.get("testType"))));
-                u.setIsMoreChoose(map.get("isMoreChoose") == null ? null
-                        : Integer.parseInt(String.valueOf(map.get("isMoreChoose"))));
-                if (map.get("utimg") != null) {//题目图片
-                    u.setUtimg(String.valueOf(map.get("utimg")));
-                }
-                if (map.get("ponit") != null) {//考点
-                    u.setPonit(String.valueOf(map.get("ponit")));
-                }
-                if (map.get("detail") != null) {//详解
-                    u.setDetail(String.valueOf(map.get("detail")));
-                }
-                utlist.add(u);
+                if (!uniqueMap.containsKey(utid)) {//包含这个utid,就跳过添加步骤.
+                    UnitTest unitTest = new UnitTest();//试题对象
+                    //包装对象
+                    unitTest.setUtid(utid);
+                    unitTest.setAnswer(String.valueOf(map.get("answer")));
+                    unitTest.setScore(Integer.parseInt(String.valueOf(map.get("score"))));
+                    unitTest.setUcontent(String.valueOf(map.get("ucontent")));
+                    unitTest.setTestType(map.get("testType") == null ? 0 : Integer.parseInt(String.valueOf(map.get("testType"))));
+                    unitTest.setIsMoreChoose(map.get("isMoreChoose") == null ? null
+                            : Integer.parseInt(String.valueOf(map.get("isMoreChoose"))));
+                    if (map.get("utimg") != null) {//题目图片
+                        unitTest.setUtimg(String.valueOf(map.get("utimg")));
+                    }
+                    if (map.get("ponit") != null) {//考点
+                        unitTest.setPonit(String.valueOf(map.get("ponit")));
+                    }
+                    if (map.get("detail") != null) {//详解
+                        unitTest.setDetail(String.valueOf(map.get("detail")));
+                    }
+                    utlist.add(unitTest);
 
-                //添加到集合中.防止重复添加.
-                uniqueMap.put(utid, null);
-            }
-
-            if (map.get("csid") != null) {
-                UnitTest_Choose uc = new UnitTest_Choose();
-                uc.setCsid(String.valueOf(map.get("csid")));
-                uc.setTcontent(map.get("tcontent") == null ? "" : String.valueOf(map.get("tcontent")));
-                uc.setTanswer(map.get("tanswer") == null ? "" : String.valueOf(map.get("tanswer")));
-                uc.setUtid(utid);
-
-                if (ucData.get(utid) != null) {
-                    List<UnitTest_Choose> list2 = ucData.get(utid);
-                    clist.addAll(list2);
+                    //添加到集合中.防止重复添加.
+                    uniqueMap.put(utid, null);
                 }
-                clist.add(uc);
-                ucData.put(utid, clist);
+
+                if (map.get("csid") != null) {
+                    UnitTest_Choose uc = new UnitTest_Choose();
+                    uc.setCsid(String.valueOf(map.get("csid")));
+                    uc.setTcontent(map.get("tcontent") == null ? "" : String.valueOf(map.get("tcontent")));
+                    uc.setTanswer(map.get("tanswer") == null ? "" : String.valueOf(map.get("tanswer")));
+                    uc.setUtid(utid);
+
+                    if (chooseMap.get(utid) != null) {
+                        List<UnitTest_Choose> list2 = chooseMap.get(utid);
+                        chooseList.addAll(list2);
+                    }
+                    chooseList.add(uc);
+                    chooseMap.put(utid, chooseList);
+                }
             }
 
         }
-        mapRes.put("ucData", ucData);
-        mapRes.put("utlist", utlist);
-        return mapRes;
+        result.put("ucData", chooseMap);
+        result.put("utlist", utlist);
+        return result;
     }
 
     // 修改测验题
@@ -3505,31 +3508,39 @@ public class BackController {
             map.put("vid", vid);
             map.put("utype", utype);
             map.put("rand", "true");// 是否随机
-            List<Map> list = userService.selectVidoeTestAll(map);
+            Map<String, Object> resMap = getUnitTests(userService.selectVidoeTestAll(map));
+            List<UnitTest> unitTestList = (List<UnitTest>) resMap.get("utlist");//单元测试题
 
-            Map<String, Object> resMap = getUnitTests(list);
-            List<UnitTest> utlist = (List<UnitTest>) resMap.get("utlist");
+            if (unitTestList.size() > 0) {
+                /*选择题*/
+                Map<String, List<UnitTest_Choose>> chooseMap = (Map<String, List<UnitTest_Choose>>) resMap.get("ucData");
 
-            if (utlist.size() > 0) {
-                Map<String, List<UnitTest_Choose>> ucData = (Map<String, List<UnitTest_Choose>>) resMap.get("ucData");
                 // 拼接前端测试题html
-                StringBuffer sb_html = new StringBuffer();
+                StringBuilder unitTestPage = new StringBuilder();
                 if (isRedo == 0) {// 初始化测验题
+                    /*获得某种试题 总体 数量,分值,*/
                     List<Map> mapList = userService.getTotalUnitTests(vid, Integer.parseInt(utype));
                     if (mapList.size() > 0) {
-                        Map mmap = mapList.get(0);
-                        String nums = String.valueOf(mmap.get("nums"));
-                        String scores = String.valueOf(mmap.get("scores"));
+                        Map mmap = mapList.get(0);/*选择题*/
+                        String nums_show = String.valueOf(mmap.get("nums"));
+                        int choose_num = Integer.parseInt(StringUtils.isNotBlank(nums_show) ? nums_show : "0");
+                        String scores_show = String.valueOf(mmap.get("scores"));
+                        int choose_score = Integer.parseInt(StringUtils.isNotBlank(scores_show) ? scores_show : "0");
+
+                        int shortAnswer_num = 0;
+                        int shortAnswer_score = 0;
 
                         if (mapList.size() > 1) {
-                            Map mmap2 = mapList.get(1);
+                            Map mmap2 = mapList.get(1);/*简答题*/
                             String nums2 = String.valueOf(mmap2.get("nums"));
+                            shortAnswer_num = Integer.parseInt(StringUtils.isNotBlank(nums2) ? nums2 : "0");
                             String scores2 = String.valueOf(mmap2.get("scores"));
-                            nums = (Integer.parseInt(nums) + Integer.parseInt(nums2)) + "(选择题" + nums + "道，简答题" + nums2
-                                    + "道)";
-                            scores = (Integer.parseInt(scores) + Integer.parseInt(scores2)) + "(选择题" + scores + "分，简答题"
-                                    + scores2 + "分)";
+                            shortAnswer_score = Integer.parseInt(StringUtils.isNotBlank(scores2) ? scores2 : "0");
+
+                            nums_show = (choose_score + shortAnswer_num) + "(选择题" + choose_num + "道，简答题" + shortAnswer_num + "道)";
+                            scores_show = (choose_score + shortAnswer_score) + "(选择题" + choose_score + "分，简答题" + shortAnswer_score + "分)";
                         }
+
                         int isHasJDT = 0;// 只有选择题
                         if (mapList.size() == 1 && String.valueOf(mmap.get("testType")).equals("1")) {// 只有简答题
                             isHasJDT = 1;
@@ -3537,52 +3548,53 @@ public class BackController {
                             isHasJDT = 2;
                         }
 
-                        sb_html.append(
+                        unitTestPage.append(
                                 "<div style=\"width:100%;background:#BDBDBD;font-weight:bold;padding:10px;text-align:left;\">"
                                         + "<ul>"
-                                        + "<li>名称：" + vname + "&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;题目数：" + nums + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总分：" + scores + "</li>"
+                                        + "<li>测试项目：" + vname + ",试题：" + nums_show + ",分值：" + scores_show + "</li>"
                                         + "<li>&nbsp;</li>"
                                         + "<li>说明："
                                         + "<input type=\"hidden\" id=\"isHasJDT\" value=\"" + isHasJDT + "\">"
-                                        + "<input type=\"hidden\" id=\"nums_hide\" value=\"" + nums + "\">"
-                                        + "<input type=\"hidden\" id=\"scores_hide\" value=\"" + scores + "\">"
+                                        + "<input type=\"hidden\" id=\"nums_hide\" value=\"" + (choose_num + shortAnswer_num) + "\">"
+                                        + "<input type=\"hidden\" id=\"scores_hide\" value=\"" + (choose_score + shortAnswer_score) + "\">"
                                         + "</li>"
                                         + "<li style=\"color:#CE0221;\">提示：选择题选项顺序为随机排列，若要核对答案，请以选项内容为准</li>"
                                         + "</ul>"
                                         + "</div>");
                     }
-                    sb_html.append("<div id=\"unit_testAll\">");
+                    unitTestPage.append("<div id=\"unit_testAll\">");
                 }
 
-                int size = utlist.size();//本章试题数
+                int size = unitTestList.size();//本章试题数
                 for (int i = 0; i < size; i++) {
-                    UnitTest ut = utlist.get(i);
-                    List<UnitTest_Choose> ulist = ucData.get(ut.getUtid());
+                    UnitTest ut = unitTestList.get(i);
+                    List<UnitTest_Choose> ulist = chooseMap.get(ut.getUtid());
                     if (i == 2) {// 第3题开始 -- 隐藏试题
-                        sb_html.append("<div style=\"display:" + (isRedo == 0 ? "none" : "block") + ";text-align:left;\" id=\"more_div\">");
+                        unitTestPage.append("<div style=\"display:" + (isRedo == 0 ? "none" : "block") + ";text-align:left;\" id=\"more_div\">");
                     }
-                    sb_html = getHtml(sb_html, ut, ulist, i + 1);
+                    /*填装试题内容*/
+                    unitTestPage = pushUnitTest(unitTestPage, ut, ulist, i + 1);
 
                     if (i == size - 1) {// 最后一道题的打分按钮
-                        sb_html.append(" <div style=\"width:100%;padding:10px;text-align:left;\">"
+                        unitTestPage.append(" <div style=\"width:100%;padding:10px;text-align:left;\">"
                                 + "<input type=\"button\" class=\"btn btn-primary\"  value=\"提交打分\"  id=\"submitAnswer_btn\" onclick=\"submitAnswer()\">"
                                 + " <input type=\"button\" class=\"btn btn-primary\" value=\"重新做题\" onclick=\"redo()\">"
                                 + " <h4 style=\"display:none;\" id=\"result_tests\">答题结果：</h4>"
                                 + "</div>");
                         if (size > 2) {
-                            sb_html.append("</div>");
+                            unitTestPage.append("</div>");
                         }
                     }
 
                 }
                 if (size > 2) {
-                    sb_html.append("<input type=\"button\" class=\"btn btn-primary\" value=\""
+                    unitTestPage.append("<input type=\"button\" class=\"btn btn-primary\" value=\""
                             + (isRedo == 0 ? "展开全部" : "隐藏") + "\" onclick=\"slideDown_div2(this)\">");
                 }
                 if (isRedo == 0) {
-                    sb_html.append("</div>");
+                    unitTestPage.append("</div>");
                 }
-                data = sb_html.toString();
+                data = unitTestPage.toString();
             }
 
         } catch (Exception e) {
@@ -3595,120 +3607,91 @@ public class BackController {
         PrintHelper.sendJsonObject(response, res);
     }
 
-    private StringBuffer getHtml(StringBuffer sb_html, UnitTest ut, List<UnitTest_Choose> ulist, int i) {
+    private StringBuilder pushUnitTest(StringBuilder unitTestPage, UnitTest ut, List<UnitTest_Choose> unitTestChooseList, int unitTestNum) {
         String answer = ut.getAnswer();
-        StringBuffer show_answer = new StringBuffer();
-        StringBuffer answer_ids = new StringBuffer();
-        StringBuffer html_sb = new StringBuffer();
+        StringBuilder show_answer = new StringBuilder();
+        StringBuilder answer_ids = new StringBuilder();
+        StringBuilder thisUnitTest = new StringBuilder();
+
+        /*选择题渲染*/
         if (ut.getTestType() == 0) {//测验题目类型：0/null：选择题；1：简答题
             String[] answer_a = new String[]{"A", "B", "C", "D", "E", "F"};
-            for (int j = 0; j < ulist.size(); j++) {
-                UnitTest_Choose u = ulist.get(j);
-                if (answer.indexOf(u.getTanswer()) > -1) {
+            for (int j = 0; j < unitTestChooseList.size(); j++) {
+                UnitTest_Choose thisChoose = unitTestChooseList.get(j);
+
+                if (answer.indexOf(thisChoose.getTanswer()) > -1) {//选项为正确选项之一
                     if (answer_ids.length() > 0) {
                         answer_ids.append(",");
                         show_answer.append(",");
                     }
-                    answer_ids.append(u.getCsid());
+                    answer_ids.append(thisChoose.getCsid());
                     show_answer.append(answer_a[j]);
                 }
-                html_sb.append("<input type=\"checkbox\" value=\"" + u.getCsid() + "\" onclick=\"checkBox(this,'hide_" + ut.getUtid() + "')\"> "
-                        + answer_a[j] + ". " + u.getTcontent() + "<br>");
+                /*填装选项*/
+                thisUnitTest.append("<input type=\"checkbox\" value=\"" + thisChoose.getCsid() + "\" onclick=\"checkBox(this,'hide_" + ut.getUtid() + "')\"> "
+                        + answer_a[j] + ". " + thisChoose.getTcontent() + "<br>");
             }
-
-            html_sb.append("<input type=\"hidden\" name=\"right_answer\" value=\"" + answer_ids.toString() + "\"> "
+            /*隐藏答案, 自动对比 打分*/
+            thisUnitTest.append("   <input type=\"hidden\" name=\"right_answer\" value=\"" + answer_ids.toString() + "\"> "
                     + "<input type=\"hidden\" name=\"user_answer\" id=\"hide_" + ut.getUtid() + "\">"
                     + "<input type=\"hidden\" name=\"score\" value=\"" + ut.getScore() + "\">"
                     + "</div>");
         }
-        //简答题 格式
+
+        //简答题渲染
         else {
-            html_sb.append("<textarea class=\"input\" name=\"JDT_answer\" id=\"JDT_" + ut.getUtid()
-                    + "\" style=\"width:600px;height:120px;\" placeholder=\"答题区\"></textarea></div>");
+            thisUnitTest.append("<textarea class=\"input\" name=\"JDT_answer\" id=\"JDT_" + ut.getUtid()
+                    + "\" style=\"width:600px;height:120px;\" placeholder=\"答题区\">" +
+                    "</textarea>" +
+                    "</div>");
         }
 
+
         String testType = "简答题";
-        String answerHtml = "";
+        StringBuilder rightAnswer = new StringBuilder("");
         if (ut.getTestType() == 0) {
             testType = ut.getIsMoreChoose() == 0 ? "单选题" : "多选题";
-            answerHtml = "<span id=\"sp_" + ut.getUtid() + "\" style=\"font-size:16px;color:#CE0221;font-weight:bold;display:none;\">✘" + "&nbsp;&nbsp;"
-                    + "<span style=\"font-size:16px;font-weight:bold;\">正确答案：(" + (show_answer.length() == 0 ? "无" : show_answer.toString()) + ")</span></span>";
+            /*选择题 答案 (隐藏)*/
+            rightAnswer.append("<span id=\"sp_" + ut.getUtid() + "\" style=\"font-size:16px;color:#CE0221;font-weight:bold;display:none;\">✘"
+                    + "<span style=\"font-size:16px;font-weight:bold;\">正确答案：(" + (show_answer.length() == 0 ? "无" : show_answer.toString()) + ")</span>" +
+                    "</span>");
         }
-        html_sb.insert(0,
+        /*插入 题目详情:*/
+        thisUnitTest.insert(0,
                 "<div style=\"width:100%;background:#EEEEEE;word-break:break-all;margin-top:10px;padding:5px;text-align:left;\">"
-                        + "<font style=\"font-weight:bold;\"> " + i + ".【" + testType + "】（" + ut.getScore() + "分）：</font>"
-                        + "<h4>&nbsp;&nbsp;&nbsp;" + ut.getUcontent() + "&nbsp;&nbsp;" + answerHtml + "</h4>"
+                        + "<font style=\"font-weight:bold;\"> " + unitTestNum + ".【" + testType + "】（" + ut.getScore() + "分）：</font>"
+                        + "<h4>" + ut.getUcontent() + "," + rightAnswer.toString() + "</h4>"
                         + "</div>"
-                        + (ut.getUtimg() != null && ut.getUtimg().length() > 0 ?
-                        "<div style=\"width:100%;margin-top:5px;\"><img src=\"" + ut.getUtimg() + "\"></div>" : "")
+                        + (StringUtils.isBlank(ut.getUtimg()) ? "" :
+                        "<div style=\"width:100%;margin-top:5px;\"><img src=\"" + ut.getUtimg() + "\"></div>")
+
                         + "<div style=\"width:100%;margin-top:5px;display:none;\" id=\"hideDiv_" + ut.getUtid() + "\">"
-                        + (ut.getPonit() == null || ut.getPonit().length() == 0 ? ""
+                        + (StringUtils.isBlank(ut.getPonit()) ? ""
                         : "<p style=\"width:100%;word-break:break-all;font-weight:bold;font-size:16px;\">【考点】：" + ut.getPonit() + "</p>")
-                        + (ut.getDetail() == null || ut.getDetail().length() == 0 ? ""
+                        + (StringUtils.isBlank(ut.getDetail()) ? ""
                         : "<p style=\"font-size:16px;width:100%;word-break:break-all;\"><b>【详解】：</b>" + ut.getDetail() + "</p>")
                         + "</div>"
                         + "<div style=\"width:100%;word-break:break-all;margin-top:5px;\">");
 
-        sb_html.append(html_sb);
-        return sb_html;
+        unitTestPage.append(thisUnitTest);
+        return unitTestPage;
     }
 
-    // 新增学生成绩
+
+    //记录学生答题成绩
     @RequestMapping("/back/addUserScore")
-    public void addUserScore(HttpServletRequest req, HttpServletResponse response, HttpSession session, UserScore uc) {
+    @ResponseBody
+    public ResultBean addUserScore(HttpServletRequest req, HttpSession session, UserScore stuScore) {
+        List<Map> JDTAnswerList = JSONArray.parseArray(req.getParameter("JDT_answer"), Map.class);
         User user = (User) session.getAttribute("user");
-        if (user != null) {
-            try {
-                uc.setUsid(UUIDUtil.getUUID());
-                uc.setUid(user.getUid());
-                if (uc.getIsHasJDT() == null || uc.getIsHasJDT() == 0) {
-                    uc.setGotScore(uc.getScore());
-                }
-                userService.insertUserScore(uc);
-                if (uc.getIsHasJDT() != 0) {
-                    try {
-                        // 批量新增学生简答题答案
-                        List<Map> JDT_answer = JSONArray.parseArray(req.getParameter("JDT_answer"), Map.class);
-                        List<ErrorExam> eelist = new ArrayList<ErrorExam>();
-                        if (JDT_answer.size() > 0) {
-                            for (Map<String, String> m : JDT_answer) {
-                                String jdt_answer = m.get("jdt_answer");
-                                String jdt_id = m.get("jdt_id");
-                                ErrorExam ee = new ErrorExam();
-                                ee.setEeid(UUIDUtil.getUUID());
-                                ee.setSort(new Date().getTime());
-                                ee.setStuAnswer(jdt_answer);
-                                ee.setUsid(uc.getUsid());
-                                ee.setUtid(jdt_id);
-                                eelist.add(ee);
-                            }
-
-                            userService.insertErrorExam(eelist);
-                        }
-
-                    } catch (Exception e) {
-                        log.error("批量新增学生简答题答案【usid：" + uc.getUsid() + "】异常：", e);
-                    }
-                }
-                if (uc.getUtype() == 4) {// 科目小测验--修改小测验学习人数
-                    try {
-                        examService.updateLearnCount(uc.getVid());
-                    } catch (Exception e) {
-                        log.error("修改小测验学习人数异常：", e);
-                    }
-
-                }
-            } catch (Exception e) {
-                log.error("新增学生成绩异常：", e);
-            }
-        }
+        return userService.addUserScore(user, stuScore, JDTAnswerList);
     }
 
     /**
      * 教师批改试卷页面跳转
      */
-    @RequestMapping("/back/correctIndex.html")
-    public void correctIndex(HttpServletRequest req, HttpSession session, Model mode) {
+    @RequestMapping("/back/correctManger.html")
+    public void correctManger(HttpServletRequest req, HttpSession session, Model mode) {
 
         String tname = (String) session.getAttribute("tname");
         int pageNo = 0;
@@ -3731,8 +3714,8 @@ public class BackController {
     /**
      * 教师批改单个试卷的简答题
      */
-    @RequestMapping("/back/goToCorrectUnitTest.html")
-    public void goToCorrectUnitTest(HttpServletRequest req, HttpSession session, Model model, String usid, String gname) {
+    @RequestMapping("/back/doCorrect.html")
+    public void doCorrect(HttpServletRequest req, HttpSession session, Model model, String usid, String gname) {
         List<Map> jdt_list = null;
         try {
             jdt_list = userService.getJDTScoresDetail(usid);
@@ -3742,8 +3725,10 @@ public class BackController {
         if (session.getAttribute("error") != null) {
             model.addAttribute("error", session.getAttribute("error"));
             session.removeAttribute("error");
+
             gname = (String) session.getAttribute("gname");
             usid = (String) session.getAttribute("usid");
+
             session.removeAttribute("gname");
             session.removeAttribute("usid");
             session.removeAttribute("tname");
@@ -3753,51 +3738,44 @@ public class BackController {
         model.addAttribute("usid", usid);
     }
 
-    // 批量修改简答题得分
+    // 简答题批改.
     @RequestMapping(value = "/back/addUnitTestScoresClass", method = RequestMethod.POST)
     public ModelAndView addUnitTestScoresClass(HttpServletRequest req, HttpSession session, String usid, String gname) {
         String res = "";
         try {
             String[] eeid = req.getParameterValues("eeid");
             int totalScore = 0;
-            try {
-                if (eeid != null && eeid.length > 0) {
-                    String[] stuGotScore = req.getParameterValues("stuGotScore");
-                    String[] coment = req.getParameterValues("coment");
-                    List<ErrorExam> elist = new ArrayList<ErrorExam>();
-                    for (int i = 0; i < eeid.length; i++) {
-                        ErrorExam ee = new ErrorExam();
-                        ee.setEeid(eeid[i]);
-                        int score = stuGotScore[i].length() == 0 ? 0 : Integer.parseInt(stuGotScore[i]);
-                        ee.setStuGotScore(score);
-                        ee.setComent(coment[i]);
-                        elist.add(ee);
-                        totalScore += score;
-                    }
-                    userService.updateErrorExam(elist);
-                }
 
-            } catch (Exception e) {
-                res = "批量修改简答题得分出错，请联系管理员！";
-                log.error("批量修改简答题得分出错：", e);
+            if (eeid != null && eeid.length > 0) {
+                String[] stuGotScore = req.getParameterValues("stuGotScore");
+                String[] coment = req.getParameterValues("coment");
+                List<ErrorExam> elist = new ArrayList<ErrorExam>();
+
+                for (int i = 0; i < eeid.length; i++) {
+                    ErrorExam ee = new ErrorExam();
+                    ee.setEeid(eeid[i]);
+                    int score = stuGotScore[i].length() == 0 ? 0 : Integer.parseInt(stuGotScore[i]);
+                    ee.setStuGotScore(score);
+                    ee.setComent(coment[i]);
+                    elist.add(ee);
+                    totalScore += score;
+                }
+                userService.updateErrorExam(elist);
             }
+
+            
             UserScore us = new UserScore();
             us.setUsid(usid);
             us.setJDTscore(totalScore);
+            us.setIsDone(1);
             userService.updateUserScore(us);
-            if (res.length() == 0) {
-                return new ModelAndView("redirect:/back/correctIndex.html");
-            }
+
+            return new ModelAndView("redirect:/back/correctManger.html");
         } catch (Exception e) {
-            res = "修改简答题总得分出错，请联系管理员！";
             log.error("修改简答题总得分出错：", e);
         }
-        if (res.length() > 0) {
-            session.setAttribute("error", res);
-            session.setAttribute("usid", usid);
-            session.setAttribute("gname", gname);
-        }
-        return new ModelAndView("redirect:/back/goToCorrectUnitTest.html");
+        
+        return new ModelAndView("redirect:/back/doCorrect.html");
     }
 
     /**

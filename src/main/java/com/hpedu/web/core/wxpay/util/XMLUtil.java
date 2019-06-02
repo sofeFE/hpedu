@@ -1,17 +1,17 @@
 package com.hpedu.web.core.wxpay.util;
 
-import java.io.ByteArrayInputStream;  
-import java.io.IOException;  
-import java.io.InputStream;  
-import java.util.HashMap;  
-import java.util.Iterator;  
-import java.util.List;  
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;  
-  
-import org.jdom.Document;  
-import org.jdom.Element;  
-import org.jdom.JDOMException;  
-import org.jdom.input.SAXBuilder;  
   
 public class XMLUtil {  
     /** 
@@ -21,39 +21,40 @@ public class XMLUtil {
      * @throws JDOMException 
      * @throws IOException 
      */  
-    public static Map doXMLParse(String strxml) throws JDOMException, IOException {  
-        strxml = strxml.replaceFirst("encoding=\".*\"", "encoding=\"UTF-8\"");  
-  
-        if(null == strxml || "".equals(strxml)) {  
-            return null;  
-        }  
-          
-        Map m = new HashMap();  
-          
-        InputStream in = new ByteArrayInputStream(strxml.getBytes("UTF-8"));  
-        SAXBuilder builder = new SAXBuilder();  
-        Document doc = builder.build(in);  
-        Element root = doc.getRootElement();  
-        List list = root.getChildren();  
-        Iterator it = list.iterator();  
-        while(it.hasNext()) {  
-            Element e = (Element) it.next();  
-            String k = e.getName();  
-            String v = "";  
-            List children = e.getChildren();  
-            if(children.isEmpty()) {  
-                v = e.getTextNormalize();  
-            } else {  
-                v = XMLUtil.getChildrenText(children);  
-            }  
-              
-            m.put(k, v);  
-        }  
-          
-        //关闭流  
-        in.close();  
-          
-        return m;  
+    public static Map doXMLParse(String strxml) {
+        Map m = null;
+        try (InputStream in = new ByteArrayInputStream(strxml.getBytes("UTF-8"));){
+            strxml = strxml.replaceFirst("encoding=\".*\"", "encoding=\"UTF-8\"");
+
+            if(null == strxml || "".equals(strxml)) {  
+                return null;  
+            }
+
+            m = new HashMap();
+            
+            SAXBuilder builder = new SAXBuilder();
+            Document doc = builder.build(in);
+            Element root = doc.getRootElement();
+            List list = root.getChildren();
+            Iterator it = list.iterator();
+            while(it.hasNext()) {  
+                Element e = (Element) it.next();  
+                String k = e.getName();  
+                String v = "";  
+                List children = e.getChildren();  
+                if(children.isEmpty()) {  
+                    v = e.getTextNormalize();  
+                } else {  
+                    v = XMLUtil.getChildrenText(children);  
+                }  
+                  
+                m.put(k, v);  
+            }
+            return m;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } 
+       
     }  
       
     /** 

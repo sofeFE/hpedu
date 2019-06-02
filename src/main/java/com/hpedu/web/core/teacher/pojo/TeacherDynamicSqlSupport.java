@@ -1,9 +1,6 @@
 package com.hpedu.web.core.teacher.pojo;
 
 
-import java.sql.JDBCType;
-import java.util.Date;
-
 public final class TeacherDynamicSqlSupport {
     /*public static final Teacher teacher = new Teacher();
     public static final SqlColumn<Integer> id = teacher.tid;

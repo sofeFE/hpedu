@@ -1,22 +1,19 @@
 package com.hpedu.listener;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.hpedu.util.redisUtil.RedisUtil;
+import com.hpedu.web.core.index.task.VisitorTask;
+import com.hpedu.web.core.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.stereotype.Component;
-
-import com.hpedu.util.redisUtil.RedisUtil;
-import com.hpedu.web.core.index.task.VisitorTask;
-import com.hpedu.web.core.user.service.UserService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 //从数据库取出数据--不愿意用jdbc连接,就搞成了这个样子.
 /**
  * 自定义 listener

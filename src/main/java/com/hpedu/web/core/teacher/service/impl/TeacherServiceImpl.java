@@ -1,26 +1,25 @@
 package com.hpedu.web.core.teacher.service.impl;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hpedu.util.ResultBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.hpedu.util.mybatis.MyBatisBase;
 import com.hpedu.util.mybatis.Page;
 import com.hpedu.web.core.teacher.dao.TeacherMapper;
 import com.hpedu.web.core.teacher.pojo.Teacher;
 import com.hpedu.web.core.teacher.service.TeacherService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional(readOnly = true, propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
@@ -98,14 +97,14 @@ private MyBatisBase myBatisBase ;
 		return resultBean ;
 	}
 	
-	
-	
-	
 	@Transactional(readOnly = false )
 	@Override
-	public void deleteTeacherById(String id)  {
+	public ResultBean<?> deleteTeacherById(String id)  {
 		TeacherMapper mapper = baseMapper;
-		mapper.deleteTeacherById(id);
+		if(mapper.deleteTeacherById(id) > 0){
+			return ResultBean.ok();
+		}
+		return ResultBean.failed("删除失败") ;
 	}
 	@Transactional(readOnly = false )
 	@Override
@@ -164,14 +163,24 @@ private MyBatisBase myBatisBase ;
 		return list;
 
 	}
+	
 	@Override
+	@Cacheable(value="welcomePage"/*,key="teacherList_show"*/)/*value 为缓存块的名字 , key 为缓存中存储的 键值对 的key*/
 	public List<Teacher> findTeacherByIsShow(Map<String, Object> limit) {
 //		Collection<Teacher> teachers = listByMap(limit);
-		List<Teacher> list = list(new QueryWrapper<Teacher>().eq("isShow", limit.get("isShow"))
-															.last("limit "+ limit.get("limit")) 
-												);
+		List<Teacher> list = list(new QueryWrapper<Teacher>().eq("isShow", limit.get("isShow")).last("limit "+ limit.get("limit"))  );
 		return list ;
 //		return baseMapper.getTeacherByIsShow(limit);
 	}
-	
+
+	@Override
+	public ResultBean forbiddenTeacherById(String id) {
+		TeacherMapper mapper = baseMapper;
+		
+		if(mapper.forbiddenTeacherById(id) > 0){
+			return ResultBean.ok();
+		}
+		return ResultBean.failed("更新教师状态失败") ;
+	}
+
 }

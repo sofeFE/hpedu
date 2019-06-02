@@ -1,14 +1,14 @@
 package com.hpedu.web.core.teacher.service;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.hpedu.util.ResultBean;
 import com.hpedu.util.mybatis.Page;
 import com.hpedu.web.core.teacher.pojo.Teacher;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 public interface TeacherService extends IService<Teacher> {//
 
@@ -32,7 +32,7 @@ public interface TeacherService extends IService<Teacher> {//
 	/**
 	 * 删除教师信息
 	 * */
-	void deleteTeacherById(String id);
+	ResultBean<?> deleteTeacherById(String id);
 	/**
 	 * 新增教师
 	 * */
@@ -68,4 +68,7 @@ public interface TeacherService extends IService<Teacher> {//
 	 * @return
 	 */
 	List<Teacher> findTeacherByIsShow(Map<String, Object> limit);
+
+	ResultBean forbiddenTeacherById(String id);
+	
 }

@@ -62,4 +62,4 @@ window.location.href="${pageContext.request.contextPath}/back/userMgrComm.html?p
 }
 </script>
 </body>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

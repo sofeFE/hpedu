@@ -10,7 +10,6 @@ import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
 import org.apache.commons.httpclient.methods.multipart.Part;
 import org.apache.commons.httpclient.methods.multipart.StringPart;
 import org.apache.commons.httpclient.protocol.Protocol;
-import org.apache.http.HttpException;
 import org.apache.http.HttpStatus;
 
 import java.io.*;

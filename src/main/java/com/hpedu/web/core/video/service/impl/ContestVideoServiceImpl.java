@@ -1,24 +1,27 @@
 package com.hpedu.web.core.video.service.impl;
 
-import java.util.List;
-import java.util.Map;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.hpedu.util.mybatis.MyBatisBase;
 import com.hpedu.util.mybatis.Page;
 import com.hpedu.web.core.video.dao.ContestVideoMapper;
 import com.hpedu.web.core.video.pojo.ContestVideo;
 import com.hpedu.web.core.video.pojo.VideoPdf;
 import com.hpedu.web.core.video.service.ContestVideoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class ContestVideoServiceImpl extends ServiceImpl<ContestVideoMapper,ContestVideo> implements ContestVideoService {
 	@Autowired
 	private MyBatisBase myBatisBase ;
+	
+	
 	@Override
+	@Cacheable(value="welcomePage"/*,key="contestList"*/)
 	public List<ContestVideo> findContestVideoIndex()  {
 		
 		List<ContestVideo> conlist = baseMapper.findContestVideoIndex();

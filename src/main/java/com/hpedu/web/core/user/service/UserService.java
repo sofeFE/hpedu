@@ -1,21 +1,12 @@
 package com.hpedu.web.core.user.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.hpedu.util.ResultBean;
+import com.hpedu.util.mybatis.Page;
+import com.hpedu.web.core.user.pojo.*;
+
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import javax.servlet.http.HttpServletRequest;
-
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.hpedu.util.mybatis.Page;
-import com.hpedu.web.core.user.pojo.ErrorExam;
-import com.hpedu.web.core.user.pojo.RightMenu;
-import com.hpedu.web.core.user.pojo.UnitTest;
-import com.hpedu.web.core.user.pojo.UnitTest_Choose;
-import com.hpedu.web.core.user.pojo.User;
-import com.hpedu.web.core.user.pojo.UserLearn;
-import com.hpedu.web.core.user.pojo.UserLevel;
-import com.hpedu.web.core.user.pojo.UserScore;
 
 public interface UserService extends IService<User> {
 
@@ -31,7 +22,7 @@ public interface UserService extends IService<User> {
 	/**
 	 * 根据手机号密码查询
 	 * */
-	User findUserByPhone(String userPhone,String passWord);
+	User findUserByPhone(String userPhone);
 	
 	/**
 	 * 后台登陆
@@ -212,4 +203,9 @@ public interface UserService extends IService<User> {
 		 * @param i
 		 */
 		void updateVisitorNum(int i);
+		
+/*更新学习情况*/
+	ResultBean updateLearn(User u, String vid, String vclassify, String time);
+
+	ResultBean addUserScore(User user, UserScore stuScore, List<Map> jdtAnswerList);
 }

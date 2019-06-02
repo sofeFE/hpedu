@@ -2,10 +2,7 @@ package com.hpedu.config;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.DelegatingFilterProxy;
-import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
 
 import java.util.Arrays;
 

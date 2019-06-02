@@ -1,22 +1,18 @@
 package com.hpedu.config.redis;
 
 
-import java.util.HashSet;
-import java.util.Set;
-
+import com.hpedu.util.redisUtil.RedisUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisNode;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-import com.hpedu.util.redisUtil.RedisUtil;
+import java.util.HashSet;
+import java.util.Set;
 
 //import redis.clients.jedis.JedisPoolConfig;
 /**

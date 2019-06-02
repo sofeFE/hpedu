@@ -1,15 +1,16 @@
 <%@ page language="java" import="java.io.*" contentType="text/html;charset=utf-8"  
     pageEncoding="utf-8"%> 
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-		<div class="logo">
 
-			<c:if test="${ empty user  }">		
+
+		<div class="logo">
+			<c:if test="${ empty user  }">	
 				<a href="login.html" class='right'>登录/注册</a>
 				<a href="back/backindex.html" >管理系统</a>
 			</c:if>
+			
 			<c:if test="${not empty user  }">	
 			    <div class="not-login-in">
-				<c:if test="${! empty user }">
 					<div class="user">
 					   <div class="user-img">
 							<c:if test="${ empty user.headImgUrl}">
@@ -22,18 +23,15 @@
 						</div>
 						
 						<div class="user-name" style="padding-top:0px;">
-						    &nbsp;
-							<a href="javascript:showSetting()" >
-									<c:if test="${not empty user.userName}">
-										${user.userName}<span class="glyphicon glyphicon-chevron-down"></span>
-									</c:if>
-									<c:if test="${empty user.userName}">
-									  ${user.phoneNo}<span class="glyphicon glyphicon-chevron-down"></span>
-									</c:if>
+							
+							<a href="javascript:void(0)" ><%--showSetting()--%>
+								<c:if test="${not empty user.userName}"> ${user.userName} </c:if>
+								<c:if test="${empty user.userName}"> ${user.phoneNo} </c:if>
 							</a>
 							<a href="back/backindex.html" >管理系统</a>
 						</div>
-						<div class="user-setting">
+						
+						<%--<div class="user-setting">
 							<ul>
 								<li style="height:40px;line-height: 40px;font-size: 17px;padding:5px;">个人信息
 									<a href="${pageContext.request.contextPath}/userNews.html" 
@@ -49,15 +47,12 @@
 									
 								</li>
 							</ul>
-						</div>
+						</div>--%>
 					</div>
-				</c:if>
-				
+					
 				</div>
-                    
+				
 			</c:if>
-
-			
 
 		</div>
 <script>

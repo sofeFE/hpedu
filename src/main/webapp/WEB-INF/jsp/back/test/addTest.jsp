@@ -18,17 +18,17 @@
 <script src="js/upload.js"></script>
 
 <!-- 富文本编辑器 -->
- <link rel="stylesheet" href="css/kindeditor/default.css" />
-<link rel="stylesheet" href="css/kindeditor/prettify.css" />
-<script charset="utf-8" src="js/plugins/kindeditor/kindeditor.js"></script>
-<script charset="utf-8" src="js/plugins/kindeditor/zh_CN.js"></script>
-<script charset="utf-8" src="js/plugins/kindeditor/prettify.js"></script>
+ <link rel="stylesheet" href="plugins/kindeditor/default.css" />
+<link rel="stylesheet" href="plugins/kindeditor/prettify.css" />
+<script charset="utf-8" src="plugins/kindeditor/kindeditor-all.js"></script>
+<script charset="utf-8" src="plugins/kindeditor/plugins/code/zh_CN.js"></script>
+<script charset="utf-8" src="plugins/kindeditor/plugins/code/prettify.js"></script>
 
 <script type="text/javascript">
 var editor2;
 KindEditor.ready(function(K) {
 	 editor2 = K.create('textarea[name="testDetail"]', {
-			cssPath : '${pageContext.request.contextPath}/jsp/css/kindeditor/prettify.css',
+			cssPath : '${pageContext.request.contextPath}/plugins/kindeditor/prettify.css',
 			pasteType:1,
 			afterCreate : function() {
 				var self = this;
@@ -359,4 +359,4 @@ function sub2(){
 }
 
 </script>
-</body></html>
+</body><script type="text/javascript" src="js/class.js?v=2"></script></html>

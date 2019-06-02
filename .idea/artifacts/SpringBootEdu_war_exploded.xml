@@ -55,7 +55,6 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-web:5.0.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.0.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.0.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.0.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:5.0.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.0.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:2.0.5.RELEASE" />
@@ -82,6 +81,9 @@
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.0.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:5.0.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.0.5.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.13" />
           <element id="library" level="project" name="Maven: com.baomidou:mybatis-plus-boot-starter:3.0.7.1" />
           <element id="library" level="project" name="Maven: com.baomidou:mybatis-plus:3.0.7.1" />
           <element id="library" level="project" name="Maven: com.baomidou:mybatis-plus-extension:3.0.7.1" />
@@ -123,6 +125,7 @@
           <element id="library" level="project" name="Maven: pinyin4j:pinyin4j:2.5.1" />
           <element id="library" level="project" name="Maven: com.github.axet:kaptcha:0.0.9" />
           <element id="library" level="project" name="Maven: com.jhlabs:filters:2.0.235" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">

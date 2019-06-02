@@ -1,15 +1,14 @@
 package com.hpedu.exception;
 
-import javax.servlet.http.HttpServletResponse;
-
+import com.hpedu.web.core.user.pojo.User;
+import com.hpedu.web.core.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.hpedu.web.core.user.pojo.User;
-import com.hpedu.web.core.user.service.UserService;
+import javax.servlet.http.HttpServletResponse;
 /**
  * 解决方案4 - ResponseStatusException（Spring 5及以上版本）
  * 

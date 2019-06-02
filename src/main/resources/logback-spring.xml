@@ -38,7 +38,7 @@
     
     <springProfile name="dev">
         
-        <logger name="com.hpedu" level="error"  addtivity="false">
+        <logger name="com.hpedu" level="info"  addtivity="false">
             <appender-ref ref="fileInfoLog" />
         </logger>
 

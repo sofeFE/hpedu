@@ -64,4 +64,4 @@ window.location.href="${pageContext.request.contextPath}/back/evalMgr.html?pageN
 		}
 </script>
 </body>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

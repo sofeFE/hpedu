@@ -17,11 +17,11 @@
     <script src="libs/pintuer.js"></script>
     <script src="js/upload.js"></script>
     <!-- 富文本编辑器 -->
-    <link rel="stylesheet" href="/kindeditor/themes/default/default.css"/>
-    <link rel="stylesheet" href="/kindeditor/plugins/code/prettify.css"/>
-    <script charset="utf-8" src="/kindeditor/kindeditor-all.js"></script>
-    <script charset="utf-8" src="/kindeditor/lang/zh-CN.js"></script>
-    <script charset="utf-8" src="/kindeditor/plugins/code/prettify.js"></script>
+    <link rel="stylesheet" href="/plugins/kindeditor/themes/default/default.css"/>
+    <link rel="stylesheet" href="/plugins/kindeditor/plugins/code/prettify.css"/>
+    <script charset="utf-8" src="/plugins/kindeditor/kindeditor-all.js"></script>
+    <script charset="utf-8" src="/plugins/kindeditor/lang/zh-CN.js"></script>
+    <script charset="utf-8" src="/plugins/kindeditor/plugins/code/prettify.js"></script>
     <script>
         var editor1;
         KindEditor.ready(function (K) {
@@ -60,7 +60,7 @@
             
             
             editor1 = K.create('textarea[name="tintro"]', {
-                cssPath: '${pageContext.request.contextPath}/kindeditor/plugins/code/prettify.css',
+                cssPath: '${pageContext.request.contextPath}/plugins/kindeditor/plugins/code/prettify.css',
                 //pasteType:1,
                 afterCreate: function () {
                     var self = this;
@@ -280,4 +280,4 @@
 </script>
 
 </body>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

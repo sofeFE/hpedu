@@ -60,6 +60,16 @@ ul,li{
 	background: rgba(57, 132, 57, 0.18);
 	border-bottom: 3px solid #5CB85C;
 }
+.user-img:hover{
+	display: block;
+	overflow: hidden;
+	color: #5CB85C;
+	background: rgba(57, 132, 57, 0.18);
+	border-bottom: 3px solid #5CB85C;
+}
+
+
+
 .top-right{
 	width: 16%;
 	float: right;

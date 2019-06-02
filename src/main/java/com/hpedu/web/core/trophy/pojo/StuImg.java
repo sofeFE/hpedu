@@ -4,9 +4,11 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @TableName("stu_img")
 @Data
-public class StuImg {
+public class StuImg implements Serializable {
     @TableId
     private String stid;
     private String tpid; //关联学生id

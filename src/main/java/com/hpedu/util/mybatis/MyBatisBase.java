@@ -27,19 +27,19 @@ public class MyBatisBase {
 
     /**
      * 上传文件
-     * @param relativePath 相对路径
+     * @param relativePath 相对路径/""/
      * @param file multipart文件
      * @param obj 要更新的对象
-     * @param clazz 对象对应的类
+     * @param ObjectType 对象对应的类
      * @param methodName 更新对象属性 需要调用的方法名
      * @param ParameterType  方法的参数类型.
      * @throws Exception 
      */
     public void upload(String relativePath, MultipartFile file, Object obj ,
-                          Class<?> clazz, String methodName , Class<?>... ParameterType) throws Exception{
+                          Class<?> ObjectType, String methodName , Class<?>... ParameterType) throws Exception{
 
         if (file.getSize() > 0) {
-            Method method = clazz.getMethod(methodName, ParameterType);
+            Method method = ObjectType.getMethod(methodName, ParameterType);
             String rootPath = uploadAbsolutePath;
             String realPath = rootPath + relativePath ;
             String fileName = UUIDUtil.getUUID();

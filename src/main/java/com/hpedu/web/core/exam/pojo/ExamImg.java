@@ -3,9 +3,11 @@ package com.hpedu.web.core.exam.pojo;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.io.Serializable;
+
 //测验题和答案图片
 @TableName("exam_img")
-public class ExamImg {
+public class ExamImg  implements Serializable {
     @TableId
     private String id;
     private String exid;//关联测验题id

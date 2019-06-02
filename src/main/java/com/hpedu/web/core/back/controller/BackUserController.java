@@ -1,9 +1,7 @@
 package com.hpedu.web.core.back.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
-import com.hpedu.util.Constant;
 import com.hpedu.util.ResultBean;
 import com.hpedu.util.codeUtil.BaseUtil;
 import com.hpedu.web.core.shiro.ShiroUtils;
@@ -11,7 +9,6 @@ import com.hpedu.web.core.shiro.pojo.SysMenuEntity;
 import com.hpedu.web.core.shiro.pojo.SysUserEntity;
 import com.hpedu.web.core.shiro.service.SysMenuEntityService;
 import com.hpedu.web.core.shiro.service.SysUserEntityService;
-import com.hpedu.web.core.teacher.service.TeacherService;
 import com.hpedu.web.core.user.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -24,13 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.validation.constraints.NotBlank;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
@@ -121,10 +116,10 @@ public class BackUserController {
     /**
      * 退出
      */
-    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    @RequestMapping(value = "back/logout", method = RequestMethod.GET)
     public String logout() {
         ShiroUtils.logout();
-        return "redirect:/back/backlogin.html";
+        return "/back/backlogin";
     }
 
 }

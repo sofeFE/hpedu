@@ -1,17 +1,16 @@
 package com.hpedu.web.core.publicTest.service.impl;
 
-import java.util.List;
-import java.util.Map;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.hpedu.util.mybatis.MyBatisBase;
 import com.hpedu.util.mybatis.Page;
 import com.hpedu.web.core.publicTest.dao.TestPointMapper;
 import com.hpedu.web.core.publicTest.pojo.TestPoint;
 import com.hpedu.web.core.publicTest.service.TestPointService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 @Service
 public class TestPointServiceImpl extends ServiceImpl<TestPointMapper,TestPoint> implements TestPointService{
 

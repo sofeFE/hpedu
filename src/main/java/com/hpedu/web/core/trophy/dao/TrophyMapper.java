@@ -1,12 +1,12 @@
 package com.hpedu.web.core.trophy.dao;
 
-import java.util.List;
-import java.util.Map;
-
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hpedu.web.core.trophy.pojo.StuImg;
 import com.hpedu.web.core.trophy.pojo.Trophy;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface TrophyMapper extends BaseMapper<Trophy> {

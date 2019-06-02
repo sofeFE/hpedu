@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <script src="js/main.js" type="text/javascript"></script>
     <script src="libs/bootstrap.min.js"></script>
+    <script src="js/menuFun.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" href="css/iconfont.css">
     <link rel="stylesheet" href="css/commen.css">
     <link rel="stylesheet" href="css/reset.css">
@@ -43,20 +44,7 @@
 </head>
 <body>
 <div class="header">
-    <!-- logo图 和搜素-->
-    <%@include file="../videoSearch.jsp" %>
-    <!--菜单-->
-    <div class="sunmenu">
-        <ul>
-            <li><a href="classindex.html">首页</a></li>
-            <li><a style="border-bottom: 3px solid #5CB85C;color: #5CB85C;" class="routine-menu">常规课</a></li>
-            <li><a class="competition-menu">竞赛课</a></li>
-            <li><a class="quiz-menu">小测验</a></li>
-        </ul>
-        <%@include file="../menuPublic.jsp" %>
-    </div>
-    <!-- 登录 -->
-    <%@include file="../ckUserInfo.jsp" %>
+    <%@include file="/WEB-INF/jsp/header.jsp" %>
 </div>
 <!-- 视频 -->
 <div class="content">
@@ -114,14 +102,12 @@
             </tr>
         </table>
     </div>
-    <script type="text/javascript" src="libs/jwplayer.js"></script>
+    <script type="text/javascript" src="plugins/jwplayer/jwplayer.js"></script>
     <script>jwplayer.key="WebEzzv0/FjWreLKIGCDbPbSN4WiZ+rC9+HPjg==";</script>
     
     
     <!-- 测验题弹出框 -->
-    <button class="btn btn-primary btn-lg" style="display:none;" id="openBtn" data-toggle="modal"
-            data-target="#msk_test">测验题弹框按钮
-    </button>
+    <button class="btn btn-primary btn-lg" style="display:none;" id="openBtn" data-toggle="modal"data-target="#msk_test"> 测验题弹框按钮 </button>
     <div class="modal fade" id="msk_test" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="width:850px;">
             <div class="modal-content" style="width:850px;">
@@ -310,18 +296,7 @@
 
 </div>
 <div class="foot">
-    <div class="foot-content">
-        <div class="foot-content-menu">
-            <ul>
-                <li><a href="" style="cursor: pointer">网站首页</a></li>
-                <li><a href="" style="cursor: pointer">企业合作</a></li>
-                <li><a href="" style="cursor: pointer">人才招聘</a></li>
-                <li><a href="" style="cursor: pointer">联系我们</a></li>
-                <li><a href="" style="cursor: pointer">常见问题</a></li>
-            </ul>
-        </div>
-        <p>Copyright © 2016 imooc.com All Rights Reserved | 京ICP备 13046642号-2</p>
-    </div>
+    <%@include file="/WEB-INF/jsp/footer.jsp" %>
 </div>
 <div class="msk">
     <div class="modal-dialog">
@@ -372,13 +347,17 @@
     var isPlay=false;
     var playerlimittime = 300;
 
-
     var timmer = "${killInfo==null?0:killInfo.totalTime}";
     timmer = timmer / 1000;
     var timeType = "${killInfo==null?2:killInfo.timeType}";
     var isKill = "${generalVideo.isKill}";
     var vid = "${generalVideo.gid}";
+    var vname = "${generalVideo.gname}" ;
+    var teacherName = "${generalVideo.teacherName}" ;
 
+    var videoClassify =0 ;
+    var userName = "${user.userName}";
+    
     $(function(){
         playerInstance = jwplayer('myvideo');
 //	会员的标识 :会员为1
@@ -387,8 +366,12 @@
         userIsVip=islogin==0?0:"${user.isVip}";
         endTime=islogin==0?"":"${user.endTime==null?'':user.endTime}";
         vvip = "${generalVideo.gisVip}";
+        
         initPlayer(playerInstance,"${generalVideo.gvideoUrl}",false);
-
+        
+        /*god damn it*/
+        setChangeTimeStatus(true);
+        
         /*初始化优惠活动*/
         if (timeType != 2 && isKill == 1) {
             if (timeType == 1) {//活动进行中
@@ -398,8 +381,8 @@
             }
         }
         /*初始化单元测试*/
-        initUnitTests(vid, 0);
-        setChangeTimeStatus(true);
+        initUnitTests(vid, videoClassify);
+        
 
         vcId = "${videoChild.vcid}";
         if (vcId != "") {
@@ -429,55 +412,111 @@
         });
     });
 
-    $(function () {
-        
-    });
-
-    //浏览器关闭
-    window.onbeforeunload = function closeWindow(e) {
-        e = e || window.event;
-        if (e) {
-            changeStuLeanTime();
-            //alert("后退");
+    function editVideoLastNew() {
+        var editTimerNum = "${editTimerNum}";
+        if (editTimerNum != "" && editTimerNum > 0) {
+            setTimeout(function () {
+                $.post("${pageContext.request.contextPath}/general/getLastNewVideo",
+                    {gid: "${generalVideo.gid}", lastVcid: "${lastVcid}"},
+                    function (data) {
+                        if (data) {
+                            var li_size = $(".er").children("li").length;
+                            var li_html = "";
+                            var videoClassify = 0 ;
+                            if (li_size == 0) {
+                                li_html = '<li id="vli_0"  class="choose_li">' +
+                                    '<a href="javascript:void(0)" style="color:black;" onclick="playVideo(' + data.vcideoUrl + ',0,' + data.vcid + ',true)">'+
+                                    data.vcname +
+                                    '</a>' +
+                                    '</li>';
+                                // playVideo(data.vcideoUrl, 0, data.vcid,  false);
+                            } else {
+                                li_html = '<li id="vli_"' + li_size + '>' +
+                                    '<a href="javascript:void(0)"  onclick="playVideo('+data.vcideoUrl + ',' + videoClassify + ',' + data.vcid + ',true)">'+
+                                    data.vcname + 
+                                    '</a>' +
+                                    '</li>';
+                            }
+                            $(".er").append(li_html);
+                        }
+                    });
+            }, editTimerNum);
         }
-    };
+    }
     var agent = "<%=request.getHeader("user-agent")%>";
-    //浏览器后退
-    jQuery(document).ready(function ($) {
-        if (agent.indexOf("Safari") > -1) {
-            return;
-        }
-        if (window.history && window.history.pushState) {
-            $(window).on('popstate', function () {
-                var hashLocation = location.hash;
-                var hashSplit = hashLocation.split("#!/");
-                var hashName = hashSplit[1];
-
-                if (hashName !== '') {
-                    var hash = window.location.hash;
-                    if (hash === '') {
-                        //alert("后退");
-                        changeStuLeanTime();
-                        window.history.back();
+    
+    function hasRight(islogin){
+        if(islogin == "0"){
+            return false;
+        }else{
+            var rightContent="${user.rightContent}";
+            if(rightContent.length == 0){
+                return true;
+            }else{
+                var class_g="${generalVideo.gclass}";
+                var gclassify="${generalVideo.gclassify}";
+                var gclassify2="${generalVideo.gclassify2}";
+                var gsbuject="${generalVideo.gsbuject}";
+                /*逻辑感人:  */
+                if(class_g.indexOf("古诗")>-1||class_g.indexOf("阅读")>-1||
+                    class_g.indexOf("写作")>-1||class_g.indexOf("语法")>-1||
+                    class_g.indexOf("流利英语")>-1){
+                    class_g = "";
+                }
+                /*逻辑感人*/
+                if(gclassify2!=""){
+                    gclassify="";
+                }
+                if(class_g==""){
+                    return rightContent.indexOf(gsbuject+gclassify+gclassify2)>-1?true:false;
+                }
+                var class_arr=class_g.split(",");
+                for(var i in class_arr){
+                    if(rightContent.indexOf(gsbuject+class_arr[i]+gclassify+gclassify2)>-1){
+                        return true;
                     }
                 }
-            });
-            window.history.pushState('forward', null, "");
+                return false;
+            }
         }
-    });
-
+    }
     function callPayFunction(){
-        var vid,uid,subject,clazz,classify,name ;
-        vid = "${generalVideo.gid}";
-        uid = "${user.uid} ";
-        subject = "${generalVideo.gsbuject} ";
-        clazz = "${generalVideo.gclass} ";
-        classify= "${generalVideo.gclassify} ";
-        name= "${generalVideo.gname} ";
-        
-        payErweima(vid,uid,subject,clazz,classify,name) ;
+        var vid = "${generalVideo.gid}";
+        var uid = "${user.uid} ";
+        payErweima(vid,uid,videoClassify) ;
     }
     
+    function callBackAfterRequestQRcode(data){
+            var url = data.url;
+            //修改二维码图片等信息
+            if(url.length>0){
+                var gsbuject="${generalVideo.gsbuject} ";
+                var gclass="${generalVideo.gclass} ";
+                var gclassify="${generalVideo.gclassify} ";
+                var gname= "${generalVideo.gname} ";
+                if(gclass.indexOf("古诗")>-1
+                    ||gclass.indexOf("阅读")>-1
+                    ||gclass.indexOf("写作")>-1
+                    ||gclass.indexOf("语法")>-1
+                    ||gclass.indexOf("流利英语")>-1
+                    ||gclass.indexOf("其他")>-1)
+                {
+                    gclass="";
+                }
+                if(gname.length>0){
+                    gname="【"+gname+"】";
+                }
+                $("#bodyDes").html(gsbuject+gclass+gclassify+gname);//视频名称
+                $(".msk h3").html("￥"+data.omoney);//视频价格
+                var url="/qr_codeImg?code_url="+url;
+                $("#erweimaImg").attr("src",url);
+                $('.msk').show();
+                timeStart();//支付计时开始
+            }else{
+                alert("支付二维码生成失败，请联系客服！");
+            }
+       
+    }
   
 </script>
 <script src="js/menuFun.js" type="text/javascript" charset="utf-8"></script>
@@ -501,4 +540,4 @@
     <!-- 分页参数 -->
     <input type="hidden" name="pageNo" id="pageNo">
 </form>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

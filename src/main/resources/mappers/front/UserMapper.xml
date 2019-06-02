@@ -19,41 +19,198 @@
 	</select>
 
     <select id="getJDTScoresDetail" parameterType="java.lang.String" resultType="java.util.Map">
-	select ut.ucontent,ut.score,ut.detail,e.stuAnswer,e.stuGotScore,e.coment,e.eeid from errorexam e left join unittest ut on e.utid=ut.utid where usid=#{arg0} order by sort
+	select 
+	  ut.ucontent,
+	  ut.score,
+	  ut.detail,
+	  e.stuAnswer,
+	  e.stuGotScore,
+	  e.coment,
+	  e.eeid 
+	from errorexam e 
+	right join unittest ut on e.utid=ut.utid 
+	where usid=#{arg0} 
+	order by sort
 	</select>
+    
     <select id="searchUnitTestList" parameterType="java.util.Map" resultType="java.util.Map">
-        select yy.*,date_format(yy.ucreateTime,'%Y-%m-%d')as createTime from (select
-        s.usid,s.vid,g.gname,g.gsbuject,s.totalScores,s.totalNums,s.rightNum,s.errorNum,s.score,s.JDTscore,s.gotScore,s.isHasJDT,s.ucreateTime,s.utype
-        from userscore s left join generalvideo g on s.vid=g.gid where 1=1
-        <if test="userId!=null">and s.uid=#{userId}
-        </if>
-        <if test="tname!=null">and s.teacherName=#{tname} and (s.isHasJDT=1 or s.isHasJDT=2) and s.gotScore is null</if>
-        and
-        s.utype=0 union
+       select test.* from 
+        (
+            SELECT
+                s.usid,
+                s.vid,
+                s.ucreateTime,
+                s.utype,
+                g.gname  as testname,
+                g.gsbuject as subjectname
+            FROM
+                userscore s
+            LEFT JOIN generalvideo g ON s.vid = g.gid
+            <where >
+            <if test="teacherName!=null" > s.teacherName = #{teacherName}</if>
+            <if test="userId!=null" >AND  s.uid = #{userId}</if>
+            AND s.isDone = 0
+            and g.gname is not null 
+            </where>
+        union ALL
+        (
+          SELECT
+                s.usid,
+                s.vid,
+                s.ucreateTime,
+                s.utype,
+                cv.cname as testname,
+                cv.competitionName as subjectname
+            FROM
+                userscore s
+            LEFT JOIN contestvideo cv ON s.vid = cv.cid
+            <where >
+                <if test="teacherName!=null" > s.teacherName = #{teacherName}</if>
+                <if test="userId!=null" > AND s.uid = #{userId}</if>
+                AND s.isDone = 0 and cv.cname is not null 
+            </where>
+        )
+        union all 
+        (
+            SELECT
+                s.usid,
+                s.vid,
+                s.ucreateTime,
+                s.utype,
+                e.etname as testname,
+                REPLACE (e.etsubject, '测验', '') as subjectname
+            FROM
+                userscore s
+            LEFT JOIN exam e ON s.vid = e.etid
+            <where >
+            <if test="teacherName!=null" > s.teacherName = #{teacherName}</if>
+            <if test="userId!=null" >AND  s.uid = #{userId}</if>
+            AND s.isDone = 0 and e.etname is not null 
+            </where>
+        )
+        union all 
+        (
+            select 
+                s.usid,
+                s.vid,
+                s.ucreateTime,
+                s.utype,
+                g.gname  as testname,
+                g.gsbuject as subjectname
+            FROM
+                userscore s
+            LEFT JOIN video_child c ON s.vid = c.vcid
+            LEFT JOIN generalvideo g ON c.pid = g.gid
+            <where >
+                <if test="teacherName!=null" > s.teacherName = #{teacherName}</if>
+                <if test="userId!=null" > AND s.uid = #{userId}</if>
+                    AND  s.isDone = 0 
+                    and g.gname is not null
+            </where>
+        )
+    
+    ) test
+    order by test.ucreateTime desc 
+    limit #{skip},#{limit}
+
+    </select>
+    <select id="getUnitTestDetail" parameterType="java.util.Map" resultType="java.util.Map">
+        select test.* from
+        (
+        SELECT
+        userScore.usid,
+        userScore.vid,
+        userScore.totalScores,
+        userScore.JDTscore,
+        userScore.score,
+        userScore.gotScore,
+        str_to_date(userScore.ucreateTime, '%Y%m%d %H%i') as ucreateTime,
+        userScore.utype,
+        
+        g.gname  as testname,
+        g.gsbuject as subjectname
+        FROM
+        userscore userScore
+        LEFT JOIN generalvideo g ON userScore.vid = g.gid
+        <where >
+            <if test="teacherName!=null" > userScore.teacherName = #{teacherName}</if>
+            <if test="userId!=null" >AND  userScore.uid = #{userId}</if>
+            AND userScore.isDone = 0
+            and g.gname is not null
+        </where>
+        union ALL
+        (
+        SELECT
+        s.usid,
+        s.vid,
+        s.totalScores,
+        s.JDTscore,
+        s.score,
+        s.gotScore,
+        str_to_date(s.ucreateTime, '%Y%m%d %H%i') as ucreateTime,
+        s.utype,
+        cv.cname as testname,
+        cv.competitionName as subjectname
+        FROM
+        userscore s
+        LEFT JOIN contestvideo cv ON s.vid = cv.cid
+        <where >
+            <if test="teacherName!=null" > s.teacherName = #{teacherName}</if>
+            <if test="userId!=null" > AND s.uid = #{userId}</if>
+            AND s.isDone = 0 and cv.cname is not null
+        </where>
+        )
+        union all
+        (
+        SELECT
+        s.usid,
+        s.vid,
+        s.totalScores,
+        s.JDTscore,
+        s.score,
+        s.gotScore,
+        str_to_date(s.ucreateTime, '%Y%m%d %H%i') as ucreateTime,
+        s.utype,
+        e.etname as testname,
+        REPLACE (e.etsubject, '测验', '') as subjectname
+        FROM
+        userscore s
+        LEFT JOIN exam e ON s.vid = e.etid
+        <where >
+            <if test="teacherName!=null" > s.teacherName = #{teacherName}</if>
+            <if test="userId!=null" >AND  s.uid = #{userId}</if>
+            AND s.isDone = 0 and e.etname is not null
+        </where>
+        )
+        union all
+        (
         select
-        s.usid,s.vid,g.cname,g.competitionName,s.totalScores,s.totalNums,s.rightNum,s.errorNum,s.score,s.JDTscore,s.gotScore,s.isHasJDT,s.ucreateTime,s.utype
-        from userscore s left join contestvideo g on s.vid=g.cid where 1=1
-        <if test="userId!=null">and s.uid=#{userId}
-        </if>
-        <if test="tname!=null">and s.teacherName=#{tname} and (s.isHasJDT=1 or s.isHasJDT=2) and s.gotScore is null</if>
-        and
-        s.utype=1 union
-        select
-        s.usid,s.vid,CONCAT(g.gname,c.vcname)gname,g.gsbuject,s.totalScores,s.totalNums,s.rightNum,s.errorNum,s.score,s.JDTscore,s.gotScore,s.isHasJDT,s.ucreateTime,s.utype
-        from userscore s left join video_child c on s.vid=c.vcid left join generalvideo g on c.pid=g.gid where 1=1
-        <if
-                test="userId!=null">and s.uid=#{userId}
-        </if>
-        <if test="tname!=null">and s.teacherName=#{tname} and (s.isHasJDT=1 or s.isHasJDT=2) and s.gotScore is null</if>
-        and
-        s.utype=2 union
-        select
-        s.usid,s.vid,g.etname,REPLACE(g.etsubject,'测验','')etsubject,s.totalScores,s.totalNums,s.rightNum,s.errorNum,s.score,s.JDTscore,s.gotScore,s.isHasJDT,s.ucreateTime,s.utype
-        from userscore s left join exam g on s.vid=g.etid where 1=1
-        <if test="userId!=null">and s.uid=#{userId}</if>
-        <if test="tname!=null">and s.teacherName=#{tname} and (s.isHasJDT=1 or s.isHasJDT=2) and s.gotScore is null</if>
-        and
-        s.utype=4 )yy order by yy.ucreateTime desc LIMIT #{skip},#{limit}
+        s.usid,
+        s.vid,
+        s.totalScores,
+        s.JDTscore,
+        s.score,
+        s.gotScore,
+        str_to_date(s.ucreateTime, '%Y%m%d %H%i') as ucreateTime,
+        s.utype,
+        g.gname  as testname,
+        g.gsbuject as subjectname
+        FROM
+        userscore s
+        LEFT JOIN video_child c ON s.vid = c.vcid
+        LEFT JOIN generalvideo g ON c.pid = g.gid
+        <where >
+            <if test="teacherName!=null" > s.teacherName = #{teacherName}</if>
+            <if test="userId!=null" > AND s.uid = #{userId}</if>
+            AND  s.isDone = 0
+            and g.gname is not null
+        </where>
+        )
+
+        ) test
+        order by test.ucreateTime desc
+        limit #{skip},#{limit}
+
     </select>
     <!-- <select id="searchUnitTestCount"  parameterType="java.util.Map" resultType="java.lang.Integer">
     select sum(yy.num) from (select count(1) as num from userscore s left join generalvideo g on s.vid=g.gid where 1=1 <if test="userId!=null"> and s.uid=#{userId}</if> and s.utype=0 union
@@ -61,32 +218,121 @@ select count(1)as num from userscore s left join contestvideo g on s.vid=g.cid w
 select count(1)as num from userscore s left join video_child c on s.vid=c.vcid left join generalvideo g on c.pid=g.gid where 1=1 <if test="userId!=null"> and s.uid=#{userId}</if> and s.utype=2 union
 select count(1)as num from userscore s left join exam g on s.vid=g.etid where 1=1 <if test="userId!=null"> and s.uid=#{userId}</if> and s.utype=4 )yy
     </select> -->
+    <!-- select count(1) from userscore s where 1=1
+     <if test="userId!=null">and s.uid=#{userId}</if>
+     <if test="tname!=null">and s.teacherName=#{tname} and (s.isHasJDT=1 or s.isHasJDT=2) and s.gotScore is null</if>-->
     <select id="searchUnitTestCount" parameterType="java.util.Map" resultType="java.lang.Integer">
-        select count(1) from userscore s where 1=1
-        <if test="userId!=null">and s.uid=#{userId}</if>
-        <if test="tname!=null">and s.teacherName=#{tname} and (s.isHasJDT=1 or s.isHasJDT=2) and s.gotScore is null</if>
+        select count(1) from
+        (
+            SELECT
+                s.usid,
+                s.vid,
+                s.ucreateTime,
+                s.utype,
+                g.gname as testname,
+                g.gsbuject as subjectname
+            FROM
+            userscore s
+            LEFT JOIN generalvideo g ON s.vid = g.gid
+            <where>
+                <if test="teacherName!=null">s.teacherName = #{teacherName}</if>
+                <if test="userId!=null">AND s.uid = #{userId}</if>
+                AND s.isDone = 0
+                and g.gname is not null
+            </where>
+            union ALL
+            (
+            SELECT
+                s.usid,
+                s.vid,
+                s.ucreateTime,
+                s.utype,
+                cv.cname as testname,
+                cv.competitionName as subjectname
+            FROM
+            userscore s
+            LEFT JOIN contestvideo cv ON s.vid = cv.cid
+            <where>
+                <if test="teacherName!=null">s.teacherName = #{teacherName}</if>
+                <if test="userId!=null">AND s.uid = #{userId}</if>
+                AND s.isDone = 0 and cv.cname is not null
+            </where>
+            )
+            union all
+            (
+            SELECT
+                s.usid,
+                s.vid,
+                s.ucreateTime,
+                s.utype,
+                e.etname as testname,
+                REPLACE (e.etsubject, '测验', '') as subjectname
+            FROM
+            userscore s
+            LEFT JOIN exam e ON s.vid = e.etid
+            <where>
+                <if test="teacherName!=null">s.teacherName = #{teacherName}</if>
+                <if test="userId!=null">AND s.uid = #{userId}</if>
+                AND s.isDone = 0 and e.etname is not null
+            </where>
+            )
+            union all
+            (
+            select
+                s.usid,
+                s.vid,
+                s.ucreateTime,
+                s.utype,
+                g.gname as testname,
+                g.gsbuject as subjectname
+            FROM
+            userscore s
+            LEFT JOIN video_child c ON s.vid = c.vcid
+            LEFT JOIN generalvideo g ON c.pid = g.gid
+            <where>
+                <if test="teacherName!=null">s.teacherName = #{teacherName}</if>
+                <if test="userId!=null">AND s.uid = #{userId}</if>
+                AND s.isDone = 0
+                and g.gname is not null
+            </where>
+            )
+
+        ) test
+        
     </select>
     <select id="getTotalUnitTests" parameterType="hashmap" resultType="java.util.Map">
-        <!-- select  count(1) as nums,sum(score) as scores from unittest ut where vid=#{arg0} and utype=#{arg1} -->
-        select yy.testType,count(1) as nums,sum(yy.score) as scores from (select score,if(testType=1,1,0)testType
-        from unittest ut
-        where vid=#{arg0} and utype=#{arg1} )yy
-        group by yy.testType
-        order by yy.testType
+        SELECT
+            yy.testType,
+            count(1) AS nums,
+            sum(yy.score) AS scores
+        FROM
+            (
+                SELECT
+                    score,
+                IF (testType = 1, 1, 0) testType
+                FROM
+                    unittest ut
+                WHERE
+                    vid = #{arg0} 
+                    AND utype=#{arg1} 
+            )yy
+		GROUP BY
+			yy.testType
+		ORDER BY
+			yy.testType
     </select>
 
     <select id="selectVidoeTestAll" parameterType="java.util.Map" resultType="java.util.Map">
-        select
-        u.*,c.csid,c.tcontent,c.tanswer
-        from
+        SELECT
+        u.*, c.csid,
+        c.tcontent,
+        c.tanswer
+        FROM
         unittest u
-        left join
-        unittest_choose c
-        on
-        u.utid=c.utid
-        where
-        u.vid=#{vid} and u.utype=#{utype}
-        order by
+        LEFT JOIN unittest_choose c ON u.utid = c.utid
+        WHERE
+        u.vid = #{vid} and u.utype=#{utype}
+        ORDER BY
         <if test="rand!=null">u.testType,rand()</if>
         <if test="rand==null">u.testType,u.ucreateTime,c.sort</if>
     </select>
@@ -118,14 +364,19 @@ select c.cid as vid,c.cname as vname,c.isMore,1 as vctype,c.cvimg as img,c.teach
     <select id="getLearnVideoTotalCount" parameterType="String" resultType="java.lang.Integer">
 	    select count(1) from(select * from( select * from userlearn where userid=#{arg0} group by  vid,vctype) yy)aa
 	</select>
+    
     <select id="getLearnTimeByUserId" parameterType="String" resultType="java.util.Map">
-	  select sum(l.learnTime)/60 as time,DATE_FORMAT(learnDate,'%m.%d') as learnDate from userlearn l where l.userId=#{arg0} and DATE_FORMAT(learnDate,'%Y-%m')  like CONCAT(#{arg1},'%') group by learnDate
+	  select sum(l.learnTime)/60 as time,DATE_FORMAT(learnDate,'%m.%d') as learnDate 
+	  from userlearn l 
+	  where l.userId=#{arg0} and DATE_FORMAT(learnDate,'%Y-%m')  like CONCAT(#{arg1},'%') 
+	  group by learnDate
 	</select>
+    
     <select id="getYearByUserId" parameterType="String" resultType="java.lang.String">
 	  select DATE_FORMAT(learnDate,'%Y')as year from userlearn l where l.userId=#{arg0}  group by DATE_FORMAT(learnDate,'%Y') ;
 	</select>
     <update id="updateLearnTotalTime" parameterType="hashmap">
-	  update user set learnTime=learnTime+#{arg1} where uid=#{arg0}
+	  update user set learnTime= learnTime + #{arg1} where uid=#{arg0}
 	</update>
     <insert id="insertLearnTimeByDay" parameterType="com.hpedu.web.core.user.pojo.UserLearn">
 	 insert into userLearn(ulid,userid,vctype,vid,learnTime,learnDate)values(#{ulid},#{userid},#{vctype},#{vid},#{learnTime},now())
@@ -178,10 +429,10 @@ select c.cid as vid,c.cname as vname,c.isMore,1 as vctype,c.cvimg as img,c.teach
 
     <select id="searchUserList" parameterType="java.util.Map" resultMap="BaseResultMap">
 
-        SELECT *,(case 
-        when endtime is null then 0 
-        when endtime is not null and now() &lt; endTime then  1 
-        else 2 end)as isused 
+        SELECT *,(case
+        when endtime is null then 0
+        when endtime is not null and now() &lt; endTime then 1
+        else 2 end)as isused
         FROM user c
 
         <where>
@@ -227,7 +478,7 @@ select c.cid as vid,c.cname as vname,c.isMore,1 as vctype,c.cvimg as img,c.teach
 	select * from user u where uid = #{uid}
 	</select>
     <select id="findUserByPhone" parameterType="java.lang.String" resultMap="BaseResultMap">
-	select * from user where phoneNo = #{arg0} and passWord = #{arg1}
+	select * from user where phoneNo = #{arg0} 
 	</select>
     <insert id="addUser" parameterType="com.hpedu.web.core.user.pojo.User">
         insert into user

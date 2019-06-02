@@ -5,7 +5,6 @@ import com.hpedu.util.codeUtil.BaseUtil;
 import com.hpedu.util.codeUtil.StringUtil;
 import com.hpedu.util.codeUtil.TxtUtil;
 import com.hpedu.util.mybatis.Page;
-import com.hpedu.web.core.evaluation.pojo.Evaluation;
 import com.hpedu.web.core.evaluation.service.EvaluationService;
 import com.hpedu.web.core.order.service.OrderService;
 import com.hpedu.web.core.user.pojo.User;
@@ -52,95 +51,58 @@ public class CplayController {
     /**
      * 首页点击播放竞赛视频视频
      */
-    @RequestMapping("/contest/contest.html")
-    public void toContextVideo(HttpServletRequest req, HttpSession session,
-                               String classNo, Model model) {
-        this.editUserInSession(session);
-        if (!StringUtils.isBlank(classNo)) {
-            session.setAttribute("c_classNo", classNo);
-        } else {
-            classNo = (String) session.getAttribute("c_classNo");
+    @RequestMapping(value = "/contest/contest.html", produces = {"text/html"})
+    public String toContextVideo(HttpServletRequest req,HttpSession session, String classNo, Model model) {
+        if (StringUtils.isBlank(classNo)) {
+            throw new RuntimeException("classNo is null ") ;
         }
+        fillModel(model,session,classNo);
+        return "contest/contest";
+    }
+
+    private void fillModel(Model model, HttpSession session, String classNo) {
         //点击播放的视频
         ContestVideo contestVideo = null;
-//        try {
-            User user = (User) session.getAttribute("user");
-            if (!StringUtils.isBlank(classNo)) {
-//                try {
-                    contestVideo = contestVideoService.findContestVideoById(classNo);
-                    contestVideo.setPdflist(contestVideoService.selectPdfByVid(classNo, "1"));
-//                } catch (Exception e) {
-//                    log.info("首页查询竞赛视频和相关pdf出错：", e);
-//                }
-                List<ContestVideo> conList = null;
-                if (contestVideo != null) {
-                    //相关视频
-//                    try {
-                        conList = contestVideoService.findContestVideoByVideo(
-                                contestVideo.getCompetitionName(),
-                                contestVideo.getCclass(),
-                                contestVideo.getCclassify(), 
-                                classNo);
-//                    } catch (Exception e) {
-//                        log.info("首页查询竞赛相关视频出错：", e);
-//                    }
+        User user = (User) session.getAttribute("user");
+        int isBuy = 0;
+        if (StringUtils.isNotBlank(classNo)) {
+            contestVideo = contestVideoService.findContestVideoById(classNo);
+            contestVideo.setPdflist(contestVideoService.selectPdfByVid(classNo, "1"));
+            List<ContestVideo> conList = null;
+            if (contestVideo != null) {
+                conList = contestVideoService.findContestVideoByVideo(
+                        contestVideo.getCompetitionName(),
+                        contestVideo.getCclass(),
+                        contestVideo.getCclassify(),
+                        classNo);
 
-                } else {
-                    contestVideo = new ContestVideo();
-                    conList = new ArrayList<ContestVideo>();
-                }
-                model.addAttribute("conList", conList);
-                model.addAttribute("contestVideo", contestVideo);
-                //评论
-                //   List<Evaluation> elist = evaluationService.findAllEvaluationByEid(classNo);
-                List<Evaluation> elist = null;
-//                try {
-                    elist = evaluationService.findTop20EvaluationByEid(classNo);
-//                } catch (Exception e) {
-//                    elist = new ArrayList<Evaluation>();
-//                    log.info("首页查询竞赛评论出错：", e);
-//                }
-                model.addAttribute("elist", elist);
+            } else {
+                contestVideo = new ContestVideo();
+                conList = new ArrayList<ContestVideo>();
             }
-            
-            int isBuy = 0;
+            model.addAttribute("conList", conList);
+            model.addAttribute("contestVideo", contestVideo);
+            model.addAttribute("elist", evaluationService.findTop20EvaluationByEid(classNo));
+
             if (user != null) {
                 model.addAttribute("user", user);
-                //检查用户是否购买过此视频
-//                try {
-                    isBuy = orderService.getIsBuyVideoByVid(classNo, "1", user.getUid());
-//                } catch (Exception e) {
-//                    log.info("首页查询竞赛用户是否购买出错：", e);
-//                }
-
+                isBuy = orderService.getIsBuyVideoByVid(classNo, "1", user.getUid());
             }
-            model.addAttribute("isBuy", isBuy);
-            //获取去秒杀价格相关信息
-            if (contestVideo != null) {
-                Integer isKill = contestVideo.getIsKill();
-                if (isKill == 1 && !contestVideo.getCmoney().equals("0")) {//执行秒杀活动
-                    String killStartTime = contestVideo.getKillStartTime();
-                    String killEndTime = contestVideo.getKillEndTime();
-                    Map<String, Object> map = BaseUtil.getKillInfo(killStartTime, killEndTime);
-                    model.addAttribute("killInfo", map);
-                }
-            } else {
-                log.info("contestVideo是空！id:" + classNo);
+        }
+        model.addAttribute("isBuy", isBuy);
+
+        //获取去秒杀价格相关信息
+        if (contestVideo != null) {
+            Integer isKill = contestVideo.getIsKill();
+            if (isKill == 1 && !"0".equals(contestVideo.getCmoney())) {//执行秒杀活动
+                String killStartTime = contestVideo.getKillStartTime();
+                String killEndTime = contestVideo.getKillEndTime();
+                Map<String, Object> map = BaseUtil.getKillInfo(killStartTime, killEndTime);
+                model.addAttribute("killInfo", map);
             }
-
-//        } catch (Exception e) {
-//            log.error("首页点击播放竞赛视频视频出错：", e);
-//        }
-    }
-
-
-    //更新session中用户的信息
-    private void editUserInSession(HttpSession session) {
-        User u = (User) session.getAttribute("user");
-        if (u != null) {
-            session.setAttribute("user", userService.findUserByUid(u.getUid()));
         }
     }
+
 
     /**
      * 竞赛课程 list

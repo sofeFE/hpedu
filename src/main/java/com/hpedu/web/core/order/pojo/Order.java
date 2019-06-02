@@ -6,15 +6,14 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  * 订单 
  * */
 @TableName("orders")
 @Data
-public class Order {
+public class Order  implements Serializable {
 	@TableId
 	private String oid;//主键
 	private String omoney;//支付金额

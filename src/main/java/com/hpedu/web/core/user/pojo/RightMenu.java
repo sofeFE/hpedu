@@ -4,9 +4,11 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.io.Serializable;
+
 //vip权限菜单
 @TableName("rightmenu")
-public class RightMenu {
+public class RightMenu  implements Serializable {
     @TableId
     private long id;
     private long pId;//父节点id

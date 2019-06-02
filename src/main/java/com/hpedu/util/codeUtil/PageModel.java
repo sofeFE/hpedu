@@ -1,6 +1,6 @@
 package com.hpedu.util.codeUtil;
 
-import java.util.*;
+import java.util.List;
 public class PageModel {
 
 	//结果集

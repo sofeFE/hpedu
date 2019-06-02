@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 测试题-选择题 的选项及内容
  * @author Administrator
@@ -11,7 +13,7 @@ import lombok.Data;
  */
 @Data
 @TableName("testoption")
-public class TestOption {
+public class TestOption implements Serializable {
 	@TableId
 	private String id;
 	private String testId;// 关联测试题id

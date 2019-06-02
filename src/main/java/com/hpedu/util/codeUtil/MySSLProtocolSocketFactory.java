@@ -1,23 +1,19 @@
 package com.hpedu.util.codeUtil;
-import java.io.IOException;  
-import java.net.InetAddress;  
-import java.net.InetSocketAddress;  
-import java.net.Socket;  
-import java.net.SocketAddress;  
-import java.net.UnknownHostException;  
-import java.security.KeyManagementException;  
-import java.security.NoSuchAlgorithmException;  
-import java.security.cert.CertificateException;  
+
+import org.apache.commons.httpclient.ConnectTimeoutException;
+import org.apache.commons.httpclient.params.HttpConnectionParams;
+import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;
+
+import javax.net.SocketFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+import java.io.IOException;
+import java.net.*;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;  
-  
-import javax.net.SocketFactory;  
-import javax.net.ssl.SSLContext;  
-import javax.net.ssl.TrustManager;  
-import javax.net.ssl.X509TrustManager;  
-  
-import org.apache.commons.httpclient.ConnectTimeoutException;  
-import org.apache.commons.httpclient.params.HttpConnectionParams;  
-import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;  
   
   
   

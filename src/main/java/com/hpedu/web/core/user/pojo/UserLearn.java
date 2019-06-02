@@ -4,10 +4,12 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 //用户学习时间表
 @TableName("userlearn")
 @Data
-public class UserLearn {
+public class UserLearn implements Serializable {
     @TableId
     private String ulid;
     private String userid;//用户id

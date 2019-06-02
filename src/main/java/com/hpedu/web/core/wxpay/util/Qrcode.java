@@ -1,14 +1,13 @@
 package com.hpedu.web.core.wxpay.util;
 
-import java.util.HashMap;
-
-import javax.servlet.http.HttpServletResponse;
-
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
+
+import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 
 public class Qrcode {
     public void createQRCoder(String content, HttpServletResponse response) {

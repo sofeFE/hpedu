@@ -138,6 +138,11 @@
         <if test="backImg!=null ">,#{backImg}</if>,#{sort},#{subject},1)
     </insert>
 
+    <update id="forbiddenTeacherById" parameterType="String" >
+        update teacher set isShow = 0  where tid =#{tid}
+    </update>
+    
+    
     <!-- <update id="updateTeacherSort" parameterType="hashmap">
        update teacher set sort=#{arg1} where tid=#{arg0}
      </update>-->

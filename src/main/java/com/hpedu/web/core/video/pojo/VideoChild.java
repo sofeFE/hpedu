@@ -3,11 +3,12 @@ package com.hpedu.web.core.video.pojo;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.io.Serializable;
 import java.util.Date;
 
 //视频多关联的子视频
 @TableName("video_child")
-public class VideoChild {
+public class VideoChild  implements Serializable {
     @TableId
     private String vcid;
     private String pid;// 父关联视频id

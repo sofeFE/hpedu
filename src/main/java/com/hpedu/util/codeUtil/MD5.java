@@ -1,6 +1,5 @@
 package com.hpedu.util.codeUtil;
 
-import java.io.PrintStream;
 import java.security.MessageDigest;
 
 public class MD5 {

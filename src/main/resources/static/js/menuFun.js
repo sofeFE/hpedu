@@ -54,6 +54,7 @@ function exam_list(url, etsubject, etclass, etclassify, pageNo) {
 }
 
 $(function () {
+    
     $('.thisv').on('click', function () {
         var vid = $(this).children('.no').val();
         var name = $(this).children('a').children('.classification-content-text').children(".name").html();
@@ -65,7 +66,7 @@ $(function () {
             url = "general/generalMore.html";
         }
         if (isChangeTime) {
-            changeVideoPlayNum();
+            updateLearningTime();
         }
         $("#subFrom").attr("action", cxPath + url);
         $("#className").val(name);
@@ -77,7 +78,7 @@ $(function () {
         var name = $(this).children('a').children('.classification-content-text').children(".cname").html();
         var url = "contest/contest.html";
         if (isChangeTime) {
-            changeVideoPlayNum();
+            updateLearningTime();
         }
         $("#subFrom").attr("action", cxPath + url);
         $("#className").val(name);
@@ -95,7 +96,7 @@ $(function () {
             url = "general/generalVideoList.html";
         }
         if (isChangeTime) {
-            changeVideoPlayNum();
+            updateLearningTime();
         }
         general_list(url, gsbuject, gclass, gclassify);
     });
@@ -105,7 +106,7 @@ $(function () {
         var cclass = $(this).siblings(".cclass").html().trim();
         var url = "contest/contestVideoList.html";
         if (isChangeTime) {
-            changeVideoPlayNum();
+            updateLearningTime();
         }
         contest_list(url, competitionName, cclass, cclassify);
     });
@@ -115,7 +116,7 @@ $(function () {
         var etclass = $(this).siblings(".etclass").html().trim();
         var url = "exam/examlist.html";
         if (isChangeTime) {
-            changeVideoPlayNum();
+            updateLearningTime();
         }
         exam_list(url, etsubject, etclass, etclassify);
     });
@@ -128,11 +129,13 @@ $(function () {
         $("#name").val(name);
         $("#subFrom").submit();
     });
+
+    setChangeTimeStatus(false);
 });
 $(function () {
     $(".exitUser").on("click", function () {
         if (isChangeTime) {
-            changeVideoPlayNum();
+            updateLearningTime();
         }
         window.location.href = cxPath + "/user/exitUser";
     });
@@ -140,14 +143,20 @@ $(function () {
 
 
 //修改学生学习时间
-function changeVideoPlayNum(){
+function updateLearningTime(){
     if(time && islogin=="1"){
         $.ajax({
-            url: cxPath + "/user/changeStuLeanTime",
+            url: cxPath + "user/updateLearningTime",
             type:"post",
             async:true,
             data:{vid:"${contestVideo.cid}",vclassify:1,time:time},
-            success:function(){}
+            success:function(result){
+                if(result.code == 0) {
+                    console.log("changeStuLearnTime success");
+                }else{
+                    console.error("changeStuLearnTime defeat , "+ result.msg)
+                } 
+            }
         });
     }
 }

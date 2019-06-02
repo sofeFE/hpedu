@@ -7,17 +7,14 @@
 <base href="${pageContext.request.contextPath}/">
 <meta charset="utf-8" />
 <title>视频列表</title>
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="css/index.css?v=1" />
-<link rel="stylesheet" type="text/css"
-	href="css/videoList.css" />
-	<link rel="stylesheet" href="css/iconfont.css">
-	<link rel="stylesheet" href="css/commen.css">
-	<link rel="stylesheet" href="css/reset.css">
-	<style type="text/css">
-	  .input{font-size:14px;padding:5px;border:solid 1px #ddd; width:100%;line-height:20px;display:block; border-radius:3px; -webkit-appearance:none;}
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/index.css?v=1" />
+<link rel="stylesheet" type="text/css" href="css/videoList.css" />
+<link rel="stylesheet" href="css/iconfont.css">
+<link rel="stylesheet" href="css/commen.css">
+<link rel="stylesheet" href="css/reset.css">
+<style type="text/css">
+    
 ul.pagination {
     display: inline-block;
     padding: 0;
@@ -65,24 +62,12 @@ background:#FEF2E9;color:#000;
 .hanjia,.hanjia p{
 background:#E1F6F9;color:#000;
 }		   
+
 </style>
 </head>
 <body>
 	<div class="header">
-<!-- logo图 和搜素-->
-		<%@include file="../videoSearch.jsp"%>	
-			<!--菜单-->
-			<div class="sunmenu">
-				<ul>
-					<li><a  href="classindex.html">首页</a></li>
-					<li><a style="border-bottom: 3px solid #5CB85C;color: #5CB85C;" class="routine-menu">常规课</a></li>
-					<li><a class="competition-menu">竞赛课</a></li>
-					<li><a class="quiz-menu">小测验</a></li>
-				</ul>
-				               <%@include file="../menuPublic.jsp"%>
-			</div>
-			<!-- 登录 -->
-         <%@include file="../ckUserInfo.jsp"%>
+		<%@include file="/WEB-INF/jsp/header.jsp" %>
 </div>
 	<!--内容-->
 	<div class="content"   style="width:100%;" >
@@ -186,34 +171,18 @@ background:#E1F6F9;color:#000;
 	</div>
 	</div>
 	<div class="foot">
-		<div class="foot-content">
-			<div class="foot-content-menu">
-				<ul>
-					<li><a href="">网站首页</a></li>
-					<li><a href="">企业合作</a></li>
-					<li><a href="">人才招聘</a></li>
-					<li><a href="">联系我们</a></li>
-					<li><a href="">常见问题</a></li>
-				</ul>
-			</div>
-			<p>Copyright © 2016 imooc.com All Rights Reserved | 京ICP备
-				13046642号-2</p>
-		</div>
+		<%@include file="/WEB-INF/jsp/footer.jsp" %>
 	</div>
 
 
 </body>
-<script
-	src="libs/jquery.1.10.1.min.js"
-	type="text/javascript" charset="utf-8"></script>
-<script src="libs/bootstrap.min.js"
-	type="text/javascript" charset="utf-8"></script>
-<script src="js/public.js"
-	type="text/javascript" charset="utf-8"></script>
-<script src="js/videoList.js"
-	type="text/javascript" charset="utf-8"></script>
+<script src="libs/jquery.1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="libs/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/videoList.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/menuFun.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-	   setChangeTimeStatus(false);
+	   
        function pageSize(num){
     	   var nameType=$("#nameType_select").val();
     	   var sort=$("#sort_select").val();
@@ -243,4 +212,4 @@ background:#E1F6F9;color:#000;
 	     <!-- 分页参数 -->
 	     <input type="hidden" name="pageNo" id="pageNo">
 	</form>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

@@ -124,19 +124,7 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 	</div>
 	</div>
 	<div class="foot">
-		<div class="foot-content">
-			<div class="foot-content-menu">
-				<ul>
-					<li><a href="">网站首页</a></li>
-					<li><a href="">企业合作</a></li>
-					<li><a href="">人才招聘</a></li>
-					<li><a href="">联系我们</a></li>
-					<li><a href="">常见问题</a></li>
-				</ul>
-			</div>
-			<p>Copyright © 2016 imooc.com All Rights Reserved | 京ICP备
-				13046642号-2</p>
-		</div>
+		<%@include file="/WEB-INF/jsp/footer.jsp" %>
 	</div>
 
 </body>
@@ -150,7 +138,7 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 <script src="js/videoList.js"
 	type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-	    setChangeTimeStatus(false);
+	    
         function pageSize(num){
         	contest_list("contest/contestVideoList.html","${competitionName}","${cclass}","${cclassify}",num);
 			//window.location.href="contest/contestVideoList.html?competitionName="+"${competitionName}"+"&"+"cclass="+"${cclass}"+"&"+"cclassify="+"${cclassify}"+"&"+"pageNo="+num;
@@ -176,4 +164,4 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 	     <!-- 分页参数 -->
 	     <input type="hidden" name="pageNo" id="pageNo">
 	</form>
-</html>
+<script type="text/javascript" src="js/class.js?v=2"></script></html>

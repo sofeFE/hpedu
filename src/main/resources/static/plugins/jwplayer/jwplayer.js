@@ -1420,7 +1420,7 @@ function(e, t, n) {
     i = [],
     r = function() {
     	//请求文件路径
-        return "js/jwplayer"
+        return "plugins/jwplayer"
     }.apply(t, i),
     !(void 0 !== r && (e.exports = r))
 },

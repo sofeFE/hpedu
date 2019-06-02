@@ -1,20 +1,5 @@
 package com.hpedu.web.core.exam.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.slf4j.Logger;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.hpedu.util.codeUtil.BaseUtil;
 import com.hpedu.util.codeUtil.StringUtil;
 import com.hpedu.util.mybatis.Page;
@@ -26,6 +11,19 @@ import com.hpedu.web.core.video.pojo.ContestVideo;
 import com.hpedu.web.core.video.pojo.GeneralVideo;
 import com.hpedu.web.core.video.service.ContestVideoService;
 import com.hpedu.web.core.video.service.GeneralVideoService;
+import org.slf4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/")

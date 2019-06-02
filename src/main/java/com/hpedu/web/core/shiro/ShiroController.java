@@ -1,6 +1,5 @@
 package com.hpedu.web.core.shiro;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.hpedu.util.ResultBean;
 import com.hpedu.web.core.shiro.service.SysMenuEntityService;
 import com.hpedu.web.core.shiro.service.SysUserEntityService;
@@ -8,7 +7,6 @@ import org.apache.shiro.util.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

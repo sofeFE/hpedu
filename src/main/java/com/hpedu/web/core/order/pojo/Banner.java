@@ -4,10 +4,12 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 //首页轮播图
 @Data
 @TableName("banner")
-public class Banner {
+public class Banner implements Serializable {
     @TableId
     private String bid;
     private String title;// 标题

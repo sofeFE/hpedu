@@ -1,28 +1,20 @@
 package com.hpedu.web.core.user.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.hpedu.web.core.user.pojo.*;
+import org.apache.ibatis.annotations.Mapper;
+
 import java.util.List;
 import java.util.Map;
-
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-
-import com.hpedu.web.core.user.pojo.ErrorExam;
-import com.hpedu.web.core.user.pojo.RightMenu;
-import com.hpedu.web.core.user.pojo.UnitTest;
-import com.hpedu.web.core.user.pojo.UnitTest_Choose;
-import com.hpedu.web.core.user.pojo.User;
-import com.hpedu.web.core.user.pojo.UserLearn;
-import com.hpedu.web.core.user.pojo.UserLevel;
-import com.hpedu.web.core.user.pojo.UserScore;
-import org.apache.ibatis.annotations.Mapper;
 
 
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
 	/**
-	 * 根据手机号密码查询
+	 * 根据手机号查询
 	 * */
-	User findUserByPhone(String userPhone,String passWord);
+	User findUserByPhone(String userPhone);
 
 	/**
 	 * 后台登陆
@@ -212,4 +204,6 @@ public interface UserMapper extends BaseMapper<User> {
 	void updateVisitorNum(int i);
 
 	User getUserByUserName(String arg0);
+
+    List<Map> getUnitTestDetail(Map<String, Object> map);
 }

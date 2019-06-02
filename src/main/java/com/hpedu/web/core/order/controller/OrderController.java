@@ -5,7 +5,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.hpedu.util.codeUtil.BaseUtil;
 import com.hpedu.util.codeUtil.PrintHelper;
 import com.hpedu.util.codeUtil.StringUtil;
-import com.hpedu.util.codeUtil.UUIDUtil;
 import com.hpedu.util.mybatis.Page;
 import com.hpedu.web.core.order.pojo.ArticleImg;
 import com.hpedu.web.core.order.pojo.Banner;
@@ -18,11 +17,11 @@ import com.hpedu.web.core.video.service.ContestVideoService;
 import com.hpedu.web.core.video.service.GeneralVideoService;
 import com.hpedu.web.core.wxpay.service.WxPayService;
 import com.hpedu.web.core.wxpay.util.WechatPayUtil;
-import org.apache.commons.lang3.StringUtils;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +35,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/")
@@ -49,6 +51,10 @@ public class OrderController {
     GeneralVideoService generalVideoService;
     @Resource
     WxPayService WxPayService;
+    @Autowired
+    WechatPayUtil wechatPayUtil ;
+    
+    
     private Logger log = BaseUtil.getLogger(OrderController.class);
 
     @RequestMapping("/order/checkOrdersByUid.html")
@@ -164,7 +170,7 @@ public class OrderController {
         model.addAttribute("type", type);
     }
 
-    //生成订单号和二维码
+    //生成订单号和二维码链接url
     @PostMapping(value = "/order/getErweimaImg", produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public Map<String, Object> getErweimaImg(String vid, String vclassify, String uid) /*throws IOException*/ {
@@ -213,7 +219,7 @@ public class OrderController {
                 
                 if (backDataMap.get("result_code").equals("SUCCESS")) {
                     
-                    if (WechatPayUtil.checkBackSign(backDataMap)) {//对于支付结果通知的内容做签名验证
+                    if (wechatPayUtil.checkBackSign(backDataMap)) {//对于支付结果通知的内容做签名验证
                         String out_trade_no = backDataMap.get("out_trade_no");//订单号
                         String total_fee = backDataMap.get("total_fee");//实付金额（单位：分）
                         //校验返回的订单金额是否与商户的订单金额一致
@@ -264,7 +270,7 @@ public class OrderController {
     
     
     //解析微信回调返回的值
-    public Map<String, String> parseReturnXmlInfoFromWePay(HttpServletRequest request) {
+    private Map<String, String> parseReturnXmlInfoFromWePay(HttpServletRequest request) {
         Map<String, String> map = null;
         try {
             // 解析结果存储在HashMap

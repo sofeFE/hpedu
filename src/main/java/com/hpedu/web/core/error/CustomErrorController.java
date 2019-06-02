@@ -2,15 +2,7 @@ package com.hpedu.web.core.error;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ErrorProperties;
-import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 重写错误控制器.
@@ -20,17 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 //@Controller
 //@RequestMapping("/error/")
-public class CustomErrorController extends BasicErrorController { // 
+public class CustomErrorController/* extends BasicErrorController*/ { // 
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomErrorController.class);
 
-    @Autowired
+//    @Autowired
     private ErrorAttributes errorAttributes;
 
-    public CustomErrorController(ErrorAttributes errorAttributes) {
+    /*public CustomErrorController(ErrorAttributes errorAttributes) {
         super(errorAttributes, new ErrorProperties());
         this.errorAttributes = errorAttributes;
-    }
+    }*/
 
     /**
      * 想自定义 错误页 . 404 500  之类视图
