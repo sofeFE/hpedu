@@ -56,8 +56,7 @@ public class MySSLProtocolSocketFactory implements ProtocolSocketFactory {
           );   
   }   
   
-  public Socket createSocket(String host, int port) throws IOException,   
-          UnknownHostException {   
+  public Socket createSocket(String host, int port) throws IOException,  UnknownHostException {   
       return getSSLContext().getSocketFactory().createSocket(   
               host,   
               port   
@@ -90,7 +89,6 @@ public class MySSLProtocolSocketFactory implements ProtocolSocketFactory {
       }   
   }   
    
-  //自定义私有类   
   private static class TrustAnyTrustManager implements X509TrustManager {   
       
       public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {   

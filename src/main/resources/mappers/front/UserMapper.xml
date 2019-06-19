@@ -4,13 +4,13 @@
 <mapper namespace="com.hpedu.web.core.user.dao.UserMapper">
 
     <select id="getUserByUserName" parameterType="String" resultMap="BaseResultMap">
-		select * from user where userName=#{arg1}
+		select * from user where userName=#{param2}
 	</select>
     <select id="getVisitorNum" resultType="int">
 		select vnum from demo where id = 6
 	</select>
     <update id="updateVisitorNum" parameterType="int">
-		update demo set vnum = #{arg1}
+		update demo set vnum = #{param2}
 	</update>
 
 
@@ -29,7 +29,7 @@
 	  e.eeid 
 	from errorexam e 
 	right join unittest ut on e.utid=ut.utid 
-	where usid=#{arg0} 
+	where usid=#{param1} 
 	order by sort
 	</select>
     
@@ -313,8 +313,8 @@ select count(1)as num from userscore s left join exam g on s.vid=g.etid where 1=
                 FROM
                     unittest ut
                 WHERE
-                    vid = #{arg0} 
-                    AND utype=#{arg1} 
+                    vid = #{param1} 
+                    AND utype=#{param2} 
             )yy
 		GROUP BY
 			yy.testType
@@ -337,7 +337,7 @@ select count(1)as num from userscore s left join exam g on s.vid=g.etid where 1=
         <if test="rand==null">u.testType,u.ucreateTime,c.sort</if>
     </select>
     <select id="selectVidoeTestByUtid" parameterType="String" resultType="java.util.Map">
-select u.*,c.csid,c.tcontent,c.tanswer from unittest u left join unittest_choose c on u.utid=c.utid where u.utid=#{arg0} order by c.sort
+select u.*,c.csid,c.tcontent,c.tanswer from unittest u left join unittest_choose c on u.utid=c.utid where u.utid=#{param1} order by c.sort
 </select>
 
     <insert id="insertUserScore" parameterType="com.hpedu.web.core.user.pojo.UserScore">
@@ -356,27 +356,29 @@ update userScore set JDTscore=#{JDTscore},gotScore=#{JDTscore}+score where usid=
 
     <select id="findlearnListByPage" parameterType="hashmap" resultType="java.util.Map">
 select * from(
-select g.gid as vid,g.gname as vname,g.isMore,0 as vctype,g.gvimg as img,g.teacherName,g.gmoney as money,g.gplayNo as playno,g.gclassify as classify,g.gclassify2 as classify2,g.gclass from generalvideo g where g.gid in (select vid from userlearn ul where userid=#{arg0} and ul.vctype=0 GROUP BY vid order by learnDate desc)
+select g.gid as vid,g.gname as vname,g.isMore,0 as vctype,g.gvimg as img,g.teacherName,g.gmoney as money,g.gplayNo as playno,g.gclassify as classify,g.gclassify2 as classify2,g.gclass 
+from generalvideo g where g.gid in (select vid from userlearn ul where userid=#{param1} and ul.vctype=0 GROUP BY vid order by learnDate desc)
 UNION
-select c.cid as vid,c.cname as vname,c.isMore,1 as vctype,c.cvimg as img,c.teacherName,c.cmoney as money,c.cplayNo as playno,c.cclassify as classify,'' as classify2,c.cclass as gclass from contestvideo c where c.cid in (select vid from userlearn ul where userid=#{arg0} and ul.vctype=1 GROUP BY vid order by learnDate desc))yy limit #{arg1},#{arg2}
+select c.cid as vid,c.cname as vname,c.isMore,1 as vctype,c.cvimg as img,c.teacherName,c.cmoney as money,c.cplayNo as playno,c.cclassify as classify,'' as classify2,c.cclass as gclass 
+from contestvideo c where c.cid in (select vid from userlearn ul where userid=#{param1} and ul.vctype=1 GROUP BY vid order by learnDate desc))yy limit #{param2},#{param3}
 
 	</select>
     <select id="getLearnVideoTotalCount" parameterType="String" resultType="java.lang.Integer">
-	    select count(1) from(select * from( select * from userlearn where userid=#{arg0} group by  vid,vctype) yy)aa
+	    select count(1) from(select * from( select * from userlearn where userid=#{param1} group by  vid,vctype) yy)aa
 	</select>
     
     <select id="getLearnTimeByUserId" parameterType="String" resultType="java.util.Map">
 	  select sum(l.learnTime)/60 as time,DATE_FORMAT(learnDate,'%m.%d') as learnDate 
 	  from userlearn l 
-	  where l.userId=#{arg0} and DATE_FORMAT(learnDate,'%Y-%m')  like CONCAT(#{arg1},'%') 
+	  where l.userId=#{param1} and DATE_FORMAT(learnDate,'%Y-%m')  like CONCAT(#{param2},'%') 
 	  group by learnDate
 	</select>
     
     <select id="getYearByUserId" parameterType="String" resultType="java.lang.String">
-	  select DATE_FORMAT(learnDate,'%Y')as year from userlearn l where l.userId=#{arg0}  group by DATE_FORMAT(learnDate,'%Y') ;
+	  select DATE_FORMAT(learnDate,'%Y')as year from userlearn l where l.userId=#{param1}  group by DATE_FORMAT(learnDate,'%Y') ;
 	</select>
     <update id="updateLearnTotalTime" parameterType="hashmap">
-	  update user set learnTime= learnTime + #{arg1} where uid=#{arg0}
+	  update user set learnTime= learnTime + #{param2} where uid=#{param1}
 	</update>
     <insert id="insertLearnTimeByDay" parameterType="com.hpedu.web.core.user.pojo.UserLearn">
 	 insert into userLearn(ulid,userid,vctype,vid,learnTime,learnDate)values(#{ulid},#{userid},#{vctype},#{vid},#{learnTime},now())
@@ -385,13 +387,13 @@ select c.cid as vid,c.cname as vname,c.isMore,1 as vctype,c.cvimg as img,c.teach
 	  update userLearn set learnTime=learnTime+#{learnTime} where ulid=#{ulid}
 	</update>
     <select id="selectIsExitUserLearn" parameterType="hashmap" resultType="String">
-	  select ulid from userLearn where userid=#{arg0} and vid=#{arg1} and vctype=#{arg2} and date_format(learnDate,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d')
+	  select ulid from userLearn where userid=#{param1} and vid=#{param2} and vctype=#{param3} and date_format(learnDate,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d')
 	</select>
     <select id="selectAllLevel" resultMap="LevelResultMap">
 	  select * from userLevel order by level
 	</select>
     <select id="selectLevelById" parameterType="String" resultMap="LevelResultMap">
-	  select * from userLevel where ulid=#{arg0}
+	  select * from userLevel where ulid=#{param1}
 	</select>
     <insert id="insertLevel" parameterType="com.hpedu.web.core.user.pojo.UserLevel">
         insert into userLevel(ulid
@@ -423,7 +425,7 @@ select c.cid as vid,c.cname as vname,c.isMore,1 as vctype,c.cvimg as img,c.teach
         where ulid = #{ulid}
     </update>
     <delete id="deleteLevel" parameterType="String">
-	  delete from userLevel where ulid = #{arg0}
+	  delete from userLevel where ulid = #{param1}
 	</delete>
 
 
@@ -478,7 +480,7 @@ select c.cid as vid,c.cname as vname,c.isMore,1 as vctype,c.cvimg as img,c.teach
 	select * from user u where uid = #{uid}
 	</select>
     <select id="findUserByPhone" parameterType="java.lang.String" resultMap="BaseResultMap">
-	select * from user where phoneNo = #{arg0} 
+	select * from user where phoneNo = #{param1} 
 	</select>
     <insert id="addUser" parameterType="com.hpedu.web.core.user.pojo.User">
         insert into user
@@ -569,13 +571,13 @@ select c.cid as vid,c.cname as vname,c.isMore,1 as vctype,c.cvimg as img,c.teach
 
     </insert>
     <update id="updatePwdByPhone" parameterType="String">
-	  update user set passWord=#{arg1} where phoneNo=#{arg0}
+	  update user set passWord=#{param2} where phoneNo=#{param1}
 	</update>
     <update id="updateYQCodeByUserId" parameterType="String">
-	  update user set yqCode=#{arg1},yqCodeUrl=#{arg2} where uid=#{arg0}
+	  update user set yqCode=#{param2},yqCodeUrl=#{param3} where uid=#{param1}
 	</update>
     <select id="getUserByYQCode" parameterType="String" resultMap="BaseResultMap">
-	   select * from user where yqCode=#{arg0}
+	   select * from user where yqCode=#{param1}
 	</select>
     <update id="updateUserNews" parameterType="com.hpedu.web.core.user.pojo.User">
         update user
@@ -644,7 +646,7 @@ select c.cid as vid,c.cname as vname,c.isMore,1 as vctype,c.cvimg as img,c.teach
    insert into unitTest(utid,vid,utype,ucreateTime,score,ucontent,answer,isMoreChoose,utimg,ponit,detail,testType)values(#{utid},#{vid},#{utype},now(),#{score},#{ucontent},#{answer},#{isMoreChoose},#{utimg},#{ponit},#{detail},#{testType})
 </insert>
     <delete id="delUnitTest" parameterType="String">
-delete from unitTest where utid=#{arg0}
+delete from unitTest where utid=#{param1}
 </delete>
     <update id="updateUnitTest" parameterType="com.hpedu.web.core.user.pojo.UnitTest">
 update unitTest set score=#{score},ucontent=#{ucontent},answer=#{answer},isMoreChoose=#{isMoreChoose},utimg=#{utimg},ponit=#{ponit},detail=#{detail},testType=#{testType} where utid=#{utid}

@@ -72,21 +72,21 @@
                 LEFT JOIN generalvideo g ON vc.pid = g.gid
                 WHERE
                   g.isMore = 1
-                AND g.weekVal = #{arg1}
+                AND g.weekVal = #{param1}
               )
 	</update>
 
     <update id="updateIsKill" parameterType="String">
-	  update generalVideo set isKill=#{arg1} where gid=#{arg0}
+	  update generalVideo set isKill=#{param2} where gid=#{param1}
 	</update>
     <update id="updatePlayCount" parameterType="String">
-	  update generalVideo set gplayNo=gplayNo+1 where gid=#{arg0}
+	  update generalVideo set gplayNo=gplayNo+1 where gid=#{param1}
 	</update>
     <delete id="deleteVideoChildById" parameterType="String">
 	  delete from video_child where pid=#{pid}
 	</delete>
     <select id="selectChildVideoById" parameterType="String" resultMap="ChildVideoResultMap">
-	  select * from video_child where vcid=#{arg0}
+	  select * from video_child where vcid=#{param1}
 	</select>
     <select id="selectAllChildVideo" parameterType="String" resultMap="ChildVideoResultMap">
         select * from video_child where pid=#{pid}<if test="weekVal!=null">and editDate is not null</if> order by sort
@@ -160,15 +160,19 @@
 	</select>
     <!-- 点击播放 -->
     <select id="findGeneralVideoByVid" parameterType="java.lang.String" resultMap="BaseResultMap">
-		SELECT g.*,char_length(g.gintro) as glen FROM generalVideo g  where g.gid = #{arg0} 
+		SELECT g.*,char_length(g.gintro) as glen FROM generalVideo g  where g.gid = #{param1} 
 	</select>
 
     <!-- 与播放视频相关的视频 -->
+    <!---->
     <select id="findGeneralVideoByVideo" parameterType="java.lang.String"
             resultMap="BaseResultMap">
-		SELECT g.* FROM generalVideo g  WHERE gsbuject LIKE  CONCAT(CONCAT('%', #{arg0}), '%')  AND
-		gclass LIKE  CONCAT(CONCAT('%', #{arg1}), '%')  AND
-		gclassify LIKE  CONCAT(CONCAT('%', #{arg2}), '%') and gid!=#{arg3} ORDER BY gcreatTime DESC LIMIT 8
+		SELECT g.* FROM generalVideo g  
+		WHERE gsbuject LIKE  CONCAT(CONCAT('%', #{gsbuject}), '%')  
+		AND gclass LIKE  CONCAT(CONCAT('%', #{gclass}), '%') 
+		AND gclassify LIKE  CONCAT(CONCAT('%', #{gclassify}), '%') 
+		and gid!=#{vid} 
+		ORDER BY gcreatTime DESC LIMIT 8
 	</select>
 
     <!--条件查询 分页 常规视频列表 -->
@@ -185,8 +189,8 @@
         </if>
         <if test="nameType!=null and nameType!=''">
             <!--  and  substring_index(substring_index(gname, '册', -1),'-',1)+0>=substring_index(#{nameType},'-',1)+0 and substring_index(substring_index(gname, '册', -1),'-',-1)+0&lt;=substring_index(#{nameType},'-',-1)+0  -->
-            and substring_index(GetNum(gname),'-',1)+0>=substring_index(#{nameType},'-',1)+0 and
-            substring_index(GetNum(gname),'-',-1)+0&lt;=substring_index(#{nameType},'-',-1)+0
+            and substring_index(GetNum(gname),'-',1)+0>=substring_index(#{nameType},'-',1)+0 
+            and substring_index(GetNum(gname),'-',-1)+0&lt;=substring_index(#{nameType},'-',-1)+0
         </if>
         ORDER BY g.gcreatTime ${sort}
     </select>
@@ -205,7 +209,7 @@
         ORDER BY g.gcreatTime DESC
     </select>
     <delete id="deleteGeneralById" parameterType="java.lang.String">
-	delete from generalVideo where gid=#{arg0}
+	delete from generalVideo where gid=#{param1}
 	</delete>
     <select id="findVideoListByExam" parameterType="java.util.Map" resultMap="BaseResultMap">
         SELECT g.* FROM generalVideo g where 1=1
@@ -218,7 +222,7 @@
         ORDER BY gcreatTime DESC LIMIT #{pagesize}
     </select>
     <select id="searchGeneralVideoListByGname" parameterType="String" resultMap="BaseResultMap">
-		SELECT g.* FROM generalVideo g  WHERE gname like CONCAT(CONCAT('%', #{arg0}), '%')  order by gcreatTime desc
+		SELECT g.* FROM generalVideo g  WHERE gname like CONCAT(CONCAT('%', #{param1}), '%')  order by gcreatTime desc
 	</select>
 
     <insert id="insertOneVideoChild" parameterType="com.hpedu.web.core.video.pojo.VideoChild">

@@ -119,7 +119,7 @@ public class RandomUtil {
         return result;  
     }  
   
-    public static void main(String[] args) {  
+    /*public static void main(String[] args) {  
         System.out.println("返回一个定长的随机字符串(只包含大小写字母、数字):" + generateString(10));  
         System.out  
                 .println("返回一个定长的随机纯字母字符串(只包含大小写字母):" + generateMixString(10));  
@@ -132,5 +132,5 @@ public class RandomUtil {
                 + toFixdLengthString(123, 10));  
         int[] in = { 1, 2, 3, 4, 5, 6, 7 };  
         System.out.println("每次生成的len位数都不相同:" + getNotSimple(in, 3));  
-    }  
+    } */ 
 }

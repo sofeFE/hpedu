@@ -25,8 +25,5 @@ public class OracleDialect extends Dialect {
 		return buffer.toString();
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(new OracleDialect().getLimitString("select * from dzgw_receive for update",  0, 25));
-	}
 
 }

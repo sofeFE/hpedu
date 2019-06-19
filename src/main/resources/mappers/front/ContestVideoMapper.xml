@@ -45,13 +45,13 @@
         <result column="vctype" property="vctype" jdbcType="INTEGER"/>
     </resultMap>
     <update id="updateIsKill" parameterType="String">
-	  update contestvideo set isKill=#{arg1} where cid=#{arg0}
+	  update contestvideo set isKill=#{param2} where cid=#{param1}
 	</update>
     <update id="updatePlayCount" parameterType="String">
-	  update contestvideo set cplayNo=cplayNo+1 where cid=#{arg0}
+	  update contestvideo set cplayNo=cplayNo+1 where cid=#{param1}
 	</update>
     <select id="selectPdfByVid" parameterType="String" resultMap="PDFResultMap">
-	 select * from video_pdf vp where vp.vctype=#{arg1} and vp.vid=#{arg0}  order by vp.sort
+	 select * from video_pdf vp where vp.vctype=#{type} and vp.vid=#{vid}  order by vp.sort
 	</select>
 
     <!-- 新增大联盟课程 -->
@@ -79,16 +79,16 @@
     <!-- 播放竞赛视频 -->
     <select id="findContestVideoById" parameterType="java.lang.String"
             resultMap="BaseResultMap">
-		SELECT c.*,char_length(c.cintro) as clen FROM contestvideo c  where c.cid=#{arg0}  
+		SELECT c.*,char_length(c.cintro) as clen FROM contestvideo c  where c.cid=#{param1}  
 	</select>
     <!-- 该竞赛相关视频 -->
     <select id="findContestVideoByVideo" parameterType="java.lang.String"
             resultMap="BaseResultMap"> 
 		SELECT c.* FROM contestvideo c  
-		where competitionName like CONCAT(CONCAT('%', #{arg0}), '%')  and cclass like  
-		CONCAT(CONCAT('%', #{arg1}), '%')  
-		and cclassify like CONCAT(CONCAT('%', #{arg2}), '%') 
-		and cid!=#{arg3} 
+		where competitionName like CONCAT(CONCAT('%', #{param1}), '%')  and cclass like  
+		CONCAT(CONCAT('%', #{param2}), '%')  
+		and cclassify like CONCAT(CONCAT('%', #{param3}), '%') 
+		and cid!=#{param4} 
 		ORDER BY ccreatTime DESC 
 		LIMIT 8
 	</select>
@@ -140,10 +140,10 @@
         where cid=#{cid}
     </update>
     <delete id="deleteUSAClass" parameterType="java.lang.String">
-	delete from contestvideo where cid=#{arg0} 
+	delete from contestvideo where cid=#{param1} 
 	</delete>
     <select id="searchContestVideoListByCname" parameterType="String" resultMap="BaseResultMap">
-		SELECT c.* FROM contestvideo c  WHERE cname like CONCAT(CONCAT('%', #{arg0}), '%') order by ccreatTime desc
+		SELECT c.* FROM contestvideo c  WHERE cname like CONCAT(CONCAT('%', #{param1}), '%') order by ccreatTime desc
 	</select>
 
 </mapper>

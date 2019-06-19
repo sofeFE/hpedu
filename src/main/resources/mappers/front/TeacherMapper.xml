@@ -28,7 +28,7 @@
     <delete id="batchDeleteByName" parameterType="java.lang.String">
         delete from teacher
         <where>
-            tname like #{arg1}
+            tname like #{param2}
         </where>
 
     </delete>
@@ -112,10 +112,10 @@
     </select>
 
     <select id="findTeacherById" parameterType="java.lang.String" resultMap="BaseResultMap">
-	select * from teacher where tid=#{arg0}
+	select * from teacher where tid=#{param1}
 	</select>
     <select id="findTeacherByName" parameterType="java.lang.String" resultMap="BaseResultMap">
-	select * from teacher where tname=#{arg0} limit 1
+	select * from teacher where tname=#{param1} limit 1
 	</select>
     <update id="updateTeacher" parameterType="com.hpedu.web.core.teacher.pojo.Teacher">
         update teacher t set t.tname = #{tname},t.tintro=#{tintro},subject=#{subject}
@@ -128,7 +128,7 @@
         where t.tid = #{tid}
     </update>
     <delete id="deleteTeacherById" parameterType="java.lang.String">
-	delete from teacher where tid=#{arg0}
+	delete from teacher where tid=#{param1}
 	</delete>
     <insert id="addTeacher" parameterType="com.hpedu.web.core.teacher.pojo.Teacher">
         insert into teacher(tid,tname,tintro
@@ -144,6 +144,6 @@
     
     
     <!-- <update id="updateTeacherSort" parameterType="hashmap">
-       update teacher set sort=#{arg1} where tid=#{arg0}
+       update teacher set sort=#{param2} where tid=#{param1}
      </update>-->
 </mapper>

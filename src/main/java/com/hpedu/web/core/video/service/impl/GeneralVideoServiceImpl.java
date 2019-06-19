@@ -7,6 +7,7 @@ import com.hpedu.web.core.video.dao.GeneralVideoMapper;
 import com.hpedu.web.core.video.pojo.GeneralVideo;
 import com.hpedu.web.core.video.pojo.VideoChild;
 import com.hpedu.web.core.video.service.GeneralVideoService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class GeneralVideoServiceImpl extends ServiceImpl<GeneralVideoMapper, Gen
     private MyBatisBase myBatisBase;
 
     @Override
-    @Cacheable(value="welcomePage"/*,key="generalList"*/)
+    @Cacheable(value = "welcomePage"/*,key="generalList"*/)
     public List<GeneralVideo> findGeneralVideo() {
         List<GeneralVideo> genlist = baseMapper.findGeneralVideo();
         return genlist;
@@ -34,8 +35,10 @@ public class GeneralVideoServiceImpl extends ServiceImpl<GeneralVideoMapper, Gen
     }
 
     @Override
-    public List<GeneralVideo> findGeneralVideoByVideo(String gsbuject,
-                                                      String gclass, String gclassify, String vid) {
+    public List<GeneralVideo> findGeneralVideoByVideo(@Param("gsbuject") String gsbuject,
+                                                      @Param("gclass")String gclass,
+                                                      @Param("gclassify")String gclassify,
+                                                      @Param("vid")String vid) {
 
         List<GeneralVideo> glist = baseMapper.findGeneralVideoByVideo(gsbuject, gclass, gclassify, vid);
         return glist;

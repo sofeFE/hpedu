@@ -39,7 +39,7 @@
 	</resultMap>
 	
 	<update id="updateLearnCount" parameterType="String">
-	  update exam set etestNo=etestNo+1 where etid=#{arg0}
+	  update exam set etestNo=etestNo+1 where etid=#{param1}
 	</update>
 	
 	<insert id ="insertExamImgs" parameterType="java.util.List">
@@ -93,13 +93,13 @@
 	</select>
 	<select id="findExamByEtid" parameterType="java.lang.String"
 		resultMap="BaseResultMap">
-		select * from exam ex  where ex.etid = #{arg0} 
+		select * from exam ex  where ex.etid = #{param1} 
 	</select>
 	<select id="selectExamImgByExid" parameterType="java.lang.String" resultMap="ImgResultMap">
-	 select * from exam_img ei where ei.exid = #{arg0} order by type,ei.sort
+	 select * from exam_img ei where ei.exid = #{param1} order by type,ei.sort
 	</select>
 	<delete id="deleteExamById" parameterType="java.lang.String">
-		delete from exam where etid=#{arg0}
+		delete from exam where etid=#{param1}
 	</delete>
 	<update id="updateExam" parameterType="com.hpedu.web.core.exam.pojo.Exam">
 		update exam e 

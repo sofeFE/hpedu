@@ -63,10 +63,10 @@ public class MD5 {
 		return hexValue.toString();
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		MD5 md5 = new MD5("hpadmin");
 		String postString = md5.compute();
 		System.out.println("-->done: " + postString);
 		System.out.println(new MD5("houpujiaoyu2016").compute_upper());
-	}
+	}*/
 }

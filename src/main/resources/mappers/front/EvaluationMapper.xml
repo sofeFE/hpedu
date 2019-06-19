@@ -26,13 +26,13 @@
 	 select  count(*) from evaluation g where 1=1
 	</select> -->
 	<select id="findEvaluationListByPage" parameterType="int" resultMap="BaseResultMap">
-		select g.*,gv.gname,cv.cname from evaluation g left join generalvideo gv on g.vid=gv.gid left join contestvideo cv on g.vid=cv.cid order by g.ecreatTime desc limit #{arg0},#{arg1}
+		select g.*,gv.gname,cv.cname from evaluation g left join generalvideo gv on g.vid=gv.gid left join contestvideo cv on g.vid=cv.cid order by g.ecreatTime desc limit #{param1},#{param2}
 	</select> 
 	<select id="findEvaluationListCount"  resultType="java.lang.Integer">
 	    select  count(1) from evaluation
 	</select>
 	<delete id="deleteEvaluationById" parameterType="java.lang.String">
-	   delete from evaluation where eid=#{arg0}
+	   delete from evaluation where eid=#{param1}
 	</delete>
 	<select id="findTop20EvaluationByEid" parameterType="java.lang.String" resultMap="BaseResultMap">
 	select * from evaluation where vid = #{vid} and eisShow = 1 order by ecreatTime desc limit 0,20

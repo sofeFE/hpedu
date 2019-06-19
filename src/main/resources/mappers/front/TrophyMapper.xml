@@ -31,7 +31,7 @@
 	</resultMap>
 	
 	<select id="selectStuImgByTpid" parameterType="String" resultMap="StuResultMap">
-	  select * from stu_img where tpid=#{arg0} order by sort
+	  select * from stu_img where tpid=#{param1} order by sort
 	</select>
 	<insert id ="insertStuImgs" parameterType="java.util.List">
             insert into stu_img (stid,tpid,stUrl,sort) values 
@@ -59,10 +59,10 @@
 	<if test="pintrotitle!=null">,#{pintrotitle}</if><if test="pintro!=null">,#{pintro}</if><if test="common!=null">,#{common}</if>) 
 	</insert>
 	<delete id="deleteTrophy" parameterType="java.lang.String">
-	delete from trophy  where pid=#{arg0}
+	delete from trophy  where pid=#{param1}
 	</delete>
 	<select id="findTrophyById" parameterType="java.lang.String" resultMap="BaseResultMap">
-	select * from trophy t  where pid = #{arg0} 
+	select * from trophy t  where pid = #{param1} 
 	</select>
 	<update id="updateTrophy" parameterType="com.hpedu.web.core.trophy.pojo.Trophy">
 	update trophy t set t.pname=#{pname}

@@ -7,6 +7,7 @@ import com.hpedu.web.core.video.dao.ContestVideoMapper;
 import com.hpedu.web.core.video.pojo.ContestVideo;
 import com.hpedu.web.core.video.pojo.VideoPdf;
 import com.hpedu.web.core.video.service.ContestVideoService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -84,7 +85,7 @@ public class ContestVideoServiceImpl extends ServiceImpl<ContestVideoMapper,Cont
 	}
 
 	@Override
-	public List<VideoPdf> selectPdfByVid(String vid, String type) {
+	public List<VideoPdf> selectPdfByVid(@Param("vid") String vid,@Param("type") String type) {
 		
 		return baseMapper.selectPdfByVid(vid, type);
 	}

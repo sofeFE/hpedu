@@ -1,6 +1,7 @@
 package com.hpedu.test;
 
 import io.netty.util.concurrent.DefaultThreadFactory;
+import org.junit.Test;
 
 import java.util.Queue;
 import java.util.concurrent.*;
@@ -25,8 +26,8 @@ public class ThreadPool {
     static ThreadFactory threadFactory = Executors.defaultThreadFactory();
     
     
-
-    public static void main(String[] args) throws InterruptedException, ExecutionException, TimeoutException {
+@Test
+    public void main() throws InterruptedException, ExecutionException, TimeoutException {
         ThreadPoolExecutor threadPool = new ThreadPoolExecutor(corePoolSize,
                                                         maximumPoolSize,
                                                         keepAliveTime,

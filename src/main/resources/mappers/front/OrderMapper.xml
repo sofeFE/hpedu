@@ -45,7 +45,7 @@
         <result column="atUrl" property="atUrl" jdbcType="VARCHAR"/>
     </resultMap>
     <select id="selectArticleImgByBid" parameterType="String" resultMap="AticleImgResultMap">
-	  select * from article_img where bid=#{arg0} order by createTime
+	  select * from article_img where bid=#{param1} order by createTime
 	</select>
 
     <insert id="insertArticleImgs" parameterType="java.util.List">
@@ -75,7 +75,7 @@
 	  delete from banner where bid=#{bid}
 	</delete>
     <update id="updateBannerSort" parameterType="hashmap">
-	  update banner set sort=#{arg1} where bid=#{arg0}
+	  update banner set sort=#{param2} where bid=#{param1}
 	</update>
 
     <insert id="insertBanner" parameterType="com.hpedu.web.core.order.pojo.Banner">
@@ -218,17 +218,17 @@
 	    select  count(1) from orders
 	</select>
     <select id="getMaxOrderNoByOrderNoPre" parameterType="String" resultType="java.lang.String">
-	   select orderNo from orders where orderNo like CONCAT(#{arg0},'%') order by orderNo desc limit 1
+	   select orderNo from orders where orderNo like CONCAT(#{param1},'%') order by orderNo desc limit 1
 	</select>
     <select id="getIsBuyVideoByVid" parameterType="String" resultType="java.lang.Integer">
 	  <![CDATA[
           select count(1) 
           from orders 
-          where vid=#{arg0} and vclassify=#{arg1} and uid=#{arg2} and oisPay=1 and  now()<DATE_SUB(opayTime, INTERVAL -1 YEAR) 
+          where vid=#{param1} and vclassify=#{param2} and uid=#{param3} and oisPay=1 and  now()<DATE_SUB(opayTime, INTERVAL -1 YEAR) 
         ]]>
 	</select>
     <select id="findOrderByOid" parameterType="String" resultMap="BaseResultMap">
-	   select * from orders where oid=#{arg0}
+	   select * from orders where oid=#{param1}
 	</select>
     <insert id="insertOrder" parameterType="com.hpedu.web.core.order.pojo.Order">
         insert into orders(oid,omoney,ocreatTime,oisPay,orderNo,uid,vid,vclassify,payStyle
@@ -281,17 +281,17 @@
         where oid = #{oid}
     </update>
     <update id="updateOrderPayStatus" parameterType="String">
-	  update orders set oisPay=1,opayTime=now() where orderNo=#{arg0}
+	  update orders set oisPay=1,opayTime=now() where orderNo=#{param1}
 	</update>
 
     <update id="updateOrderPayMoney" parameterType="String">
-	  update orders set omoney=#{arg1},orderNo=#{arg2},payStyle=#{arg3} where oid=#{arg0} 
+	  update orders set omoney=#{param2},orderNo=#{param3},payStyle=#{param4} where oid=#{param1} 
 	</update>
     
     <select id="findOrderByParams" parameterType="String" resultMap="BaseResultMap">
-	   select * from orders where uid=#{arg0} and vid=#{arg1} and vclassify=#{arg2} and oisPay=#{arg3}
+	   select * from orders where uid=#{param1} and vid=#{param2} and vclassify=#{param3} and oisPay=#{param4}
 	</select>
     <select id="findOrderByOrderNo" parameterType="String" resultMap="BaseResultMap">
-	   select * from orders where orderNo=#{arg0}
+	   select * from orders where orderNo=#{param1}
 	</select>
 </mapper>

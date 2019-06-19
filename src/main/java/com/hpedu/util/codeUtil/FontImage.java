@@ -99,9 +99,5 @@ public class FontImage {
            }  
        }  
       
-    public static void main(String[] args) throws Exception {  
-       System.out.println(getImage(BaseUtil.random(8), "d:/test"));  
- 
-   }  
 
 }

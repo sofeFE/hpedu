@@ -8,9 +8,9 @@ import java.lang.reflect.Field;
 
 public class SonTest extends MyTest{
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		new SonTest().method();
-	}
+	}*/
 	void method(){
 		MyTest test = new MyTest() ;
 		Class<?> clazz = test.getClass();

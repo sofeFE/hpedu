@@ -33,7 +33,7 @@ public final class StringUtil {
 	 * 获得指定格式的当前时间
 	 * 
 	 * @author Administrator
-	 * @type:yyyy年份，MM月份，dd日期，hh12小时制，HH24小时制，mm分，ss秒 TODO 要更改此生成的类型注释的模板，请转至 窗口
+	 * @type:yyyy年份，MM月份，dd日期，hh12小时制，HH24小时制，mm分，ss秒 TODO 要更改 此生成的类型注释的模板，请转至 窗口
 	 *                                                － 首选项 － Java － 代码样式 － 代码模板
 	 */
 	public static String getCurrentTime(String type) {
