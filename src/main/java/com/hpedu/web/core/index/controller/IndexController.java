@@ -46,7 +46,7 @@ public class IndexController {
         if (user != null) {
             model.addAttribute("user", user);
         }
-        fillModel(model);
+//        fillModel(model);
         return "classindex";
     }
 

@@ -47,8 +47,8 @@ public class ContestVideoServiceImpl extends ServiceImpl<ContestVideoMapper,Cont
 	@Override
 	public Page<ContestVideo> searchContestVideoList(Map<String, String> map,
 			int pageNo, int pageSize)  {
-		Page<ContestVideo> page =myBatisBase.queryPage("com.hpedu.web.core.video.dao.ContestVideoMapper.searchContestVideoList",
-				"com.hpedu.web.core.video.dao.ContestVideoMapper.searchContestVideoListCount", map, pageNo, pageSize);
+		Page<ContestVideo> page =myBatisBase.queryPage("com.hpedu.web.core.video.daoTest.ContestVideoMapper.searchContestVideoList",
+				"com.hpedu.web.core.video.daoTest.ContestVideoMapper.searchContestVideoListCount", map, pageNo, pageSize);
 		return page;
 	}
 

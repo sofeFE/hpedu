@@ -5,7 +5,6 @@ import com.alibaba.fastjson.JSONObject;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.PageContext;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -13,20 +12,21 @@ import java.util.*;
 
 public class UploadManger {
 
-    public void get(HttpServletRequest request, HttpServletResponse response, PageContext pageContext) throws Exception{
+    public void get(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         ServletOutputStream out = response.getOutputStream();
 
         //根目录路径，可以指定绝对路径，比如 /var/www/attached/
-        String rootPath = pageContext.getServletContext().getRealPath("/") + "attached/";
+//        String rootPath = pageContext.getServletContext().getRealPath("/") + "attached/";
+        String rootPath = request.getServletContext().getRealPath("/") + "attached/";
         //根目录URL，可以指定绝对路径，比如 http://www.yoursite.com/attached/
         String rootUrl = request.getContextPath() + "/attached/";
-        
+
         //图片扩展名
         String[] fileTypes = new String[]{"gif", "jpg", "jpeg", "png", "bmp"};
-/*文件目录名*/
+        /*文件目录名*/
         String dirName = request.getParameter("dir");
-        
+
         if (dirName != null) {
             if (!Arrays.<String>asList(new String[]{"image", "flash", "media", "file"}).contains(dirName)) {
                 out.println("Invalid Directory name.");

@@ -27,7 +27,9 @@ import java.security.cert.X509Certificate;
 
 /**
  * 3.1版本
+ * @Describe 太多过期类，放弃使用本工具类
  */
+@Deprecated
 public class HttpClientUtil {
 
 	public synchronized static String post(String urlstr, String data) {
@@ -239,7 +241,38 @@ public class HttpClientUtil {
             ex.printStackTrace();
             return null;
         }
-    }
+
+	}
+//		public static HttpClient wrapClient(HttpClient base) {
+//			try {
+//				SSLContext ctx = SSLContext.getInstance("TLS");
+//				X509TrustManager tm = new X509TrustManager() {
+//					public X509Certificate[] getAcceptedIssuers() {
+//						return null;
+//					}
+//					public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {}
+//					public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {}
+//				};
+//				ctx.init(null, new TrustManager[] { tm }, null);
+////            SSLSocketFactory ssf = new SSLSocketFactory(ctx, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+//				SSLConnectionSocketFactory ssf = new SSLConnectionSocketFactory(
+//						ctx,SSLConnectionSocketFactory.getDefaultHostnameVerifier()); //TODO 有修改，未知可用否
+//
+////            SchemeRegistry registry = new SchemeRegistry();
+////            registry.register(new Scheme("https", 443, ssf));
+////            ThreadSafeClientConnManager mgr = new ThreadSafeClientConnManager(registry);
+//				PoolingHttpClientConnectionManager mgr  = new PoolingHttpClientConnectionManager();
+////				new DefaultHttpClient(mgr, base.getParams());
+//				CloseableHttpClient httpClient = HttpClientBuilder.create().setConnectionManager(mgr).build();
+//
+//				return httpClient ;
+//			} catch (Exception ex) {
+//				ex.printStackTrace();
+//				return null;
+//			}
+//		}
+
+
 
   
 	

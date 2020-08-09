@@ -20,8 +20,8 @@ public class ExamServiceImpl extends ServiceImpl<ExamMapper,Exam> implements Exa
 	@Override
 	public Page<Exam> findExamListByMap(Map<String, String> map,int pageNo,int pageSize)  {
 		
-		Page<Exam> pages = myBatisBase.queryPage("com.hpedu.web.core.exam.dao.ExamMapper.findExamListByMap",
-			"com.hpedu.web.core.exam.dao.ExamMapper.findExamListByMapCount", map, pageNo, pageSize);
+		Page<Exam> pages = myBatisBase.queryPage("com.hpedu.web.core.exam.daoTest.ExamMapper.findExamListByMap",
+			"com.hpedu.web.core.exam.daoTest.ExamMapper.findExamListByMapCount", map, pageNo, pageSize);
 		return pages;
 	}
 

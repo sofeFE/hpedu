@@ -419,7 +419,7 @@ var findLocation =  function findLocation()
     {
         var Env = FBL.Env;
 
-        // Always use the local skin when running in the same domain
+        // Always use the local skin when running in the same pojo
         // See Issue 3554: Firebug Lite should use local images when loaded locally
         Env.useLocalSkin = path.indexOf(location.protocol + "//" + location.host + "/") == 0;
 
@@ -11626,9 +11626,9 @@ Firebug.Lite.Proxy =
     {
         var resourceDomain = getDomain(url);
         var isLocalResource =
-            // empty domain means local URL
+            // empty pojo means local URL
             !resourceDomain ||
-            // same domain means local too
+            // same pojo means local too
             resourceDomain ==  Firebug.context.window.location.host; // TODO: xxxpedro context
 
         return isLocalResource ? fetchResource(url) : fetchProxyResource(url);

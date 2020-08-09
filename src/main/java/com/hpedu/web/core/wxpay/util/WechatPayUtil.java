@@ -1,7 +1,7 @@
 package com.hpedu.web.core.wxpay.util;
 
 import com.alibaba.fastjson.JSONObject;
-import com.hpedu.config.property.PayConfigUtil;
+import com.hpedu.config.PayProperties;
 import com.hpedu.util.codeUtil.BaseUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.jdom.Document;
@@ -23,7 +23,7 @@ import java.util.*;
 public class WechatPayUtil {
     
     @Autowired
-    PayConfigUtil payConfigUtil ;
+    PayProperties payConfigUtil ;
     
     public static Map<String, String> errorMap = null;
     private static Logger log = BaseUtil.getLogger(WechatPayUtil.class);

@@ -1,7 +1,7 @@
 package com.hpedu.config.redis;
 
 
-import com.hpedu.util.redisUtil.RedisUtil;
+import com.hpedu.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisClusterConfiguration;
@@ -22,6 +22,7 @@ import java.util.Set;
  */
 //@Configuration
 //@PropertySource("classpath:/redis.properties")
+    @Deprecated
 public class RedisClusterConfig {
 
     @Value("${redis.maxIdle}")

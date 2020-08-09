@@ -47,8 +47,8 @@ public class GeneralVideoServiceImpl extends ServiceImpl<GeneralVideoMapper, Gen
     @Override
     public Page<GeneralVideo> searchGeneralVideoList(Map<String, String> map,
                                                      int pageNo, int pageSize) {
-        Page<GeneralVideo> page = myBatisBase.queryPage("com.hpedu.web.core.video.dao.GeneralVideoMapper.searchGeneralVideoList",
-                "com.hpedu.web.core.video.dao.GeneralVideoMapper.searchGeneralVideoListCount", map, pageNo, pageSize);
+        Page<GeneralVideo> page = myBatisBase.queryPage("com.hpedu.web.core.video.daoTest.GeneralVideoMapper.searchGeneralVideoList",
+                "com.hpedu.web.core.video.daoTest.GeneralVideoMapper.searchGeneralVideoListCount", map, pageNo, pageSize);
         return page;
     }
 

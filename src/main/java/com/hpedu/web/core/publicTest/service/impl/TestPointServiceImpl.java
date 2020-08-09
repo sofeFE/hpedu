@@ -26,8 +26,8 @@ public class TestPointServiceImpl extends ServiceImpl<TestPointMapper,TestPoint>
 	
 	@Override
 	public  Page<TestPoint> getTestPoint(Map<String, String> map,int pageNo,int pageSize)  {
-		Page<TestPoint> page = myBatisBase.queryPage("com.hpedu.web.core.publicTest.dao.TestPointMapper.selectTestPoint",
-				 "com.hpedu.web.core.publicTest.dao.TestPointMapper.TestPointCount", map,  pageNo, pageSize);
+		Page<TestPoint> page = myBatisBase.queryPage("com.hpedu.web.core.publicTest.daoTest.TestPointMapper.selectTestPoint",
+				 "com.hpedu.web.core.publicTest.daoTest.TestPointMapper.TestPointCount", map,  pageNo, pageSize);
 		return page;
 	}
 

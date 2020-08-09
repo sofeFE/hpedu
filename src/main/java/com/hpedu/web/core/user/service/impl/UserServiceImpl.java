@@ -80,8 +80,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public Page<User> searchUserList(Map<String, String> map, int pageNo,
                                      int pageSize) {
-        Page<User> page = myBatisBase.queryPage("com.hpedu.web.core.user.dao.UserMapper.searchUserList",
-                "com.hpedu.web.core.user.dao.UserMapper.searchUserListCount", map, pageNo, pageSize);
+        Page<User> page = myBatisBase.queryPage("com.hpedu.web.core.user.daoTest.UserMapper.searchUserList",
+                "com.hpedu.web.core.user.daoTest.UserMapper.searchUserListCount", map, pageNo, pageSize);
         return page;
     }
 

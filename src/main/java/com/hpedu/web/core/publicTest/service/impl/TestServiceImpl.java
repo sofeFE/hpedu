@@ -54,8 +54,8 @@ public class TestServiceImpl extends ServiceImpl<TestMapper,Test> implements Tes
 
 	@Override
 	public Page<Test> getTest_Page(Map<String, String> map, int pageNo, int pageSize) {
-		return myBatisBase.queryPage("com.hpedu.web.core.publicTest.dao.TestMapper.getTest_Page",
-				 "com.hpedu.web.core.publicTest.dao.TestMapper.getTest_Page_count", map,  pageNo, pageSize);
+		return myBatisBase.queryPage("com.hpedu.web.core.publicTest.daoTest.TestMapper.getTest_Page",
+				 "com.hpedu.web.core.publicTest.daoTest.TestMapper.getTest_Page_count", map,  pageNo, pageSize);
 	}
 
 	@Override

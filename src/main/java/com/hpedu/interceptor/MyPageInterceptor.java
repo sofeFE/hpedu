@@ -11,13 +11,14 @@ import java.sql.Connection;
 import java.util.Map;
 import java.util.Properties;
 
-/**
+/**自定义分页插件?
  * @Intercepts 说明是一个拦截器
  * @Signature 拦截器的签名
  * type 拦截的类型 四大对象之一( Executor,ResultSetHandler,ParameterHandler,StatementHandler)
  * method 拦截的方法
  * args 参数,高版本需要加个Integer.class参数,不然会报错
  */
+@Deprecated
 @Intercepts({@Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class})})
 public class MyPageInterceptor implements Interceptor {
 

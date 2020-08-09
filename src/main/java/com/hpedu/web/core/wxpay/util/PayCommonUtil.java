@@ -24,7 +24,7 @@ public class PayCommonUtil {
         sb.append("key=" + API_KEY);  
           
         //算出摘要  
-        String mysign = MD5Util.MD5Encode(sb.toString(), characterEncoding).toLowerCase();  
+        String mysign = MD5.MD5Encode(sb.toString(), characterEncoding ).toLowerCase();
         String tenpaySign = ((String)packageParams.get("sign")).toLowerCase();  
           
         //System.out.println(tenpaySign + "    " + mysign);  
@@ -54,7 +54,7 @@ public class PayCommonUtil {
             }  
         }  
         sb.append("key=" + API_KEY);  
-        String sign = MD5Util.MD5Encode(sb.toString(), characterEncoding).toUpperCase();  
+        String sign = MD5.MD5Encode(sb.toString(), characterEncoding).toUpperCase();
         return sign;  
     }  
   

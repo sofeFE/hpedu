@@ -2,17 +2,18 @@ spring:
   profiles:
     active: dev
   # 页面默认前缀目录
-  mvc:
-    view:
-      prefix: /WEB-INF/jsp/
+  #mvc:
+   # view:
+     # prefix: /WEB-INF/jsp/
       # 响应页面默认后缀
-      suffix: .jsp
+     # suffix: .jsp
   servlet:
     multipart:
       enabled: true
       resolve-lazily: true
       max-file-size: 100MB
-
+server:
+  port: 8081
  #cache配置?
 #  cache:
 #    cache-names: generalCache
@@ -25,18 +26,18 @@ renren:
   redis:
     open: false  #是否开启redis缓存  true开启   false关闭
 
-uploadAbsolutePath: D:/mySource
+uploadAbsolutePath: /mySource
 logging:
   config: classpath:logback-spring.xml
-  path: D:/logs
+  path: /logs
 #此处和以上冲突与否 ,未知
 logback:
-  logdir: D:/logs
+  logdir: /logs
   appname: springbootEdu
 
 #mybatis 配置
 #mybatis:
-#  mapper-locations: classpath:resources/mappers/*.xml
+#  dao-locations: classpath:resources/mappers/*.xml
 #  config-location: classpath:mybatisConfig.xml
 #  type-aliases-package: com.hpedu.web.core.*.pojo
 
@@ -82,8 +83,7 @@ pagehelper:
   params: count=countSql
 
 ##  returnPageInfo: check
-server:
-  port: 8081
+
 ---
 
 
@@ -98,7 +98,7 @@ spring:
       filters: stat
       url: jdbc:mysql://localhost:3306/hpedu?useUnicode=true&allowMultiQueries=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
       username: root
-      password: root
+      password: javagd
       driver-class-name: com.mysql.jdbc.Driver
       initialSize: 5
       minIdle: 5
@@ -129,7 +129,7 @@ spring:
       filters: stat
       url: jdbc:mysql://localhost:3306/hpedu?useUnicode=true&allowMultiQueries=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
       username: root
-      password: root
+      password: javagd
       driver-class-name: com.mysql.jdbc.Driver
       initialSize: 5
       minIdle: 5

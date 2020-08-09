@@ -25,7 +25,7 @@ K.options = {
 	pluginsPath : K.basePath + 'plugins/',
 	themeType : 'default', // default, simple
 	langType : 'zh-CN',
-	urlType : '', // "", relative, absolute, domain
+	urlType : '', // "", relative, absolute, pojo
 	newlineTag : 'p', // p, br
 	resizeType : 2, // 0, 1, 2
 	syncType : 'form', // "", form

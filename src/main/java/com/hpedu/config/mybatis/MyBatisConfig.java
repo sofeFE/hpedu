@@ -45,7 +45,7 @@ public class MyBatisConfig {
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {
 			Factorybean.setMapperLocations( 
-					resolver.getResources("classpath:/com/hpedu/web/core/*/mapper/*Mapper.xml"));
+					resolver.getResources("classpath:/com/hpedu/web/core/*/dao/*Mapper.xml"));
 			return Factorybean.getObject();
 		} catch (Exception e) {
 			throw new RuntimeException(e);

@@ -116,7 +116,7 @@ _extend(KEdit, KWidget, {
 			cssData = options.cssData,
 			isDocumentDomain = location.protocol != 'res:' && location.host.replace(/:\d+/, '') !== document.domain,
 			srcScript = ('document.open();' +
-				(isDocumentDomain ? 'document.domain="' + document.domain + '";' : '') +
+				(isDocumentDomain ? 'document.pojo="' + document.domain + '";' : '') +
 				'document.close();'),
 			iframeSrc = _IE ? ' src="javascript:void(function(){' + encodeURIComponent(srcScript) + '}())"' : '';
 		self.iframe = K('<iframe class="ke-edit-iframe" hidefocus="true" frameborder="0"' + iframeSrc + '></iframe>').css('width', '100%');

@@ -23,6 +23,7 @@ import static java.util.Collections.singletonMap;
  */
 //@Configuration
 //@PropertySource("classpath:/redis.properties")
+@Deprecated
 public class RedisSentinelConfig {
 
 /**

@@ -7,9 +7,13 @@ import org.springframework.web.filter.DelegatingFilterProxy;
 import java.util.Arrays;
 
 //@Configuration
+@Deprecated
 public class FilterConfig {
 
-
+    /**
+     * 特定目录访问 权限设置 过滤器
+     * @return
+     */
     @Bean
     public FilterRegistrationBean shiroFilterRegistration() {
         FilterRegistrationBean registration = new FilterRegistrationBean();

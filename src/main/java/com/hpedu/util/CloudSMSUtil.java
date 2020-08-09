@@ -17,9 +17,10 @@ public class CloudSMSUtil {
     public static String sendSMS(String tel, HttpSession session, boolean isYzCode, int type) {
         // 官网的URL
         String url = "http://gw.api.taobao.com/router/rest";
-        // 成为开发者，创建应用后系统自动生成
+        // TODO 成为开发者，创建应用后系统自动生成，是否该隐藏该属性
         String appkey = "23633603";
         String secret = "1a52fb90dd0c8c1341835f828ddae713";
+
         String jsonstr = "";
         String smsTemplateCode = "";//短信模板id
         if (isYzCode) {//发送验证码

@@ -147,7 +147,7 @@ public class VplayController {
 
                 generalVideo.setPdflist(contestVideoService.selectPdfByVid(classNo, "0"));
             } catch (Exception e) {
-                log.error("首页查询常规视频和相关pdf出错：{}", e.getStackTrace()[0]);
+                log.error("首页查询常规视频和相关pdf出错：{}", e.toString());
             }
             List<GeneralVideo> glist = null;
             if (generalVideo != null) {
@@ -236,11 +236,6 @@ public class VplayController {
                                        Model model) {
         User user = (User) session.getAttribute("user");
         Map<String, String> maps = new HashMap<String, String>();
-		/*maps.put("gsbuject",new String(gsbuject.getBytes("iso8859-1"),"utf-8"));
-		maps.put("gclass",new String(gclass.getBytes("iso8859-1"),"utf-8"));
-		 gclassify=new String(gclassify.getBytes("iso8859-1"),"utf-8");
-		 String gclassify_new=gclassify.replace("各学校", "");
-		maps.put("gclassify",gclassify_new);*/
         maps.put("gsbuject", gsbuject);
         maps.put("gclass", gclass);
         String gclassify_new = gclassify.replace("各学校", "");
@@ -265,7 +260,7 @@ public class VplayController {
         } catch (Exception e) {
             pages = new Page<GeneralVideo>();
             pages.setResult(new ArrayList<GeneralVideo>());
-            log.error("首页查询常规视频list出错:", e);
+            log.error("首页查询常规视频list出错:",e.toString());
         }
         model.addAttribute("page", pages);
         model.addAttribute("gsbuject", maps.get("gsbuject"));
@@ -298,7 +293,7 @@ public class VplayController {
             list = generalVideoService.searchGeneralVideoList(maps);
         } catch (Exception e) {
             list = new ArrayList<GeneralVideo>();
-            log.error("首页查询常规视频list出错:", e);
+            log.error("首页查询常规视频list出错:", e.toString());
         }
 
         String[] gclassify2Arr = new String[]{"计算", "数论", "几何", "计数", "应用题", "方程", "行程"};

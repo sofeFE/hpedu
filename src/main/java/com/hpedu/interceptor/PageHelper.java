@@ -20,11 +20,12 @@ import org.apache.ibatis.session.RowBounds;
 import java.sql.Connection;
 import java.util.Properties;
 
-/**
+/** 自定义分页插件
  * type 告诉要拦截什么对象，它可以是四大对象的一个。
  * method 告诉你要拦截什么方法。
  * args 告诉方法的参数是什么
  */
+@Deprecated
 @Intercepts({ @Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class }) })
 public class PageHelper implements Interceptor {
 

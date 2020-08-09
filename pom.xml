@@ -19,7 +19,11 @@
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -59,11 +63,11 @@
         2019年4月5日00:42:21
         fuck,实力坑啊, 吃一亏还不长记性, 还是忘记 打开注释.
     -->
-        <dependency>
+       <!-- <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <!--<scope>provided</scope>-->
-        </dependency>
+            &lt;!&ndash;<scope>provided</scope>&ndash;&gt;
+        </dependency>-->
         <!--对jstl支持的 libs -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -163,7 +167,12 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.5</version>
         </dependency>
-
+        <!--集成druid & mybatis start-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.10</version>
+        </dependency>
 
         <!-- 导入Mysql数据库链接jar包 -->
         <dependency>
@@ -175,12 +184,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
         </dependency>-->
-        <!--集成druid & mybatis start-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.1.10</version>
-        </dependency>
 
 
         <dependency>
@@ -298,35 +301,37 @@
 
     </dependencies>
 
-    <distributionManagement>
+  <!--  <distributionManagement>
         <repository>
             <id>releases</id>
             <name>Local Nexus Repository</name>
             <url>http://192.168.43.61:8888/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>Snapshots</id>
+            <id>snapshots</id>
             <name>Local Nexus Repository</name>
             <url>http://192.168.43.61:8888/repository/maven-snapshots/</url>
         </snapshotRepository>
-    </distributionManagement>
+    </distributionManagement>-->
 
 
     <build>
         <plugins>
-            <plugin>
+            <plugin><!--springboot maven打包插件 -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>1.4.2.RELEASE</version>
+                <!--TODO 为何特定设置版本-->
+
                 <!--<configuration>-->
 
-                    <!--<fork>true</fork>&lt;!&ndash;热部署&ndash;&gt;-->
+                <!--<fork>true</fork>&lt;!&ndash;热部署&ndash;&gt;-->
 
                 <!--</configuration>-->
 
             </plugin>
 
-            <plugin>
+            <plugin><!-- apache maven打包插件 -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <!--<version>3.1.0</version>-->
@@ -344,15 +349,11 @@
 
             </plugin>
         </plugins>
-        
-        <resources>
-             <!--<resource>-->
-                 <!--<directory>src/main/resources</directory>-->
-                 <!--<filtering>false</filtering>-->
-             <!--</resource>-->
+
+        <resources><!--特地声明资源位置， -->
             <resource>
                 <directory>src/main/webapp</directory>
-                <!--注意此次必须要放在此目录下才能被访问到-->
+                <!--注意 此次 必须要放在此目录下才能被访问到-->
                 <targetPath>META-INF/resources</targetPath>
                 <includes>
                     <include>**/**</include>

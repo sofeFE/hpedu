@@ -31,9 +31,8 @@ public class TxtUtil {
             }
             write.append(enter); //换行
             //数据读取
-            for (int i = 0; i < list.size(); i++) {
-                String[] row = list.get(i);
-                for (String str : row) {
+            for (int i = 0 ,size = list.size(); i < size; i++) {
+                for (String str : list.get(i) ) {
                     write.append(str + tab);
                 }
                 write.append(enter); //换行
@@ -72,7 +71,7 @@ public class TxtUtil {
             }
             write.append(enter); //换行
             //数据读取
-            for (int i = 0; i < list.size(); i++) {
+            for (int i = 0 ,size=list.size(); i < size; i++) {
                 String[] row = list.get(i);
                 for (String str : row) {
                     write.append(str + tab);
@@ -211,8 +210,6 @@ public class TxtUtil {
      * 3：读取到输入流后，需要读取生成字节流
      * 4：一行一行的输出。readline()。
      * 备注：需要考虑的是异常情况
-     *
-     * @param filePath
      */
     public static List<String> readTxtFile(HttpServletRequest request, String dir, String filename, String uploadAbsolutePath) {
         List<String> list = new ArrayList<String>();

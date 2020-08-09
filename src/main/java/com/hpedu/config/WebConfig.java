@@ -1,7 +1,11 @@
 package com.hpedu.config;
 
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 /**
  * 需要配置 1.视图解析器 2.组件扫描器 3.静态资源映射.
@@ -20,12 +24,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * */
 
 //@Configuration
+	@Deprecated //暂时不用自定义配置
 public class WebConfig  implements WebMvcConfigurer {
 
-	/**
-	 * webmvc 自动配置类.
-	 */
-//	org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration
 
 	/*@Autowired
 	private BaseInterceptor baseInterceptor ;*/
@@ -35,30 +36,30 @@ public class WebConfig  implements WebMvcConfigurer {
 	 * 静态资源请求 交给 默认控制器处理.
 	 * @param configurer
 	 */
-	/*@Override
+	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		 configurer.enable();
-	}*/
+	}
 
-
-	/*@Override
+	@Override
 	public void configureViewResolvers(ViewResolverRegistry viewresolverregistry) {
-		*//*配置尝试1*//*
-		*//*InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+		/* * 配置尝试1*/
+		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/jsp/");
 		resolver.setSuffix(".jsp");
-		resolver.setExposeContextBeansAsAttributes(true);
-		resolver.setViewClass(JstlView.class);*//*
+		resolver.setExposeContextBeansAsAttributes(true);//该属性使用 有待商议
+		resolver.setViewClass(JstlView.class);//
 
-		*//*配置尝试2*//*
+		/*配置尝试2*/
 //		viewresolverregistry.jsp().prefix("/WEB-INF/jsp/").suffix(".jsp");
 
-		*//*尝试3*//*
-		viewresolverregistry.jsp("/WEB-INF/jsp/",".jsp").viewClass(InternalResourceView.class);
-		viewresolverregistry.viewResolver(new InternalResourceViewResolver());
-		*//*原方法*//*
-		WebMvcConfigurer.super.configureViewResolvers(viewresolverregistry);
-	}*/
+		/*尝试3*/
+//		viewresolverregistry.jsp("/WEB-INF/jsp/",".jsp").viewClass(InternalResourceView.class);
+//		viewresolverregistry.viewResolver(new InternalResourceViewResolver());
+
+		/*原方法*/
+//		WebMvcConfigurer.super.configureViewResolvers(viewresolverregistry);
+	}
 
 	/**配置自定义 静态资源路径 */
 	@Override

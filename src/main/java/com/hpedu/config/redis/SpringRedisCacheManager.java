@@ -6,7 +6,7 @@ package com.hpedu.config.redis;
  * 用于对@CacheDuration解析及有效期的设置
  */
 
-
+@Deprecated
 public class SpringRedisCacheManager /*extends RedisCacheManager implements ApplicationContextAware, InitializingBean*/ {
     /*private ApplicationContext applicationContext;
 

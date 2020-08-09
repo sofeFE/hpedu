@@ -117,8 +117,8 @@ private MyBatisBase myBatisBase ;
 	@Transactional(readOnly = false )
 	@Override
 	public int updateTeacherSort(String tid, String sort) {
-		/*TeacherMapper mapper = baseMapper;
-		return mapper.updateTeacherSort(tid, sort);*/
+		/*TeacherMapper dao = baseMapper;
+		return dao.updateTeacherSort(tid, sort);*/
 		return 0 ;
 	}
 
@@ -134,8 +134,8 @@ private MyBatisBase myBatisBase ;
 			int pageSize)  {
 		
 		/*方法*/
-		Page<Teacher> page = myBatisBase.queryPage("com.hpedu.web.core.teacher.dao.TeacherMapper.findTeacherByPage",
-				"com.hpedu.web.core.teacher.dao.TeacherMapper.searchTeacherListCount", map, pageNo, pageSize);
+		Page<Teacher> page = myBatisBase.queryPage("com.hpedu.web.core.teacher.daoTest.TeacherMapper.findTeacherByPage",
+				"com.hpedu.web.core.teacher.daoTest.TeacherMapper.searchTeacherListCount", map, pageNo, pageSize);
 		return page;
 		
 	}

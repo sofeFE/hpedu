@@ -6,10 +6,10 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
-import com.hpedu.config.property.PayConfigUtil;
+import com.hpedu.config.PayProperties;
 import com.hpedu.web.core.wxpay.service.WxPayService;
-import com.hpedu.web.core.wxpay.util.HttpClientResult;
 import com.hpedu.web.core.wxpay.util.HttpClientUtils;
+import com.hpedu.web.core.wxpay.util.MyHttpResponse;
 import com.hpedu.web.core.wxpay.util.PayCommonUtil;
 import com.hpedu.web.core.wxpay.util.XMLUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ import java.util.*;
 @Service
 public class WxPayServiceImpl implements WxPayService {
 @Autowired
-    PayConfigUtil payConfigUtil ;
+PayProperties payConfigUtil ;
     
     @Override
     public String weixin_pay(String out_trade_no) throws Exception {
@@ -75,9 +75,9 @@ public class WxPayServiceImpl implements WxPayService {
 
 //        String requestXML = WechatPayUtil.switchMap2Xml(packageParams);
 //        String resXml = HttpUtil.postData(payConfigUtil.unifiedorder_api, requestXML);
-        HttpClientResult httpClientResult = HttpClientUtils.doPost(payConfigUtil.unifiedorder_api, packageParams);
+        MyHttpResponse httpResponse = HttpClientUtils.doPost(payConfigUtil.unifiedorder_api, packageParams);
 
-        Map map = XMLUtil.doXMLParse(httpClientResult.getContent());
+        Map map = XMLUtil.doXMLParse(httpResponse.getContent());
         return (String) map.get("code_url");
     }
 

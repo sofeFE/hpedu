@@ -8,7 +8,7 @@ import java.util.List;
 
 
 /**
- * 评论 dao
+ * 评论 daoTest
  * */
 @Mapper
 public interface EvaluationMapper extends BaseMapper<Evaluation> {
@@ -21,7 +21,7 @@ public interface EvaluationMapper extends BaseMapper<Evaluation> {
 	 * 查看所有评论(分页)
 	 * 
 	 * */
-	List<Evaluation>  findEvaluationListByPage(int skip,int limit) ;
+	List<Evaluation> findEvaluationListByPage(int skip,int limit) ;
 	int findEvaluationListCount();
 	/**
 	 * 根据ID删除该评论

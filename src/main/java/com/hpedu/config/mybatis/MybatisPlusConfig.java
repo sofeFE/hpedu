@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-//@MapperScan("top.shen33.yang.mapper")//这个注解，作用相当于下面的@Bean MapperScannerConfigurer，2者配置1份即可
+//@MapperScan("top.shen33.yang.dao")//这个注解，作用相当于下面的@Bean MapperScannerConfigurer，2者配置1份即可
 public class MybatisPlusConfig {
     /**
      * 分页插件

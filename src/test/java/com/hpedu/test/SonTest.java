@@ -1,18 +1,14 @@
 package com.hpedu.test;
 
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
 import java.lang.reflect.Field;
 
-public class SonTest extends MyTest{
+public class SonTest extends Test1 {
 	
 	/*public static void main(String[] args) {
 		new SonTest().method();
 	}*/
 	void method(){
-		MyTest test = new MyTest() ;
+		Test1 test = new Test1() ;
 		Class<?> clazz = test.getClass();
 		try {
 			/** getField("string") 获取公共属性

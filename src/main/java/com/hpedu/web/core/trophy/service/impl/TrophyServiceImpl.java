@@ -37,8 +37,8 @@ public class TrophyServiceImpl  extends ServiceImpl<TrophyMapper,Trophy> impleme
 	@Override
 	public Page<Trophy> searchTrophyList(Map<String, String> map,
 			int pageNo, int pageSize)  {
-		Page<Trophy> page = myBatisBase.queryPage("com.hpedu.web.core.trophy.dao.TrophyMapper.findAllTrophy",
-				"com.hpedu.web.core.trophy.dao.TrophyMapper.searchTrophyListCount", map, pageNo, pageSize);
+		Page<Trophy> page = myBatisBase.queryPage("com.hpedu.web.core.trophy.daoTest.TrophyMapper.findAllTrophy",
+				"com.hpedu.web.core.trophy.daoTest.TrophyMapper.searchTrophyListCount", map, pageNo, pageSize);
 		return page;
 	}
 	@Override
